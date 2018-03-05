@@ -5,25 +5,25 @@ CREATE DATABASE project DEFAULT CHARACTER SET = utf8 ;
 USE project;
 
 
-CREATE TABLE users(
-    id_user       INT NOT NULL AUTO_INCREMENT,
-    nome_user     VARCHAR(11) NOT NULL,
-    snome_user     VARCHAR(50) NOT NULL,
-    cpf_user      VARCHAR(15) NOT NULL,
-    cel_user      VARCHAR(15),
-    tel_user      VARCHAR(15),
-    email_user    VARCHAR(50) NOT NULL,
-    usuario_user  VARCHAR(10) NOT NULL,
-    senha_user    VARCHAR(16) NOT NULL,
-    funcao_user   VARCHAR(15) NOT NULL,
-    panel_user    VARCHAR(10) NOT NULL,
-    status_user   INT NOT NULL,
-    PRIMARY KEY (id_user)
+CREATE TABLE USERS(
+    idUSERS       INT NOT NULL AUTO_INCREMENT,
+    pnomeUSERS     VARCHAR(11) NOT NULL,
+    lnomeUSERS     VARCHAR(50) NOT NULL,
+    cpfUSERS      VARCHAR(15) NOT NULL,
+    celUSERS      VARCHAR(15),
+    telUSERS      VARCHAR(15),
+    emailUSERS    VARCHAR(50) NOT NULL,
+    usuarioUSERS  VARCHAR(10) NOT NULL,
+    senhaUSERS    VARCHAR(16) NOT NULL,
+    funcaoUSERS   VARCHAR(15) NOT NULL,
+    panelUSERS    VARCHAR(10) NOT NULL,
+    ativoUSERS   INT NOT NULL,
+    PRIMARY KEY (idUSERS)
 )
 ENGINE = innodb,
 DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO users(nome_user, snome_user, cpf_user, cel_user, email_user, usuario_user, senha_user, panel_user, funcao_user, status_user) VALUES ('João', 'Rodrigues da Costa', '412.053.418-97', '(12)98765-4321', 'admin@email.com', 'admin', 'MTIzNDU2', 'admin', 'Administrador', 1);
+INSERT INTO users(pnomeUSERS, lnomeUSERS, cpfUSERS, celUSERS, emailUSERS, usuarioUSERS, senhaUSERS, panelUSERS, funcaoUSERS, ativoUSERS) VALUES ('João', 'Rodrigues da Costa', '412.053.418-97', '(12)98765-4321', 'admin@email.com', 'admin', 'MTIzNDU2', 'admin', 'Administrador', 1);
 
 CREATE TABLE logs(
     id_log      INT NOT NULL AUTO_INCREMENT,
@@ -34,7 +34,7 @@ CREATE TABLE logs(
 )
 ENGINE = innodb,
 DEFAULT CHARACTER SET = utf8;
-ALTER TABLE logs ADD CONSTRAINT fk_user1 FOREIGN KEY (user_log) REFERENCES users (id_user);
+ALTER TABLE logs ADD CONSTRAINT fkUSERS1 FOREIGN KEY (user_log) REFERENCES users (idUSERS);
 
 CREATE TABLE clients(
     nome_cli    VARCHAR(11) NOT NULL,
@@ -117,7 +117,7 @@ ENGINE = innodb,
 DEFAULT CHARACTER SET = utf8;
 
 ALTER TABLE ordem_servico ADD CONSTRAINT fk_cliente FOREIGN KEY (cli_os) REFERENCES clients (cpf_cli);
-ALTER TABLE ordem_servico ADD CONSTRAINT fk_user FOREIGN KEY (tec_os) REFERENCES users (id_user);
+ALTER TABLE ordem_servico ADD CONSTRAINT fkUSERS FOREIGN KEY (tec_os) REFERENCES users (idUSERS);
 
 CREATE TABLE os_servico(
     id_oss      INT NOT NULL AUTO_INCREMENT,
@@ -147,9 +147,9 @@ ALTER TABLE os_produto ADD CONSTRAINT fk_prod FOREIGN KEY (prod_osp) REFERENCES 
 
 /* VIEWS */
 CREATE VIEW view_os AS
-    SELECT concat( C.cpf_cli, "|", C.nome_cli) AS "cliente", C.nome_cli AS "nome_cli", concat(U.id_user, "|", U.nome_user) AS "tecnico", U.nome_user AS "nome_user", OS.id_os AS 'id_os', OS.dtIni_os AS 'dtIni_os', OS.dtFim_os AS 'dtFim_os', OS.status_os AS 'status_os', OS.desc_os AS "desc_os", OS.deft_os AS "deft_os", OS.obs_os AS "obs_os", OS.garant_os AS "garant_os", OS.prot_os AS 'prot_os', OS.data_os AS 'data_os'
+    SELECT concat( C.cpf_cli, "|", C.nome_cli) AS "cliente", C.nome_cli AS "nome_cli", concat(U.idUSERS, "|", U.nomeUSERS) AS "tecnico", U.nomeUSERS AS "nomeUSERS", OS.id_os AS 'id_os', OS.dtIni_os AS 'dtIni_os', OS.dtFim_os AS 'dtFim_os', OS.status_os AS 'status_os', OS.desc_os AS "desc_os", OS.deft_os AS "deft_os", OS.obs_os AS "obs_os", OS.garant_os AS "garant_os", OS.prot_os AS 'prot_os', OS.data_os AS 'data_os'
     FROM clients C 	INNER JOIN ordem_servico OS ON c.cpf_cli = OS.cli_os
-        INNER JOIN users U ON OS.tec_os = U.id_user;
+        INNER JOIN users U ON OS.tec_os = U.idUSERS;
 
 
 CREATE VIEW view_prod_os AS
