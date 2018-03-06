@@ -13,10 +13,10 @@
 
     <title>BMS</title>
 </head>
-<body class="body">
+<body>
 <?php include 'login/login.php'; ?>
-    <div class="w3-container" style="height: 100vh; width: 100vw;">
-        <div class="w3-container bradius w500 h400 bgcba m0a mt130 mb110">
+    <div class="w3-container body" style="height: 100vh; width: 100vw;">
+        <div class="w3-container bradius w500 h400 bgcba6 m0a mt130 mb110">
             <div class="w450 ml10 mr10 mt50">
                 <fieldset>
                     <legend class="w100 h80 m0a tac p5" style="border: lightgray solid 1px; border-radius: 60px">
@@ -26,7 +26,7 @@
                         <div class="w3-row w3-section">
                             <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;"><i class=" w3-xlarge fa fa-user-o"></i></div>
                             <div class="w3-rest">
-                                <input type="text" class="w3-input w3-border" name="usuario" placeholder="Usuário" style="border-radius: 0 6px 6px 0;">
+                                <input type="text" class="w3-input w3-border" name="usuario" placeholder="Usuário" style="border-radius: 0 6px 6px 0;" autofocus>
                             </div>
                         </div>
                         <div class="w3-row w3-section">

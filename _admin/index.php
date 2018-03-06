@@ -48,8 +48,8 @@
         <div class="hfull">
             <div class="fs087e">
                 <nav class="w3-text-gray">
-                    <a href="#" class="p10 w3-hover-text-white" style="boa er-style: none groove none groove; border-color: #00001F;"><i class="fa fa-gears mr10"></i> Meus Dados</a>
-                    <a href="#" class="p10 w3-hover-text-white" style="margin-left: -8px; border-style: none groove none groove; border-color: #00001F"><i class="fa fa-sign-out mr10"></i> Sair do Sistema</a>
+                    <a href="#" class="p10 w3-hover-text-white" style="boder-style: none groove none groove; border-color: #000086;"><i class="fa fa-gears mr10"></i> Meus Dados</a>
+                    <a href="#" class="p10 w3-hover-text-white" style="margin-left: -8px; border-style: none groove none groove; border-color: #000086"><i class="fa fa-sign-out mr10"></i> Sair do Sistema</a>
                 </nav>
             </div>
         </div>

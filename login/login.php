@@ -1,6 +1,8 @@
 <?php
+    date_default_timezone_set("America/Sao_Paulo");
     require 'database/config.php';
     require '_class/Usuario.php';
+    require '_class/Caixa.php';
     $msgErro = "";
     session_start();
     if(isset($_POST['entrar'])){
@@ -26,7 +28,13 @@
                 $_SESSION['funcao'] = $usuario->getFuncao();
                 $_SESSION['id_user'] = $usuario->getId();
                 $_SESSION['panel'] = $usuario->getPanel();
-                header("Location: _".$usuario->getPanel());
+                $caixa = new Caixa();
+                $data = date("Y-m-d");
+                $abrir = $caixa->abrirCaixa($pdo, $data);
+                if($abrir)
+                    header("Location: aberturaCaixa.php");
+                else
+                    header("Location: _".$usuario->getPanel());
             }
         }
     }
