@@ -11,19 +11,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Rilley Reis">
 
-    <link rel="stylesheet" href="_css/style.css">
-    <link rel="stylesheet" href="_css/font-awesome.css">
-    <link rel="stylesheet" href="_css/w3.css">
+    <link rel="stylesheet" href="app/css/style.css">
+    <link rel="stylesheet" href="app/css/font-awesome.css">
+    <link rel="stylesheet" href="app/css/w3.css">
 
-    <script type="text/javascript" src="_js/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="_js/jquery.maskedinput.js"></script>
-    <script type="text/javascript" src="_js/jquery.maskMoney.js"></script>
-    <script type="text/javascript" src="_js/masks.js"></script>
+    <script type="text/javascript" src="app/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="app/js/jquery.maskedinput.js"></script>
+    <script type="text/javascript" src="app/js/jquery.maskMoney.js"></script>
+    <script type="text/javascript" src="app/js/masks.js"></script>
 
     <title>BMS</title>
 </head>
 <body>
-<?php include 'login/caixa.php'?>
+<?php include 'php/control/caixa.php'?>
 <div class="w3-container body" style="height: 100vh; width: 100vw;">
     <div class="w3-container bradius w500 h450 bgcba m0a mt120 mb110">
         <div class="w450 ml10 mr10 mt15">

@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Rilley Reis">
 
-    <link rel="stylesheet" href="_css/style.css">
-    <link rel="stylesheet" href="_css/font-awesome.css">
-    <link rel="stylesheet" href="_css/w3.css">
+    <link rel="stylesheet" href="app/css/style.css">
+    <link rel="stylesheet" href="app/css/font-awesome.css">
+    <link rel="stylesheet" href="app/css/w3.css">
 
     <title>BMS</title>
 </head>
 <body>
-<?php include 'login/login.php'; ?>
+<?php include 'php/control/login.php'; ?>
     <div class="w3-container body" style="height: 100vh; width: 100vw;">
         <div class="w3-container bradius w500 h400 bgcba6 m0a mt130 mb110">
             <div class="w450 ml10 mr10 mt50">
                 <fieldset>
                     <legend class="w100 h80 m0a tac p5" style="border: lightgray solid 1px; border-radius: 60px">
-                        <img src="_img/logo.png" alt="" class="hfull">
+                        <img src="img/logo.png" alt="" class="hfull">
                     </legend>
                     <form action="" method="post">
                         <div class="w3-row w3-section">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div class="w3-row w3-section">
-                            <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;" style="width: 50px;"><i class="w3-xlarge fa fa-lock"></i></div>
+                            <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;"><i class="w3-xlarge fa fa-lock"></i></div>
                             <div class="w3-rest">
                                 <input type="password" class="w3-input w3-border" name="senha" placeholder="Senha" style="border-radius: 0 6px 6px 0;">
                             </div>
