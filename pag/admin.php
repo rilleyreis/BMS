@@ -1,4 +1,7 @@
-<?php //require 'checkin.php';?>
+<?php
+    require '../util/config.php';
+    require '../php/model/Session.php';
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -29,7 +32,7 @@
                 <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="cliente">Clientes</a>
                 <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="fornecedor">Fornecedor</a>
                 <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="produto">Produtos</a>
-                <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="">Serviços</a>
+                <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="service">Serviços</a>
                 <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="">OS</a>
                 <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(1)">Financeiro <i class="fa fa-caret-down"></i></button>
                 <div id="menu1" class="w3-hide bgcMenu w3-card fs087e wfull">
@@ -78,6 +81,10 @@
             <p class="fs20e" style="margin-top: -5px;"><i class="fa fa-file-text"></i></p>
             <p class="fs12e" style="margin-top: -8px;">OS's</p>
         </button>
+        <button class="w3-btn w3- w150 h65 mt25 w3-center ml30 w3-hover-grey" onclick="window.location=''">
+            <p class="fs20e w3-text-white" style="margin-top: -5px;"><i class="fa fa-file-text"></i></p>
+            <p class="fs12e w3-text-white" style="margin-top: -8px;">Relatórios</p>
+        </button>
 
         <div class="w3-card mt25">
             <header class="w3-gray w3-text-gray">
@@ -110,15 +117,15 @@
                         <th class="w3-border w3-border-gray" style="width: 20%">Estoque Mínimo</th>
                     </thead>
                     <tbody class="fs087e">
-                    <?php if($qtd_prod > 0){
+                    <?php if($qtdPRODUTO > 0){
                         foreach ($prod_exibir as $row){
                     ?>
                         <tr>
-                            <td class="w3-border w3-center"><?php echo $row['id_prod']; ?></td>
-                            <td class="w3-border"><?php echo $row['nome_prod']; ?></td>
-                            <td class="w3-border"><?php echo "R$ " . $row['venda_prod']; ?></td>
-                            <td class="w3-border"><?php echo $row['qtd_prod']; ?></td>
-                            <td class="w3-border"><?php echo $row['min_prod']; ?></td>
+                            <td class="w3-border w3-center"><?php echo $row['idPRODUTO']; ?></td>
+                            <td class="w3-border"><?php echo $row['nomePRODUTO']; ?></td>
+                            <td class="w3-border"><?php echo "R$ " . $row['vendaPRODUTO']; ?></td>
+                            <td class="w3-border"><?php echo $row['estkPRODUTO']; ?></td>
+                            <td class="w3-border"><?php echo $row['estkminPRODUTO']; ?></td>
                         </tr>
                     <?php }}?>
                     </tbody>
@@ -126,7 +133,7 @@
                 <p class="fs087e p5"><?php echo $msgTable;?></p>
                 <!--                Inicio da paginação-->
                 <?php
-                if($qtd_prod > 0){
+                if($qtdPRODUTO > 0){
                     if($total_pags > 1){?>
                         <div class="w3-center mt10 fs087e">
                             <div class="w3-bar w3-border w3-round">

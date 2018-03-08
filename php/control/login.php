@@ -3,6 +3,7 @@
     require 'util/config.php';
     require 'php/model/Usuario.php';
     require 'php/model/Caixa.php';
+    require 'php/model/Session.php';
     $msgErro = "";
     session_start();
     if(isset($_POST['entrar'])){
@@ -19,15 +20,11 @@
                 $msgErro = "Usuário e/ou Senha inválido. Verifique e tente novamente";
             }else{
                 foreach ($usuarios as $row){
-                    $usuario->setId($row['id_user']);
-                    $usuario->setFuncao($row['funcao_user']);
-                    $usuario->setPanel($row['panel_user']);
-                    $usuario->setNome($row['nome_user']);
+                    $usuario->setId($row['idUSER']);
                 }
-                $_SESSION['nome'] = $usuario->getNome();
-                $_SESSION['funcao'] = $usuario->getFuncao();
-                $_SESSION['id_user'] = $usuario->getId();
-                $_SESSION['panel'] = $usuario->getPanel();
+                $session = new Session();
+                $session->setId($usuario->getId());
+                $session->iniciarSession($pdo);
                 $caixa = new Caixa();
                 $data = date("Y-m-d");
                 $abrir = $caixa->abrirCaixa($pdo, $data);

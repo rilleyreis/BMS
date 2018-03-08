@@ -7,179 +7,160 @@
  */
 
 class Empresa{
-    private $cnpj_emp;
-    private $raz_emp;
-    private $fant_emp;
-    private $ie_emp;
-    private $rua_emp;
-    private $num_emp;
-    private $bairro_emp;
-    private $cid_emp;
-    private $est_emp;
-    private $tel_emp;
-    private $email_emp;
-    private $logo_emp;
-    private $status;
+    private $idEMPRESA;
+    private $cnpjEMPRESA;
+    private $razsocEMPRESA;
+    private $fantEMPRESA;
+    private $ieEMPRESA;
+    private $telEMPRESA;
+    private $emailEMPRESA;
+    private $logoEMPRESA;
+    private $idENDERECO;
+    private $tipoEMPRESA;
+    private $ativoEMPRESA;
+
+    public function getIdEMPRESA(){
+        return $this->idEMPRESA;
+    }
+
+    public function setIdEMPRESA($idEMPRESA){
+        $this->idEMPRESA = $idEMPRESA;
+    }
 
     public function getCnpjEmp(){
-        return $this->cnpj_emp;
+        return $this->cnpjEMPRESA;
     }
 
-    public function setCnpjEmp($cnpj_emp){
-        $this->cnpj_emp = $cnpj_emp;
+    public function setCnpjEmp($cnpjEMPRESA){
+        $this->cnpjEMPRESA = $cnpjEMPRESA;
     }
 
-    public function getRazEmp(){
-        return $this->raz_emp;
+    public function getrazsocEmp(){
+        return $this->razsocEMPRESA;
     }
 
-    public function setRazEmp($raz_emp){
-        $this->raz_emp = $raz_emp;
+    public function setrazsocEmp($razsocEMPRESA){
+        $this->razsocEMPRESA = $razsocEMPRESA;
     }
 
     public function getFantEmp(){
-        return $this->fant_emp;
+        return $this->fantEMPRESA;
     }
 
-    public function setFantEmp($fant_emp){
-        $this->fant_emp = $fant_emp;
+    public function setFantEmp($fantEMPRESA){
+        $this->fantEMPRESA = $fantEMPRESA;
     }
 
     public function getIeEmp(){
-        return $this->ie_emp;
+        return $this->ieEMPRESA;
     }
 
-    public function setIeEmp($ie_emp){
-        $this->ie_emp = $ie_emp;
-    }
-
-    public function getRuaEmp(){
-        return $this->rua_emp;
-    }
-
-    public function setRuaEmp($rua_emp){
-        $this->rua_emp = $rua_emp;
-    }
-
-    public function getNumEmp(){
-        return $this->num_emp;
-    }
-
-    public function setNumEmp($num_emp){
-        $this->num_emp = $num_emp;
-    }
-
-    public function getBairroEmp(){
-        return $this->bairro_emp;
-    }
-
-    public function setBairroEmp($bairro_emp){
-        $this->bairro_emp = $bairro_emp;
-    }
-
-    public function getCidEmp(){
-        return $this->cid_emp;
-    }
-
-    public function setCidEmp($cid_emp){
-        $this->cid_emp = $cid_emp;
-    }
-
-    public function getEstEmp(){
-        return $this->est_emp;
-    }
-
-    public function setEstEmp($est_emp){
-        $this->est_emp = $est_emp;
+    public function setIeEmp($ieEMPRESA){
+        $this->ieEMPRESA = $ieEMPRESA;
     }
 
     public function getTelEmp(){
-        return $this->tel_emp;
+        return $this->telEMPRESA;
     }
 
-    public function setTelEmp($tel_emp){
-        $this->tel_emp = $tel_emp;
+    public function setTelEmp($telEMPRESA){
+        $this->telEMPRESA = $telEMPRESA;
     }
 
     public function getEmailEmp(){
-        return $this->email_emp;
+        return $this->emailEMPRESA;
     }
 
-    public function setEmailEmp($email_emp){
-        $this->email_emp = $email_emp;
+    public function setEmailEmp($emailEMPRESA){
+        $this->emailEMPRESA = $emailEMPRESA;
     }
 
     public function getLogoEmp(){
-        return $this->logo_emp;
+        return $this->logoEMPRESA;
     }
 
-    public function setLogoEmp($logo_emp){
-        $this->logo_emp = $logo_emp;
+    public function setLogoEmp($logoEMPRESA){
+        $this->logoEMPRESA = $logoEMPRESA;
     }
 
-    public function getStatus(){
-        return $this->status;
+    public function getIdENDERECO(){
+        return $this->idENDERECO;
     }
 
-    public function setStatus($status){
-        $this->status = $status;
+    public function setIdENDERECO($idENDERECO){
+        $this->idENDERECO = $idENDERECO;
+    }
+
+    public function getTipoEMPRESA(){
+        return $this->tipoEMPRESA;
+    }
+
+    public function setTipoEMPRESA($tipoEMPRESA){
+        $this->tipoEMPRESA = $tipoEMPRESA;
+    }
+
+    public function getAtivoEMPRESA(){
+        return $this->ativoEMPRESA;
+    }
+
+    public function setAtivoEMPRESA($ativoEMPRESA){
+        $this->ativoEMPRESA = $ativoEMPRESA;
     }
 
 
-    public function buscaQtd($pdo){
-        $sql = "SELECT COUNT(*) AS 'QTD' FROM empresa WHERE status_emp = 2";
+    public function buscaQtd($pdo, $tipo){
+        $sql = "SELECT COUNT(*) AS 'QTD' FROM empresa WHERE ativoEMPRESA = 1 AND tipoEMPRESA = $tipo";
         $query = $pdo->query($sql);
         $queryFet = $query->fetch();
         return $queryFet['QTD'];
     }
 
-    public function buscaQtdF($pdo){
-        $sql = "SELECT COUNT(*) AS 'QTD' FROM empresa WHERE status_emp = 1";
-        $query = $pdo->query($sql);
-        $queryFet = $query->fetch();
-        return $queryFet['QTD'];
-    }
-
-    public function buscaLtda($pdo, $inicio, $fim, $nome){
-        $sql = "SELECT * FROM empresa WHERE status_emp = 1 AND fant_emp LIKE '%$nome%' ORDER BY fant_emp ASC LIMIT $inicio,$fim";
+    public function buscaLtda($pdo, $inicio, $fim, $nome, $tipo){
+        $sql = "SELECT * FROM empresa WHERE ativoEMPRESA = 1 AND nomfantEMPRESA LIKE '%$nome%' AND tipoEMPRESA = '$tipo' ORDER BY nomfantEMPRESA ASC LIMIT $inicio,$fim";
         $query = $pdo->query($sql);
         return $query;
     }
 
     public function buscaDados($pdo){
-        $sql = "SELECT * FROM empresa WHERE status_emp = 2";
+        $sql = "SELECT * FROM empresa WHERE ativoEMPRESA = 1 AND tipoEMPRESA = 1";
         $query = $pdo->query($sql);
         return $query;
     }
 
     public function buscaDadosUnit($pdo){
-        $sql = "SELECT * FROM empresa WHERE cnpj_emp LIKE '$this->cnpj_emp'";
+        $sql = "SELECT * FROM empresa WHERE cnpjEMPRESA LIKE '$this->cnpjEMPRESA'";
         $query = $pdo->query($sql);
         return $query;
     }
 
     public function buscaDadosALL($pdo){
-        $sql = "SELECT cnppj_emp, fant_emp FROM empresa WHERE status_emp = 1";
+        $sql = "SELECT cnpjEMPRESA, fantEMPRESA FROM empresa WHERE ativoEMPRESA = 1";
         $query = $pdo->query($sql);
         return $query->fetchAll();
     }
 
+    public function buscaDadosALL2($pdo){
+        $sql = "SELECT cnpjEMPRESA, nomfantEMPRESA FROM empresa WHERE idEMPRESA = '$this->idEMPRESA'";
+        $query = $pdo->query($sql);
+        return $query;
+    }
+
     public function salvar($pdo){
-        $sql = "INSERT INTO `empresa` (cnpj_emp, raz_emp, fant_emp, ie_emp, rua_emp, num_emp, bairro_emp, cid_emp, est_emp, tel_emp, email_emp, logo_emp, status_emp) VALUES (:cnpj_emp, :raz_emp, :fant_emp, :ie_emp, :rua_emp, :num_emp, :bairro_emp, :cid_emp, :est_emp, :tel_emp, :email_emp, :logo_emp, :status)";
+        $sql = "INSERT INTO `empresa` (cnpjEMPRESA, razsocEMPRESA, nomfantEMPRESA, ieEMPRESA, telEMPRESA, emailEMPRESA, logoEMPRESA, ativoEMPRESA, tipoEMPRESA, ENDERECO_idENDERECO) VALUES (:cnpjEMPRESA, :razsocEMPRESA, :fantEMPRESA, :ieEMPRESA, :telEMPRESA, :emailEMPRESA, :logoEMPRESA, :ativo, :tipo, :endereco)";
         $insert = $pdo->prepare($sql);
-        $insert->execute(array(":cnpj_emp"=>$this->cnpj_emp, ":raz_emp"=>$this->raz_emp, ":fant_emp"=>$this->fant_emp, ":ie_emp"=>$this->ie_emp, ":rua_emp"=>$this->rua_emp, ":num_emp"=>$this->num_emp, ":bairro_emp"=>$this->bairro_emp, ":cid_emp"=>$this->cid_emp, ":est_emp"=>$this->est_emp, ":tel_emp"=>$this->tel_emp, ":email_emp"=>$this->email_emp, ":logo_emp"=>$this->logo_emp, ':status'=>$this->status));
+        $insert->execute(array(":cnpjEMPRESA"=>$this->cnpjEMPRESA, ":razsocEMPRESA"=>$this->razsocEMPRESA, ":fantEMPRESA"=>$this->fantEMPRESA, ":ieEMPRESA"=>$this->ieEMPRESA, ":telEMPRESA"=>$this->telEMPRESA, ":emailEMPRESA"=>$this->emailEMPRESA, ":logoEMPRESA"=>$this->logoEMPRESA, ':ativo'=>$this->ativoEMPRESA, ':tipo'=>$this->tipoEMPRESA, ':endereco'=>$this->idENDERECO));
         echo "<script>alert('Cadastro realizado com sucesso');</script>";
     }
 
     public function editar($pdo){
-        $sql = "UPDATE empresa SET raz_emp = :raz_emp, fant_emp = :fant_emp, ie_emp = :ie_emp, rua_emp = :rua_emp, num_emp = :num_emp, bairro_emp = :bairro_emp, cid_emp = :cid_emp, est_emp = :est_emp, tel_emp = :tel_emp, email_emp = :email_emp WHERE cnpj_emp = :cnpj_emp";
+        $sql = "UPDATE empresa SET razsocEMPRESA = :razsocEMPRESA, nomfantEMPRESA = :fantEMPRESA, ieEMPRESA = :ieEMPRESA, telEMPRESA = :telEMPRESA, emailEMPRESA = :emailEMPRESA WHERE cnpjEMPRESA = :cnpjEMPRESA";
         $update = $pdo->prepare($sql);
-        $update->execute(array(":cnpj_emp"=>$this->cnpj_emp, ":raz_emp"=>$this->raz_emp, ":fant_emp"=>$this->fant_emp, ":ie_emp"=>$this->ie_emp, ":rua_emp"=>$this->rua_emp, ":num_emp"=>$this->num_emp, ":bairro_emp"=>$this->bairro_emp, ":cid_emp"=>$this->cid_emp, ":est_emp"=>$this->est_emp, ":tel_emp"=>$this->tel_emp, ":email_emp"=>$this->email_emp));
+        $update->execute(array(":cnpjEMPRESA"=>$this->cnpjEMPRESA, ":razsocEMPRESA"=>$this->razsocEMPRESA, ":fantEMPRESA"=>$this->fantEMPRESA, ":ieEMPRESA"=>$this->ieEMPRESA, ":telEMPRESA"=>$this->telEMPRESA, ":emailEMPRESA"=>$this->emailEMPRESA));
     }
 
     public function excluir($pdo){
-        $sql = "UPDATE empresa SET status_emp = 0 WHERE cnpj_emp = :cnpj_emp";
+        $sql = "UPDATE empresa SET ativoEMPRESA = 0 WHERE cnpjEMPRESA = :cnpjEMPRESA";
         $delete = $pdo->prepare($sql);
-        $delete->execute(array(":cnpj_emp"=>$this->cnpj_emp));
+        $delete->execute(array(":cnpjEMPRESA"=>$this->cnpjEMPRESA));
     }
 }

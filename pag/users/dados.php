@@ -1,3 +1,7 @@
+<?php
+    require '../../util/config.php';
+    require '../../php/model/Session.php';
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -14,16 +18,17 @@
     <script type="text/javascript" src="../../app/js/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="../../app/js/jquery.maskedinput.js"></script>
     <script type="text/javascript" src="../../app/js/masks.js"></script>
-    <script type="text/javascript" src="../../app/js/validacao.js"></script>
+    <script type="text/javascript" src="../../app/js/validaCPF.js"></script>
+    <script type="text/javascript" src="../../app/js/format.js"></script>
     <script>
         function cpf(object) {
             var stringCPF = object.value.replace(/[\.-]/g, "");
             var valido = validarCPF(stringCPF);
             if(!valido){
                 object.value = "";
-                document.getElementById('cpfErro').className.replace(" w3-gray", " w3-red");
+                document.getElementById('cpfErro').style.display='block';
             }else{
-                document.getElementById('cpfErro').className.replace(" w3-red", " w3-gray");
+                document.getElementById('cpfErro').style.display='none';
             }
         }
     </script>
@@ -33,7 +38,12 @@
 <body>
 <?php include '../../php/control/users/usr_dados.php';?>
     <nav class="w3-sidebar hfull" style="width: 15%">
-        <?php include '../../include/admin/menu.php';?>
+        <?php
+            $session = new Session();
+            $session->buscaDados($pdo);
+            $path = "../../include/".$session->getPanel()."/menu.php";
+            include $path;
+        ?>
     </nav>
     <div class="bgcMenu h40 pt10" style="margin-left: 15%">
         <div class="hfull">
@@ -59,13 +69,17 @@
                     <p class="fs076e w3-text-blue">Todos os campos com (*) são obrigatórios!</p>
                 </div>
                 <form action="" method="post">
+                    <div class="w3-pale-red mb05 bradius w3-left wfull" id="cpfErro" style="display: none; padding: 3px;">
+                        <p class="fs076e w3-text-red w3-left mr10 ml30">CPF Inválido!!</p>
+                        <span class="fs076e w3-text-red w3-left cp" onclick="document.getElementById('cpfErro').style.display='none'">&times;</span>
+                    </div>
                     <input type="text" name="idUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10" value="<?php echo $id;?>" style="display: none;">
                     <div class="w3-row">
                         <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                             <label for="nomeUsuario" class="fs087e w3-text-white" style="">Nome *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="nomeUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="11" placeholder="Primeiro Nome" value="<?php echo $nome;?>" required>
+                            <input type="text" name="nomeUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="15" onkeypress="return onlyletter(event)" onkeyup="letter(this);" placeholder="Primeiro Nome" value="<?php echo $nome;?>" required>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -73,11 +87,12 @@
                             <label for="snomeUsuario" class="fs087e w3-text-white mt05">Sobrenome *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="snomeUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Sobrenome" value="<?php echo $snome;?>" required>
+                            <input type="text" name="snomeUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="15" onkeypress="return onlyletter(event)" onkeyup="letter(this);" placeholder="Sobrenome" value="<?php echo $snome;?>" required>
                         </div>
                     </div>
+
                     <div class="w3-row">
-                        <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;" id="cpfErro">
+                        <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                             <label for="cpfUsuario" class="fs087e w3-text-white mt05">CPF *</label>
                         </div>
                         <div class="w3-rest">
@@ -105,7 +120,7 @@
                             <label for="emailUsuario" class="fs087e w3-text-white mt05">Email *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="email" name="emailUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Email" value="<?php echo $email;?>" required>
+                            <input type="email" name="emailUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" onkeyup="letter(this);" placeholder="Email" value="<?php echo $email;?>" required>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -115,9 +130,9 @@
                         <div class="w3-rest">
                             <select name="funcUsuario" id="" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" required>
                                 <option value="" disabled selected>Selecione uma função</option>
-                                <option value="admin" <?php echo $panel == "admin" ? "selected" : "";?>>Administrador</option>
-                                <option value="vende" <?php echo $panel == "vende" ? "selected" : "";?>>Vendedor</option>
-                                <option value="tecno" <?php echo $panel == "tecno" ? "selected" : "";?>>Técnico</option>
+                                <option value="admin" <?php echo $panel == "admin" ? "selected" : "";?>>ADMINISTRADOR</option>
+                                <option value="vende" <?php echo $panel == "vende" ? "selected" : "";?>>VENDEDOR</option>
+                                <option value="tecno" <?php echo $panel == "tecno" ? "selected" : "";?>>TÉCNICO</option>
                             </select>
                         </div>
                     </div>
@@ -129,12 +144,12 @@
                             <input type="text" name="userUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="10" placeholder="Nome de Usuário" value="<?php echo $user;?>" required>
                         </div>
                     </div>
-                    <div class="w3-row">
+                    <div class="w3-row" <?php echo $add;?>>
                         <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                             <label for="senhaUsuario" class="fs087e w3-text-white mt05">Senha *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="password" name="senhaUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="16" placeholder="Senha" value="" <?php echo $add;?> required>
+                            <input type="password" name="senhaUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="16" placeholder="Senha" value="" required>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -144,8 +159,8 @@
                         <div class="w3-rest">
                             <select name="status" id="" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" required>
                                 <option value="" disabled selected>Selecione um status</option>
-                                <option value="1" <?php echo $status == 1 ? "selected" : "";?>>Ativado</option>
-                                <option value="0" <?php echo $status == 0 ? "selected" : "";?>>Desativado</option>
+                                <option value="1" <?php echo $status == 1 ? "selected" : "";?>>ATIVADO</option>
+                                <option value="0" <?php echo $status == 0 ? "selected" : "";?>>DESATIVADO</option>
                             </select>
                         </div>
                     </div>

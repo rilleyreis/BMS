@@ -1,3 +1,7 @@
+<?php
+    require '../../util/config.php';
+    require '../../php/model/Session.php';
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -16,14 +20,19 @@
 <body>
 <?php include '../../php/control/users/usr_index.php';?>
 <nav class="w3-sidebar hfull" style="width: 15%">
-    <?php include '../../include/admin/menu.php';?>
+    <?php
+        $session = new Session();
+        $session->buscaDados($pdo);
+        $path = "../../include/".$session->getPanel()."/menu.php";
+        include $path;
+    ?>
 </nav>
 <div class="bgcMenu h40 pt10" style="margin-left: 15%">
     <div class="hfull">
         <div class="fs087e">
             <nav class="w3-text-gray">
-                <a href="#" class="p10 w3-hover-text-white" style="border-style: none groove none groove; border-color: #00001F;"><i class="fa fa-gears mr10"></i> Meus Dados</a>
-                <a href="#" class="p10 w3-hover-text-white" style="margin-left: -8px; border-style: none groove none groove; border-color: #00001F"><i class="fa fa-sign-out mr10"></i> Sair do Sistema</a>
+                <a href="#" class="p10 w3-hover-text-white menusup"><i class="fa fa-gears mr10"></i> Meus Dados</a>
+                <a href="#" class="p10 w3-hover-text-white menusup" style="margin-left: -8px;"><i class="fa fa-sign-out mr10"></i> Sair do Sistema</a>
             </nav>
         </div>
     </div>
@@ -65,17 +74,17 @@
                                 $cont = 0;
                                 foreach ($usr_exibir as $row) {?>
                                 <tr>
-                                    <td class="w3-border"><?php echo $row['id_user'];?></td>
-                                    <td class="w3-border"><?php echo utf8_encode($row['nome_user'])?></td>
-                                    <td class="w3-border"><?php echo $row['cel_user'] != "" ? $row['cel_user'] : $row['tel_user'];?></td>
-                                    <td class="w3-border"><?php echo $row['email_user'];?></td>
-                                    <td class="w3-border"><?php echo $row['funcao_user'];?></td>
+                                    <td class="w3-border"><?php echo $row['idUSER'];?></td>
+                                    <td class="w3-border"><?php echo $row['pnomeUSER']." ".$row['lnomeUSER']?></td>
+                                    <td class="w3-border"><?php echo $row['celUSER'] != "" ? $row['celUSER'] : $row['telUSER'];?></td>
+                                    <td class="w3-border"><?php echo $row['emailUSER'];?></td>
+                                    <td class="w3-border"><?php echo $row['funcaoUSER'];?></td>
                                     <td class="w3-border">
                                         <a onclick="document.getElementById('modal<?php echo $cont;?>').style.display='block'" class="w3-btn w3-blue-gray mr03" name="view" title="Visualizar"><i class="fa fa-eye"></i></a>
-                                        <button class="w3-btn w3-green mr03" name="sel" value="<?php echo $row['id_user'];?>" title="Editar"><i class="fa fa-pencil"></i></button>
-                                        <?php if($row['id_user'] != $_SESSION['id_user']){?>
+                                        <button class="w3-btn w3-green mr03" name="sel" value="<?php echo $row['idUSER'];?>" title="Editar"><i class="fa fa-pencil"></i></button>
+                                        <?php if($row['idUSER'] != $session->getId()){?>
                                         <label for="usrExcl<?php echo $cont;?>"><a class="w3-btn w3-red" name="excl" onclick="document.getElementById('modal').style.display='block'" title="Excluir"><i class="fa fa-trash"></i></a></label>
-                                        <input type="radio" name="usrExcl" id="usrExcl<?php echo $cont;?>" value="<?php echo $row['id_user']?>" hidden>
+                                        <input type="radio" name="usrExcl" id="usrExcl<?php echo $cont;?>" value="<?php echo $row['idUSER']?>" hidden>
                                         <?php }?>
                                     </td>
                                 </tr>
@@ -86,14 +95,15 @@
                                                 <h2>Dados do Usuário</h2>
                                             </header>
                                             <div class="w3-container">
-                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Código: <?php echo $row['id_user'];?></p>
-                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome: <?php echo utf8_encode($row['nome_user']);?></p>
-                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CPF: <?php echo $row['cpf_user'];?></p>
-                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Celular: <?php echo $row['cel_user'] == "" ? "Nada consta" : $row['cel_user'];?></p>
-                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Telefone: <?php echo $row['tel_user'] == "" ? "Nada consta" : $row['tel_user'];?></p>
-                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Email: <?php echo $row['email_user'];?></p>
-                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Usuário: <?php echo $row['usuario_user'];?></p>
-                                                <p class="w3-left-align fs11e w3-border-bottom">Função: <?php echo $row['funcao_user'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Código: <?php echo $row['idUSER'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome: <?php echo $row['pnomeUSER'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Sobrenome: <?php echo $row['lnomeUSER'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CPF: <?php echo $row['cpfUSER'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Celular: <?php echo $row['celUSER'] == "" ? "Nada consta" : $row['celUSER'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Telefone: <?php echo $row['telUSER'] == "" ? "Nada consta" : $row['telUSER'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Email: <?php echo $row['emailUSER'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Usuário: <?php echo $row['usuarioUSER'];?></p>
+                                                <p class="w3-left-align fs11e w3-border-bottom">Função: <?php echo $row['funcaoUSER'];?></p>
                                             </div>
                                         </div>
                                     </div>

@@ -1,8 +1,3 @@
-<?php
-    require '../../util/config.php';
-    require '../../php/model/Session.php';
-    require '../../include/admin/checkin.php';
-?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -19,14 +14,9 @@
     <title>BMS - Administrador</title>
 </head>
 <body>
-<?php include '../../php/control/produto/prod_index.php';?>
+<?php include '../../php/control/service/serv_index.php';?>
 <nav class="w3-sidebar hfull" style="width: 15%">
-    <?php
-    $session = new Session();
-    $session->buscaDados($pdo);
-    $path = "../../include/".$session->getPanel()."/menu.php";
-    include $path;
-    ?>
+    <?php include '../../include/admin/menu.php';?>
 </nav>
 <div class="bgcMenu h40 pt10" style="margin-left: 15%">
     <div class="hfull">
@@ -39,14 +29,14 @@
     </div>
 </div>
 <div class="bgcC1 h40 pt10 pl20" style="margin-left: 15%">
-    <p class="fs087e w3-text-gray "><a href="../admin.php" class="w3-hover-text-dark-gray"><i class="fa fa-home"></i> Home > </a><a href="" class="w3-hover-text-dark-gray ml10">Produtos ></a></p>
+    <p class="fs087e w3-text-gray "><a href="../admin.php" class="w3-hover-text-dark-gray"><i class="fa fa-home"></i> Home > </a><a href="" class="w3-hover-text-dark-gray ml10">Serviços ></a></p>
 </div>
 <div class="w3-container" style="margin-left: 15%;">
-    <button class="w3-btn w3-green mt50 w3-center fs087e" onclick="window.location='dados.php'"><i class="fa fa-plus"></i>Adicionar Produto
+    <button class="w3-btn w3-green mt50 w3-center fs087e" onclick="window.location='dados.php'"><i class="fa fa-plus"></i> Adicionar Serviços
     </button>
     <div class="w3-card mt20">
         <header class="w3-gray w3-text-gray">
-            <i class="fa fa-barcode p10" style="border-right-style: groove; border-right-color: gray"></i> Produtos
+            <i class="fa fa-wrench p10" style="border-right-style: groove; border-right-color: gray"></i> Serviços
             <form action="" method="post" class="w3-right pl10 pr10 " style="border-left-style: groove; border-left-color: gray; height: 35px">
                 <div class="w3-row">
                     <div class="w3-col" style="width: 200px;">
@@ -65,49 +55,25 @@
                     <th class="w3-border w3-border-gray w3-center" style="width: 5%">#</th>
                     <th class="w3-border w3-border-gray" style="width: 20%">Nome</th>
                     <th class="w3-border w3-border-gray" style="width: 30%">Descrição</th>
-                    <th class="w3-border w3-border-gray" style="width: 10%">Estoque</th>
                     <th class="w3-border w3-border-gray" style="width: 15%">Preço</th>
                     <th class="w3-border w3-border-gray" style="width: 20%"></th>
                     </thead>
                     <tbody class="fs087e">
                     <?php
-                    if($qtd_prod > 0) {
+                    if($num_servs > 0) {
                     $cont = 0;
-                    foreach ($prod_exibir as $row) { ?>
+                    foreach ($serv_exibir as $row) { ?>
                         <tr>
-                            <td class="w3-border w3-center"><?php echo $row['idPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['nomePRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['descPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['estkPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo "R$ " . $row['vendaPRODUTO']; ?></td>
+                            <td class="w3-border w3-center"><?php echo $row['id_serv']; ?></td>
+                            <td class="w3-border"><?php echo $row['nome_serv']; ?></td>
+                            <td class="w3-border"><?php echo $row['desc_serv']; ?></td>
+                            <td class="w3-border"><?php echo "R$ " . $row['preco_serv']; ?></td>
                             <td class="w3-border">
-                                <a onclick="document.getElementById('modal<?php echo $cont; ?>').style.display='block'" class="w3-btn w3-blue-gray mr03" name="view" title="Visualizar"><i class="fa fa-eye"></i></a>
-                                <button class="w3-btn w3-green mr03" name="sel" value="<?php echo $row['idPRODUTO']; ?>" title="Editar"><i class="fa fa-pencil"></i></button>
-                                <label for="prodExcl<?php echo $cont; ?>"><a class="w3-btn w3-red" name="excl" onclick="document.getElementById('modal').style.display='block'"title="Excluir"><i class="fa fa-trash"></i></a></label>
-                                <input type="radio" name="prodExcl" id="prodExcl<?php echo $cont; ?>"value="<?php echo $row['idPRODUTO'] ?>" hidden>
-                                <label for="prodAdd<?php echo $cont; ?>"><a class="w3-btn w3-indigo" name="add" onclick="document.getElementById('modalAdd').style.display='block'"title="Adicionar"><i class="fa fa-plus"></i></a></label>
-                                <input type="radio" name="prodAdd" id="prodAdd<?php echo $cont; ?>"value="<?php echo $row['idPRODUTO'] ?>" hidden>
+                                <button class="w3-btn w3-green mr03" name="sel" value="<?php echo $row['id_serv']; ?>" title="Editar"><i class="fa fa-pencil"></i></button>
+                                <label for="servExcl<?php echo $cont; ?>"><a class="w3-btn w3-red" name="excl" onclick="document.getElementById('modal').style.display='block'"title="Excluir"><i class="fa fa-trash"></i></a></label>
+                                <input type="radio" name="servExcl" id="servExcl<?php echo $cont; ?>"value="<?php echo $row['id_serv'] ?>" hidden>
                             </td>
                         </tr>
-                        <div id="modal<?php echo $cont; ?>" class="w3-modal">
-                            <div class="w3-modal-content w3-animate-top w3-center w300">
-                                <header class="w3-container w3-gray">
-                                    <span
-                                        onclick="document.getElementById('modal<?php echo $cont; ?>').style.display='none'"
-                                        class="w3-button w3-display-topright">&times;</span>
-                                    <h2>Dados do Produto</h2>
-                                </header>
-                                <div class="w3-container">
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">ID: <?php echo $row['idPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome: <?php echo $row['nomePRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Descrição: <?php echo $row['descPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Estoque: <?php echo $row['estkPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Estoque Minimo: <?php echo $row['estkminPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Valor de Compra: R$<?php echo $row['custoPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Valor de Venda: R$<?php echo $row['vendaPRODUTO']; ?></p>
-                                </div>
-                            </div>
-                        </div>
                         <?php $cont++;}}?>
                     </tbody>
                 </table>
@@ -116,10 +82,10 @@
                     <div class="w3-modal-content w3-animate-top w3-center">
                         <header class="w3-container w3-blue-gray">
                             <span onclick="document.getElementById('modal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                            <h2>Excluir Produto</h2>
+                            <h2>Excluir Serviço</h2>
                         </header>
                         <div class="w3-container">
-                            <p class="w3-center fs11e">Deseja realmente excluir este produto?</p>
+                            <p class="w3-center fs11e">Deseja realmente excluir este serviço?</p>
                             <a class="w3-btn w3-teal mt15 w150 mb15" onclick="document.getElementById('frm1').submit();" name="excluir">Sim</a>
                             <a class="w3-btn w3-red mt15 w150 mb15" onclick="document.getElementById('modal').style.display='none'">Não</a>
                         </div>
@@ -144,7 +110,7 @@
             </form>
             <!--                Inicio da paginação-->
             <?php
-            if($qtd_prod > 0){
+            if($num_servs > 0){
                 if($total_pags > 1){?>
                     <div class="w3-center mt10">
                         <div class="w3-bar w3-border w3-round">

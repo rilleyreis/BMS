@@ -6,7 +6,7 @@
  * Time: 02:08
  */
 
-class Produtos{
+class PRODUTO{
     private $id;
     private $nome;
     private $descricao;
@@ -92,43 +92,43 @@ class Produtos{
 
 
     public function buscaQtd($pdo){
-        $sql = "SELECT COUNT(*) AS 'QTD' FROM produtos WHERE status_prod = 1";
+        $sql = "SELECT COUNT(*) AS 'QTD' FROM PRODUTO WHERE ativoPRODUTO = 1";
         $query = $pdo->query($sql);
         $queryFet = $query->fetch();
         return $queryFet['QTD'];
     }
 
     public function buscaLtda($pdo, $inicio, $fim, $filtro){
-        $sql = "SELECT * FROM produtos WHERE status_prod = 1 ORDER BY $filtro, nome_prod ASC LIMIT $inicio,$fim";
+        $sql = "SELECT * FROM PRODUTO WHERE ativoPRODUTO = 1 ORDER BY $filtro, nomePRODUTO ASC LIMIT $inicio,$fim";
         $query = $pdo->query($sql);
         return $query;
     }
 
     public function buscaDadosALL($pdo){
-        $sql = "SELECT * FROM produtos WHERE status_prod = 1";
+        $sql = "SELECT * FROM PRODUTO WHERE ativoPRODUTO = 1";
         $query = $pdo->query($sql);
         return $query->fetchAll();
     }
 
     public function addEstoque($pdo){
-         $sql = "UPDATE produtos SET qtd_prod = qtd_prod + :qtd WHERE id_prod = :id";
+         $sql = "UPDATE PRODUTO SET estkPRODUTO = estkPRODUTO + :qtd WHERE idPRODUTO = :id";
          $update = $pdo->prepare($sql);
          $update->execute(array(':qtd'=>$this->estoque, ':id'=>$this->id));
     }
 
     public function excluir($pdo){
-        $sql = "UPDATE produtos SET status_prod = 0 WHERE id_prod = :id";
+        $sql = "UPDATE PRODUTO SET ativoPRODUTO = 0 WHERE idPRODUTO = :id";
         $update = $pdo->prepare($sql);
         $update->execute(array(':id'=>$this->id));
     }
 
     public function buscaUnit($pdo){
-        $sql = "SELECT * FROM produtos WHERE id_prod = '$this->id'";
+        $sql = "SELECT * FROM PRODUTO WHERE idPRODUTO = '$this->id'";
         $query = $pdo->query($sql);
         return $query;
     }
     public function salvar($pdo){
-        $sql = "INSERT INTO produtos(nome_prod, desc_prod, forn_prod, compra_prod, venda_prod, qtd_prod, min_prod, status_prod) VALUES(:nome, :descricao, :fornece, :compra, :venda, :qtd, :minimo, 1)";
+        $sql = "INSERT INTO PRODUTO(nomePRODUTO, descPRODUTO, EMPRESA_idEMPRESA, custoPRODUTO, vendaPRODUTO, estkPRODUTO, estkminPRODUTO, ativoPRODUTO) VALUES(:nome, :descricao, :fornece, :compra, :venda, :qtd, :minimo, 1)";
         $insert = $pdo->prepare($sql);
         try{
             $insert->execute(array(':nome'=>$this->nome,':descricao'=>$this->descricao, ':fornece'=>$this->fornece, ':compra'=>$this->compra, ':venda'=>$this->venda, ':qtd'=>$this->estoque, ':minimo'=>$this->minimo));
@@ -139,9 +139,9 @@ class Produtos{
     }
 
     public function editar($pdo){
-        $sql = "UPDATE produtos SET nome_prod = :nome, desc_prod = :descricao, forn_prod = :fornece, compra_prod : compra, venda_prod = :venda, qtd_prod = :qtd, min_prod = :minimo WHERE id_prod = :id";
+        $sql = "UPDATE PRODUTO SET nomePRODUTO = :nome, descPRODUTO = :descricao, EMPRESA_idEMPRESA = :fornece, custoPRODUTO = :compra, vendaPRODUTO = :venda, estkPRODUTO = :qtd, estkminPRODUTO = :minimo WHERE idPRODUTO = '$this->id'";
         $update = $pdo->prepare($sql);
-        $update->execute(array(':nome'=>$this->nome,':descricao'=>$this->descricao, ':fornece'=>$this->fornece, ':compra'=>$this->compra, ':venda'=>$this->venda, ':qtd'=>$this->estoque, ':minimo'=>$this->minimo, ':id'=>$this->id));
+        $update->execute(array(":nome"=>$this->nome, ":descricao"=>$this->descricao, ":fornece"=>$this->fornece, ":compra"=>$this->compra, ":venda"=>$this->venda, ":qtd"=>$this->estoque, ":minimo"=>$this->minimo));
 
         echo "<script>alert('Cadastro editado com sucesso');</script>";
         header("Location:../produto");

@@ -6,52 +6,51 @@
  * Time: 23:45
  */
 
-require '../util/config.php';
 require '../php/model/Produtos.php';
 
 $msgTable = "";
-$produto = new Produtos();
-$qtd_prod = $produto->buscaQtd($pdo);
+$produto = new PRODUTO();
+$qtdPRODUTO = $produto->buscaQtd($pdo);
 $filtro = "az";
-$filter = "nome_prod ASC";
+$filter = "nomePRODUTO ASC";
 
 if(isset($_POST['filter'])){
     $filtro = $_POST['filter'];
     if($filtro == "az"){
-        $filter = "nome_prod ASC";
+        $filter = "nomePRODUTO ASC";
     }elseif($filtro == "za"){
-        $filter = "nome_prod DESC";
+        $filter = "nomePRODUTO DESC";
     }elseif($filtro == "mne"){
-        $filter = "qtd_prod ASC";
+        $filter = "estkPRODUTO ASC";
     }elseif ($filtro == "mae"){
-        $filter = "qtd_prod DESC";
+        $filter = "estkPRODUTO DESC";
     }elseif ($filtro == "mnv"){
-        $filter = "venda_prod ASC";
+        $filter = "vendaPRODUTO ASC";
     }elseif ($filtro == "mav"){
-        $filter = "venda_prod DESC";
+        $filter = "vendaPRODUTO DESC";
     }
 }elseif (isset($_GET['flt'])){
     $filtro = $_GET['flt'];
     if($filtro == "az"){
-        $filter = "nome_prod ASC";
+        $filter = "nomePRODUTO ASC";
     }elseif($filtro == "za"){
-        $filter = "nome_prod DESC";
+        $filter = "nomePRODUTO DESC";
     }elseif($filtro == "mne"){
-        $filter = "qtd_prod ASC";
+        $filter = "estkPRODUTO ASC";
     }elseif ($filtro == "mae"){
-        $filter = "qtd_prod DESC";
+        $filter = "estkPRODUTO DESC";
     }elseif ($filtro == "mnv"){
-        $filter = "venda_prod ASC";
+        $filter = "vendaPRODUTO ASC";
     }elseif ($filtro == "mav"){
-        $filter = "venda_prod DESC";
+        $filter = "vendaPRODUTO DESC";
     }
 }
 
-if ($qtd_prod == 0){
+if ($qtdPRODUTO == 0){
     $msgTable = "Nenhum registro encontrado";
 }else {
     $qtd_pags = 3;
-    $total_pags = ceil($qtd_prod / $qtd_pags);
+    $total_pags = ceil($qtdPRODUTO / $qtd_pags);
     $pag_atual = (isset($_GET['pag']) ? (int)$_GET['pag'] : 1);
     $inicio = ($qtd_pags * $pag_atual) - $qtd_pags;
     $prod_exibir = $produto->buscaLtda($pdo, $inicio, $qtd_pags, $filter);

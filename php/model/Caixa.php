@@ -73,7 +73,7 @@ class Caixa{
     }
 
     public function realizarAbertura($pdo){
-        $sql = "INSERT INTO caixa(dataCAIXA, horaCAIXA, trocoCAIXA, idUSERS) VALUES (:dataC, :hora, :troco, :iduser)";
+        $sql = "INSERT INTO caixa(dataCAIXA, horaCAIXA, trocoCAIXA, vlrfinalCAIXA, USERS_idUSER) VALUES (:dataC, :hora, :troco, null, :iduser)";
         $insert = $pdo->prepare($sql);
         $insert->execute(array(":dataC"=>$this->dataCAIXA, ":hora"=>$this->horaCAIXA, ":troco"=>$this->trocoCAIXA, ":iduser"=>$this->idUSER));
     }

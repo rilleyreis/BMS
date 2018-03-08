@@ -6,11 +6,11 @@
  * Time: 02:01
  */
 
-require '../../util/config.php';
 require '../../php/model/Produtos.php';
 require '../../php/model/Empresa.php';
 
-$produto = new Produtos();
+$empresa = new Empresa();
+$produto = new PRODUTO();
 
 $id = "";
 $nome = "";
@@ -27,9 +27,16 @@ if (isset($_POST['adicionar'])){
     $produto->setNome($_POST['nome_prod']);
     $produto->setDescricao($_POST['desc_prod']);
     $forne = explode("|", $_POST['forn_prod']);
-    $produto->setFornece($forne[0]);
+    $empresa->setCnpjEmp($forne[0]);
+    $dados = $empresa->buscaDadosUnit($pdo);
+    $idForn = "";
+    foreach ($dados as $dado) {
+        $idForn = $dado['idEMPRESA'];
+    }
+    $produto->setFornece($idForn);
     $aux = str_replace("R$ ", "", $_POST['compra_prod']);
     $aux = str_replace(",", ".", $aux);
+    echo $aux;
     $produto->setCompra($aux);
     $aux = str_replace("R$ ", "", $_POST['venda_prod']);
     $aux = str_replace(",", ".", $aux);
@@ -44,7 +51,13 @@ elseif(isset($_POST['salvar'])){
     $produto->setNome($_POST['nome_prod']);
     $produto->setDescricao($_POST['desc_prod']);
     $forne = explode("|", $_POST['forn_prod']);
-    $produto->setFornece($forne[0]);
+    $empresa->setCnpjEmp($forne[0]);
+    $dados = $empresa->buscaDadosUnit($pdo);
+    $idForn = "";
+    foreach ($dados as $dado) {
+        $idForn = $dado['idEMPRESA'];
+    }
+    $produto->setFornece($idForn);
     $aux = str_replace("R$ ", "", $_POST['compra_prod']);
     $aux = str_replace(",", ".", $aux);
     $produto->setCompra($aux);
@@ -62,17 +75,18 @@ elseif(isset($_GET['edt'])){
     $produto->setId($id);
     $dados = $produto->buscaUnit($pdo);
     foreach ($dados as $dado) {
-        $nome = $dado['nome_prod'];
-        $desc = $dado['desc_prod'];
+        $nome = $dado['nomePRODUTO'];
+        $desc = $dado['descPRODUTO'];
         $forne = new Empresa();
-        $forne->setCnpjEmp($dado['forn_prod']);
-        $forne = $forne->buscaDadosUnit($pdo);
+        echo $dado['EMPRESA_idEMPRESA'];
+        $forne->setIdEMPRESA($dado['EMPRESA_idEMPRESA']);
+        $forne = $forne->buscaDadosALL2($pdo);
         foreach ($forne as $item) {
-            $forn = $item['cnpj_forn']."|".$item['fant_forn'];
+            $forn = $item['cnpjEMPRESA']."|".$item['nomfantEMPRESA'];
         }
-        $compra = $dado['compra_prod'];
-        $venda = $dado['venda_prod'];
-        $estoque = $dado['qtd_prod'];
-        $minimo = $dado['min_prod'];
+        $compra = $dado['custoPRODUTO'];
+        $venda = $dado['vendaPRODUTO'];
+        $estoque = $dado['estkPRODUTO'];
+        $minimo = $dado['estkminPRODUTO'];
     }
 }

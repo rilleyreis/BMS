@@ -1,3 +1,8 @@
+<?php
+    require '../../util/config.php';
+    require '../../php/model/Session.php';
+    require '../../include/admin/checkin.php';
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -17,6 +22,7 @@
     <script type="text/javascript" src="../../app/js/jquery.maskedinput.js"></script>
     <script type="text/javascript" src="../../app/js/jquery.maskMoney.js"></script>
     <script type="text/javascript" src="../../app/js/masks.js"></script>
+    <script type="text/javascript" src="../../app/js/format.js"></script>
 
     <script>
         $(function () {
@@ -37,7 +43,12 @@
 <body>
 <?php include '../../php/control/produto/prod_dados.php';?>
 <nav class="w3-sidebar hfull" style="width: 15%">
-    <?php include '../../include/admin/menu.php';?>
+    <?php
+    $session = new Session();
+    $session->buscaDados($pdo);
+    $path = "../../include/".$session->getPanel()."/menu.php";
+    include $path;
+    ?>
 </nav>
 <div class="bgcMenu h40 pt10" style="margin-left: 15%">
     <div class="hfull">
@@ -69,7 +80,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Nome *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="nome_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Nome" value="<?php echo $nome;?>" required>
+                        <input type="text" name="nome_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Nome" value="<?php echo $nome;?>" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -77,7 +88,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Descrição *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="desc_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Descrição" value="<?php echo $desc;?>" required>
+                        <input type="text" name="desc_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Descrição" value="<?php echo $desc;?>" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -109,7 +120,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Quantidade *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="qtd_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" placeholder="Quantidade em Estoque" value="<?php echo $estoque;?>" required>
+                        <input type="text" name="qtd_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeypress="return onlynumber(event)" maxlength="4" style="border-radius: 0 6px 6px 0;" placeholder="Quantidade em Estoque" value="<?php echo $estoque;?>" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -117,7 +128,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Estoque Mínimo *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="min_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" placeholder="Estoque Mínimo" value="<?php echo $minimo;?>" required>
+                        <input type="text" name="min_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeypress="return onlynumber(event)" maxlength="4" style="border-radius: 0 6px 6px 0;" placeholder="Estoque Mínimo" value="<?php echo $minimo;?>" required>
                     </div>
                 </div>
 

@@ -8,12 +8,15 @@
 
 require 'util/config.php';
 require 'php/model/Caixa.php';
+require 'php/model/Session.php';
 
-$user = $_SESSION['id_user'];
-$nuser = $_SESSION['nome'];
-$panelUser = $_SESSION['panel'];
+$session = new Session();
+$session->buscaDados($pdo);
+$user = $session->getId();
+$nome_user = $session->getPnome()." ".$session->getLnome();
+$panelUser = $session->getPanel();
 $data = date("Y-m-d");
-$hora = date("H:m");
+$hora = date("H:i:s");
 $troco = "";
 
 if(isset($_POST['abrir'])){

@@ -1,5 +1,4 @@
 <?php
-    ob_start(); session_start();
     date_default_timezone_set("America/Sao_Paulo");
 ?>
 <!doctype html>
@@ -38,7 +37,7 @@
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;"><i class=" w3-xlarge fa fa-user-o"></i></div>
                         <div class="w3-rest">
-                            <input type="text" class="w3-input w3-border" name="usuario" value="<?php echo utf8_encode($nuser);?>" style="border-radius: 0 6px 6px 0;" readonly>
+                            <input type="text" class="w3-input w3-border" name="usuario" value="<?php echo $nome_user;?>" style="border-radius: 0 6px 6px 0;" readonly>
                         </div>
                     </div>
                     <div class="w3-row w3-section">

@@ -118,44 +118,44 @@ class Usuario{
 
 
     public function logar($pdo){
-        $sql = "SELECT * FROM users WHERE usuario_user = '$this->usuario' AND senha_user = '$this->senha'";
+        $sql = "SELECT * FROM users WHERE usuarioUSER = '$this->usuario' AND senhaUSER = '$this->senha'";
         $query = $pdo->query($sql);
         return $query;
     }
 
     public function buscaQtd($pdo){
-        $sql = "SELECT COUNT(*) AS 'QTD' FROM users WHERE status_user = 1";
+        $sql = "SELECT COUNT(*) AS 'QTD' FROM users WHERE ativoUSER = 1";
         $query = $pdo->query($sql);
         $queryFet = $query->fetch();
         return $queryFet['QTD'];
     }
 
     public function buscaDados($pdo){
-        $sql = "SELECT * FROM users WHERE id_user = '$this->id'";
+        $sql = "SELECT * FROM users WHERE idUSER = '$this->id'";
         $query = $pdo->query($sql);
         return $query;
     }
 
     public function buscaDadosALL($pdo){
-        $sql = "SELECT * FROM users WHERE status_user = 1 AND panel_user = 'tecno' ";
+        $sql = "SELECT * FROM users WHERE ativoUSER = 1 AND panelUSER = 'tecno' ";
         $query = $pdo->query($sql);
         return $query->fetchAll();
     }
 
     public function buscaLtda($pdo, $inicio, $fim, $nome){
-        $sql = "SELECT * FROM users WHERE status_user = 1 AND nome_user LIKE '%$nome%' ORDER BY nome_user ASC LIMIT $inicio,$fim";
+        $sql = "SELECT * FROM users WHERE ativoUSER = 1 AND pnomeUSER LIKE '%$nome%' ORDER BY pnomeUSER ASC LIMIT $inicio,$fim";
         $query = $pdo->query($sql);
         return $query;
     }
 
     public function excluir($pdo){
-        $sql = "UPDATE users SET status_user=0 WHERE id_user = :id";
+        $sql = "UPDATE users SET ativoUSER = 0 WHERE idUSER = :id";
         $update = $pdo->prepare($sql);
         $update->execute(array(':id'=>$this->id));
     }
 
     public function editar($pdo){
-        $sql = "UPDATE users SET nome_user = :nome, snome_user = :snome, cpf_user = :cpf, tel_user = :tel, cel_user= :cel, email_user = :email, panel_user = :panel, funcao_user = :func, status_user = :status, usuario_user = :usuario WHERE id_user = :id";
+        $sql = "UPDATE users SET pnomeUSER = :nome, lnomeUSER = :snome, cpfUSER = :cpf, telUSER = :tel, celUSER= :cel, emailUSER = :email, panelUSER = :panel, funcaoUSER = :func, ativoUSER = :status, usuarioUSER = :usuario WHERE idUSER = :id";
         $update = $pdo->prepare($sql);
         $update->execute(array(':nome'=>$this->nome, ':snome'=>$this->snome, ':cpf'=>$this->cpf, ':tel'=>$this->tel, ':cel'=>$this->cel, ':email'=>$this->email, ':panel'=>$this->panel, ':func'=>$this->funcao, ':status'=>$this->status, ':usuario'=>$this->usuario, ':id'=>$this->id));
 
@@ -164,15 +164,20 @@ class Usuario{
     }
 
     public function salvar($pdo){
-        $sql = "INSERT INTO users(nome_user, snome_user, cpf_user, tel_user, cel_user, email_user, usuario_user, senha_user, panel_user, funcao_user, status_user) VALUES(:nome, :snome, :cpf, :tel, :cel, :email, :usuario, :senha, :panel, :func, :status)";
-        $insert = $pdo->prepare($sql);
-        try{
-            $insert->execute(array(':nome'=>$this->nome, ':snome'=>$this->snome, ':cpf'=>$this->cpf, ':tel'=>$this->tel, ':cel'=>$this->cel, ':email'=>$this->email, ':panel'=>$this->panel, ':func'=>$this->funcao, ':status'=>$this->status, ':usuario'=>$this->usuario, ':senha'=>$this->senha));
-            echo "<script>alert('Usuário cadastrado com sucesso');</script>";
-            header("Location:../users");
-        }catch (PDOException $e){
-            if($e->getCode() == 23000){
-                echo "<script>alert('Já existe um cadastro com este CPF');</script>";
+        $sql = "SELECT * FROM users WHERE cpfUSER = '$this->cpf' LIMIT 0,1";
+        $query = $pdo->query($sql);
+        $queryF = $query->rowCount();
+        if($queryF > 0 ){
+            echo "<script>alert('Já existe um cadastro com este CPF');</script>";
+        }else {
+            $sql = "INSERT INTO users(pnomeUSER, lnomeUSER, cpfUSER, telUSER, celUSER, emailUSER, usuarioUSER, senhaUSER, panelUSER, funcaoUSER, ativoUSER) VALUES(:nome, :snome, :cpf, :tel, :cel, :email, :usuario, :senha, :panel, :func, :status)";
+            $insert = $pdo->prepare($sql);
+            try {
+                $insert->execute(array(':nome' => $this->nome, ':snome' => $this->snome, ':cpf' => $this->cpf, ':tel' => $this->tel, ':cel' => $this->cel, ':email' => $this->email, ':panel' => $this->panel, ':func' => $this->funcao, ':status' => $this->status, ':usuario' => $this->usuario, ':senha' => $this->senha));
+                echo "<script>alert('Usuário cadastrado com sucesso');</script>";
+                header("Location:../users");
+            } catch (PDOException $e) {
+                echo $e->getMessage();
             }
         }
     }

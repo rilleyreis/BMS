@@ -5,8 +5,6 @@
  * Date: 28/12/2017
  * Time: 00:12
  */
-
-require '../../util/config.php';
 require '../../php/model/Usuario.php';
 
 $usuario = new Usuario();
@@ -69,14 +67,14 @@ elseif(isset($_GET['edt'])){
     $usuario->setId($id);
     $dados = $usuario->buscaDados($pdo);
     foreach ($dados as $row){
-        $nome = utf8_encode($row['nome_user']);
-        $snome = utf8_encode($row['snome_user']);
-        $cpf = $row['cpf_user'];
-        $tel = $row['tel_user'];
-        $cel = $row['cel_user'];
-        $email = $row['email_user'];
-        $user = $row['usuario_user'];
-        $panel = $row['panel_user'];
-        $status = $row['status_user'];
+        $nome = $row['pnomeUSER'];
+        $snome = $row['lnomeUSER'];
+        $cpf = $row['cpfUSER'];
+        $tel = $row['telUSER'];
+        $cel = $row['celUSER'];
+        $email = $row['emailUSER'];
+        $user = $row['usuarioUSER'];
+        $panel = $row['panelUSER'];
+        $status = $row['ativoUSER'];
     }
 }

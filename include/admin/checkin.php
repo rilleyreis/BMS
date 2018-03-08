@@ -5,14 +5,15 @@
  * Date: 26/01/2018
  * Time: 02:36
  */
-ob_start();
-session_start();
 
-if(!isset($_SESSION['id_user'])){
+$session = new Session();
+
+if(!$session->verificaTable($pdo)){
     header('Location: /bms');
 }else{
-    if($_SESSION['panel'] != "admin"){
-        session_destroy();
+    $session->buscaDados($pdo);
+    if($session->getPanel() != "admin"){
+
         header('Location: /bms');
     }
 }

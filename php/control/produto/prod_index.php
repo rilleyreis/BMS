@@ -6,11 +6,10 @@
  * Time: 02:01
  */
 
-require '../../util/config.php';
 require '../../php/model/Produtos.php';
 
 $msgTable = "";
-$produto = new Produtos();
+$produto = new PRODUTO();
 
 if(isset($_POST['sel'])){
     $id = base64_encode($_POST['sel']);
@@ -34,7 +33,7 @@ if ($qtd_prod == 0){
     $total_pags = ceil($qtd_prod / $qtd_pags);
     $pag_atual = (isset($_GET['pag']) ? (int)$_GET['pag'] : 1);
     $inicio = ($qtd_pags * $pag_atual) - $qtd_pags;
-    $prod_exibir = $produto->buscaLtda($pdo, $inicio, $qtd_pags, "nome_prod ASC");
+    $prod_exibir = $produto->buscaLtda($pdo, $inicio, $qtd_pags, "nomePRODUTO ASC");
     $pag_prox = $pag_atual + 1;
     $pag_ant = $pag_atual - 2;
 }
