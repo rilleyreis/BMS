@@ -1,6 +1,7 @@
 <?php
     require '../util/config.php';
     require '../php/model/Session.php';
+    require '../include/admin/checkin.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
