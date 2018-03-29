@@ -1,7 +1,5 @@
 <?php
     require '../util/config.php';
-    require '../php/model/Session.php';
-    require '../include/admin/checkin.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -19,7 +17,6 @@
     <title>BMS - Administrador</title>
 </head>
 <body>
-    <?php include '../php/control/admin.php';?>
     <nav class="w3-sidebar hfull" style="width: 15%">
         <div class="wfull hfull bgcMenu">
             <div class="h115 w100 pt10 ml45 m0a">
@@ -87,72 +84,63 @@
             <p class="fs12e w3-text-white" style="margin-top: -8px;">Relatórios</p>
         </button>
 
-        <div class="w3-card mt25">
-            <header class="w3-gray w3-text-gray">
-                <i class="fa fa-signal p10 mr05" style="border-right-style: groove; border-right-color: gray"></i>Produtos em Estoques
-                <form action="" method="post" class="w3-right pl10 pr10 " style="border-left-style: groove; border-left-color: gray; height: 35px" id="formFilter">
-                    <div class="w3-row">
-                        <div class="w3-col" style="width: 35px;">
-                            <div class="mt03 pt03 pb03 pr10 pl10 w3-border" style="border-radius:6px 0 0 6px"><i class="fa fa-filter"></i></div>
-                        </div>
-                        <div class="w3-rest" style="width: 200px">
-                            <select name="filter" id="" class="w3-input w3-gray w3-border w3-hover-border-blue h30 mt03 w3-text-gray fs087e" style="padding: 5px;border-radius: 0 6px 6px 0" onchange="document.getElementById('formFilter').submit();">
-                                <option value="az" <?php echo $filtro == "az" ? "selected" : ""?>>A-Z</option>
-                                <option value="za" <?php echo $filtro == "za" ? "selected" : ""?>>Z-A</option>
-                                <option value="mne" <?php echo $filtro == "mne" ? "selected" : ""?>>Menor Estoque</option>
-                                <option value="mae" <?php echo $filtro == "mae" ? "selected" : ""?>>Maior Estoque</option>
-                                <option value="mnv" <?php echo $filtro == "mnv" ? "selected" : ""?>>Menor Valor</option>
-                                <option value="mav" <?php echo $filtro == "mav" ? "selected" : ""?>>Maior Valor</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
+        <div class="w3-card mt25 wfull pb10">
+            <header class="w3-gray w3-text-gray mb15">
+                <i class="fa fa-info p5 mr05 tac" style="border-right-style: groove; border-right-color: gray; width: 3%"></i>Informações Rápidas
             </header>
-            <div class="">
-                <table class="w3-table w3-striped">
-                    <thead class="bgcTH fs087e">
-                        <th class="w3-border w3-border-gray w3-center" style="width: 5%">#</th>
-                        <th class="w3-border w3-border-gray" style="width: 35%">Nome</th>
-                        <th class="w3-border w3-border-gray" style="width: 20%">Preço</th>
-                        <th class="w3-border w3-border-gray" style="width: 20%">Estoque</th>
-                        <th class="w3-border w3-border-gray" style="width: 20%">Estoque Mínimo</th>
-                    </thead>
-                    <tbody class="fs087e">
-                    <?php if($qtdPRODUTO > 0){
-                        foreach ($prod_exibir as $row){
-                    ?>
-                        <tr>
-                            <td class="w3-border w3-center"><?php echo $row['idPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['nomePRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo "R$ " . $row['vendaPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['estkPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['estkminPRODUTO']; ?></td>
-                        </tr>
-                    <?php }}?>
-                    </tbody>
-                </table>
-                <p class="fs087e p5"><?php echo $msgTable;?></p>
-                <!--                Inicio da paginação-->
-                <?php
-                if($qtdPRODUTO > 0){
-                    if($total_pags > 1){?>
-                        <div class="w3-center mt10 fs087e">
-                            <div class="w3-bar w3-border w3-round">
-                                <?php for($i = 1; $i <= $total_pags; $i++){
-                                    if($i == $pag_atual){?>
-                                        <span class="w3-button w3-blue-gray"><?php echo $i;?></span>
-                                    <?php }else{?>
-                                        <a href="?pag=<?php echo $i;?>&flt=<?php echo $filtro;?>" class="w3-button w3-hover-blue-gray"><?php echo $i;?></a>
-                                    <?php }?>
-                                <?php }?>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                }
-                ?>
-                <!--                Final Paginação-->
+            <div class="w3-card dib" style="width: 20%; margin-left: 4%;">
+                <header class="tac w3-blue-gray w3-text-white">
+                    Produtos
+                </header>
+                <div class="p5">
+                    <div class="dbl h80 p5 tac bbtsc1 mb05">
+                        Info 1
+                    </div>
+                    <div class="dbl h80 p5 tac">
+                        Info 2
+                    </div>
+                </div>
             </div>
+            <div class="w3-card dib" style="width: 20%; margin-left: 4%;">
+                <header class="tac w3-blue-gray w3-text-white">
+                    Ordem de Serviço
+                </header>
+                <div class="p5">
+                    <div class="dbl h80 p5 tac bbtsc1 mb05">
+                        Info 1
+                    </div>
+                    <div class="dbl h80 p5 tac">
+                        Info 2
+                    </div>
+                </div>
+            </div>
+            <div class="w3-card dib" style="width: 20%; margin-left: 4%;">
+                <header class="tac w3-blue-gray w3-text-white">
+                    Caixa
+                </header>
+                <div class="p5">
+                    <div class="dbl h80 p5 tac bbtsc1 mb05">
+                        Info 1
+                    </div>
+                    <div class="dbl h80 p5 tac">
+                        Info 2
+                    </div>
+                </div>
+            </div>
+            <div class="w3-card dib" style="width: 20%; margin-left: 4%;">
+                <header class="tac w3-blue-gray w3-text-white">
+                    Outro
+                </header>
+                <div class="p5">
+                    <div class="dbl h80 p5 tac bbtsc1 mb05">
+                        Info 1
+                    </div>
+                    <div class="dbl h80 p5 tac">
+                        Info 2
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="w3-card mt25">

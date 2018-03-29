@@ -22,7 +22,6 @@
     <title>BMS</title>
 </head>
 <body>
-<?php include 'php/control/caixa.php'?>
 <div class="w3-container body" style="height: 100vh; width: 100vw;">
     <div class="w3-container bradius w500 h450 bgcba m0a mt120 mb110">
         <div class="w450 ml10 mr10 mt15">
@@ -37,19 +36,19 @@
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;"><i class=" w3-xlarge fa fa-user-o"></i></div>
                         <div class="w3-rest">
-                            <input type="text" class="w3-input w3-border" name="usuario" value="<?php echo $nome_user;?>" style="border-radius: 0 6px 6px 0;" readonly>
+                            <input type="text" class="w3-input w3-border" name="usuario" value="" style="border-radius: 0 6px 6px 0;" readonly>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;" style="width: 50px;"><i class="w3-xlarge fa fa-calendar-o"></i></div>
                         <div class="w3-rest">
-                            <input type="date" class="w3-input w3-border" name="data" value="<?php echo $data;?>" style="border-radius: 0 6px 6px 0;" readonly>
+                            <input type="date" class="w3-input w3-border" name="data" value="" style="border-radius: 0 6px 6px 0;" readonly>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;" style="width: 50px;"><i class="w3-xlarge fa fa-clock-o"></i></div>
                         <div class="w3-rest">
-                            <input type="text" class="w3-input w3-border" name="hora" value="<?php echo $hora;?>" style="border-radius: 0 6px 6px 0;" readonly>
+                            <input type="text" class="w3-input w3-border" name="hora" value="" style="border-radius: 0 6px 6px 0;" readonly>
                         </div>
                     </div>
                     <div class="w3-row w3-section">

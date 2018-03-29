@@ -1,4 +1,4 @@
-<?php require 'checkin.php';?>
+
 <div class="wfull hfull bgcMenu">
     <div class="h115 w100 pt10 ml45">
         <a href="../admin"><img src="../../img/logo.png" alt="" class="wfull hfull"></a>

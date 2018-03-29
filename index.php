@@ -14,7 +14,6 @@
     <title>BMS</title>
 </head>
 <body>
-<?php include 'php/control/login.php'; ?>
     <div class="w3-container body" style="height: 100vh; width: 100vw;">
         <div class="w3-container bradius w500 h400 bgcba6 m0a mt130 mb110">
             <div class="w450 ml10 mr10 mt50">
@@ -46,7 +45,6 @@
                     </form>
                 </fieldset>
             </div>
-            <p class="fs095e w3-text-red w3-center"><?php echo $msgErro; ?></p>
         </div>
     </div>
 </body>

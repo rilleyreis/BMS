@@ -1,7 +1,5 @@
 <?php
     require '../../util/config.php';
-    require '../../php/model/Session.php';
-    require '../../include/admin/checkin.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -19,12 +17,9 @@
     <title>BMS - Administrador</title>
 </head>
 <body>
-<?php include '../../php/control/fornecedor/forn_index.php';?>
 <nav class="w3-sidebar hfull" style="width: 15%">
     <?php
-    $session = new Session();
-    $session->buscaDados($pdo);
-    $path = "../../include/".$session->getPanel()."/menu.php";
+    $path = "../../include/admin/menu.php";
     include $path;
     ?>
 </nav>
@@ -68,53 +63,6 @@
                     <th class="w3-border w3-border-gray" style="width: 25%">Email</th>
                     <th class="w3-border w3-border-gray" style="width: 14%"></th>
                     </thead>
-                    <tbody class="fs087e">
-                    <?php
-                    $cont = 0;
-                    if($num_forn > 0){
-                        foreach ($forn_exibir as $row) {?>
-                            <tr>
-                                <td class="w3-border"><?php echo $row['cnpjEMPRESA'];?></td>
-                                <td class="w3-border"><?php echo $row['nomfantEMPRESA'];?></td>
-                                <td class="w3-border"><?php echo $row['telEMPRESA'];?></td>
-                                <td class="w3-border"><?php echo $row['emailEMPRESA'];?></td>
-                                <td class="w3-border">
-                                    <a onclick="document.getElementById('modal<?php echo $cont;?>').style.display='block'" class="w3-btn w3-blue-gray mr03" name="view" title="Visualizar"><i class="fa fa-eye"></i></a>
-                                    <button class="w3-btn w3-green mr03" name="sel" value="<?php echo $row['cnpjEMPRESA'];?>" title="Editar"><i class="fa fa-pencil"></i></button>
-                                    <label for="cnpjExcl<?php echo $cont;?>"><a class="w3-btn w3-red" name="excl" onclick="document.getElementById('modal').style.display='block'" title="Excluir"><i class="fa fa-trash"></i></a></label>
-                                    <input type="radio" name="cnpjExcl" id="cnpjExcl<?php echo $cont;?>" value="<?php echo $row['cnpjEMPRESA']?>" hidden>
-                                </td>
-                            </tr>
-                            <div id="modal<?php echo $cont;?>" class="w3-modal">
-                                <div class="w3-modal-content w3-animate-top w3-center" style="width: 50vw;">
-                                    <header class="w3-container w3-gray">
-                                        <span onclick="document.getElementById('modal<?php echo $cont;?>').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                                        <h2>Dados do Forncedor</h2>
-                                    </header>
-                                    <div class="w3-container">
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CNPJ: <?php echo $row['cnpjEMPRESA'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Razão Social: <?php echo $row['razsocEMPRESA'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome Fantasia: <?php echo $row['nomfantEMPRESA'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Inscrição Estadual: <?php echo $row['ieEMPRESA'];?></p>
-                                        <?php
-                                            $endereco->setId($row['ENDERECO_idENDERECO']);
-                                            $end = $endereco->buscaDados($pdo);
-                                            foreach ($end as $item) {
-                                        ?>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Rua: <?php echo $item['ruaENDERECO'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Número: <?php echo $item['numENDERECO'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Bairro: <?php echo $item['bairroENDERECO'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Cidade: <?php echo $item['cityENDERECO'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Estado: <?php echo $item['ufENDERECO'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CEP: <?php echo $item['cepENDERECO'];?></p>
-                                        <?php }?>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Telefone: <?php echo $row['telEMPRESA'];?></p>
-                                        <p class="w3-left-align fs11e">Email: <?php echo $row['emailEMPRESA'];?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php $cont++;}}?>
-                    </tbody>
                 </table>
                 <div id="modal" class="w3-modal">
                     <div class="w3-modal-content w3-animate-top w3-center" style="width: 350px;">
@@ -130,27 +78,6 @@
                     </div>
                 </div>
             </form>
-            <!--                Inicio da paginação-->
-            <?php
-            if($num_forn > 0){
-                if($total_pags > 1){?>
-                    <div class="w3-center mt10">
-                        <div class="w3-bar w3-border w3-round">
-                            <?php for($i = 1; $i <= $total_pags; $i++){
-                                if($i == $pag_atual){?>
-                                    <span class="w3-button w3-blue-gray"><?php echo $i;?></span>
-                                <?php }else{?>
-                                    <a href="?pag=<?php echo $i;?>" class="w3-button w3-hover-blue-gray"><?php echo $i;?></a>
-                                <?php }?>
-                            <?php }?>
-                        </div>
-                    </div>
-                    <?php
-                }
-            }
-            ?>
-            <!--                Final Paginação-->
-            <p class="fs087e p10"><?php echo $msgTable;?></p>
         </div>
     </div>
 

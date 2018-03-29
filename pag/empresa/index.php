@@ -1,6 +1,5 @@
 <?php
     require '../../util/config.php';
-    require '../../php/model/Session.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -37,12 +36,9 @@
     <title>BMS - Administrador</title>
 </head>
 <body>
-<?php include '../../php/control/empresa/emp_index.php';?>
 <nav class="w3-sidebar hfull" style="width: 15%">
     <?php
-        $session = new Session();
-        $session->buscaDados($pdo);
-        $path = "../../include/".$session->getPanel()."/menu.php";
+        $path = "../../include/admin/menu.php";
         include $path;
     ?>
 </nav>
@@ -50,8 +46,8 @@
     <div class="hfull">
         <div class="fs087e">
             <nav class="w3-text-gray">
-                <a href="#" class="p10 w3-hover-text-white" style="border-style: none groove none groove; border-color: #00001F;"><i class="fa fa-gears mr10"></i> Meus Dados</a>
-                <a href="#" class="p10 w3-hover-text-white" style="margin-left: -8px; border-style: none groove none groove; border-color: #00001F"><i class="fa fa-sign-out mr10"></i> Sair do Sistema</a>
+                <a href="#" class="p10 w3-hover-text-white menusup"><i class="fa fa-gears mr10"></i> Meus Dados</a>
+                <a href="#" class="p10 w3-hover-text-white menusup" style="margin-left: -8px;"><i class="fa fa-sign-out mr10"></i> Sair do Sistema</a>
             </nav>
         </div>
     </div>
@@ -65,7 +61,7 @@
             <i class="fa fa-building p10" style="border-right-style: groove; border-right-color: gray"></i> Dados Empresa
         </header>
         <div class="p10">
-            <?php if($qtd_emp == 0){?>
+            <?php if(1){?>
                 <div class="p8 w3-pale-red mb15">
                     <p class="fs087e fcred">Nenhum cadastro foi realizado até o momento. Os dados cadastrados estarão disponíveis na impressão da OS.</p>
                 </div>
@@ -73,15 +69,15 @@
             <?php }else{?>
                 <div class="mb15 w3-row h200">
                     <div class="pl10 pr10 pt40 pb40 w3-col w3-border w3-border-gray h150" style="width: 20%; border-right: gray;">
-                        <div class="h80"><img src="<?php echo $logo_emp;?>" alt="" class="wfull hfull"></div>
+                        <div class="h80"><img src="" alt="" class="wfull hfull"></div>
                     </div>
                     <div class="pl10 pr10 pb10 w3-rest w3-border w3-border-gray h150 mb15">
-                        <h1 class="fwb fs14e"><?php echo $fant_emp?></h1>
-                        <p class="fs065e">CNPJ: <?php echo $cnpj_emp?> &mdash; IE: <?php echo $ie_emp?></p>
-                        <p class="fs065e">Razão Social: <?php echo $raz_emp?></p>
-                        <p class="fs065e">Rua: <?php echo $rua_emp?>, No. <?php echo $num_emp?> - <?php echo $bairro_emp?></p>
-                        <p class="fs065e"><?php echo $cid_emp?> - <?php echo $est_emp?> - <?php echo $cep_emp?></p>
-                        <p class="fs065e">Telefone: <?php echo $tel_emp?><br>Email: <?php echo $email_emp?></p><br>
+                        <h1 class="fwb fs14e"></h1>
+                        <p class="fs065e">CNPJ: &mdash; IE:</p>
+                        <p class="fs065e">Razão Social: </p>
+                        <p class="fs065e">Rua: , No.  - </p>
+                        <p class="fs065e"> -  - </p>
+                        <p class="fs065e">Telefone: <br>Email:</p><br>
                     </div>
                     <a onclick="document.getElementById('modal').style.display='block'" class="w3-btn w3-green w3-round" name="editDados" title="Editar Dados"><i class="fa fa-edit"></i> Alterar Dados</a>
                     <a onclick="document.getElementById('modalLogo').style.display='block'" class="w3-btn w3-deep-orange w3-round" name="editLogo" title="Editar Logo"><i class="fa fa-image"></i> Alterar Logo</a>
@@ -106,13 +102,13 @@
                         <span class="fs076e w3-text-red w3-right cp" onclick="document.getElementById('cnpjErro').style.display='none'">&times;</span>
                         <p class="fs076e w3-text-red">CNPJ Inválido!!</p>
                     </div>
-                    <input type="text" hidden="hidden" value="<?php echo $idEndereco;?>" name="endereco">
+                    <input type="text" hidden="hidden" value="" name="endereco">
                     <div class="w3-row">
                         <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                             <label for="" class="fs087e w3-text-white" style="">CNPJ *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="cnpj_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 cnpj fs087e" style="border-radius: 0 6px 6px 0;" onblur="cnpj(this);" placeholder="CNPJ" value="<?php echo $cnpj_emp;?>" required="required">
+                            <input type="text" name="cnpj_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 cnpj fs087e" style="border-radius: 0 6px 6px 0;" onblur="cnpj(this);" placeholder="CNPJ" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -120,7 +116,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Razão Social *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="raz_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Razão Social" value="<?php echo $raz_emp;?>" required="required">
+                            <input type="text" name="raz_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Razão Social" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -128,7 +124,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Nome Fantasia *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="fant_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Nome Fantasia" value="<?php echo $fant_emp;?>" required="required">
+                            <input type="text" name="fant_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Nome Fantasia" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -136,7 +132,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Inscrição Estadual*</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="ie_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 ie fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" placeholder="Inscrição Estadual" value="<?php echo $ie_emp;?>" required="required">
+                            <input type="text" name="ie_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 ie fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" placeholder="Inscrição Estadual" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -144,7 +140,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Rua *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="rua_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="70" placeholder="Rua" value="<?php echo $rua_emp;?>" required="required">
+                            <input type="text" name="rua_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="70" placeholder="Rua" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -152,7 +148,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Número *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="num_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeypress="return onlynumber(event);" maxlength="4" placeholder="Número" value="<?php echo $num_emp;?>" required="required">
+                            <input type="text" name="num_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeypress="return onlynumber(event);" maxlength="4" placeholder="Número" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -160,7 +156,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Bairro *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="bairro_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="25" placeholder="Bairro" value="<?php echo $bairro_emp;?>" required="required">
+                            <input type="text" name="bairro_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="25" placeholder="Bairro" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -168,7 +164,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Cidade *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="cid_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="25" placeholder="Cidade" value="<?php echo $cid_emp;?>" required="required">
+                            <input type="text" name="cid_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="25" placeholder="Cidade" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -176,7 +172,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Estado *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="est_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="2" placeholder="Estado" value="<?php echo $est_emp;?>" required="required">
+                            <input type="text" name="est_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="2" placeholder="Estado" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -184,7 +180,7 @@
                             <label for="" class="fs087e w3-text-white" style="">CEP *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="cep_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e cep" style="border-radius: 0 6px 6px 0;" placeholder="CEP" value="<?php echo $cep_emp;?>" required="required">
+                            <input type="text" name="cep_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e cep" style="border-radius: 0 6px 6px 0;" placeholder="CEP" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -192,7 +188,7 @@
                             <label for="" class="fs087e w3-text-white" style="">Telefone *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="tel_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 tel fs087e" style="border-radius: 0 6px 6px 0;" placeholder="Telefone" value="<?php echo $tel_emp;?>" required="required">
+                            <input type="text" name="tel_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 tel fs087e" style="border-radius: 0 6px 6px 0;" placeholder="Telefone" value="" required="required">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -200,10 +196,10 @@
                             <label for="" class="fs087e w3-text-white" style="">Email *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="email" name="email_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Email" value="<?php echo $email_emp;?>" required="required">
+                            <input type="email" name="email_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Email" value="" required="required">
                         </div>
                     </div>
-                    <?php if($qtd_emp == 0){?>
+                    <?php if(1){?>
                     <div class="w3-row">
                         <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                             <label for="" class="fs087e w3-text-white" style="">Logotipo *</label>
@@ -231,7 +227,7 @@
             </header>
             <div class="w3-container" >
                 <form action="" method="post" enctype="multipart/form-data">
-                    <input type="text" name="cnpj_emp" hidden value="<?php echo $cnpj_emp;?>">
+                    <input type="text" name="cnpj_emp" hidden value="">
                     <div class="w3-row">
                         <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                             <label for="" class="fs087e w3-text-white" style="">Logotipo *</label>

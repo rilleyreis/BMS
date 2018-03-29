@@ -1,6 +1,5 @@
 <?php
     require '../../util/config.php';
-    require '../../php/model/Session.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -36,12 +35,9 @@
     <title>BMS - Administrador</title>
 </head>
 <body>
-<?php include '../../php/control/users/usr_dados.php';?>
     <nav class="w3-sidebar hfull" style="width: 15%">
         <?php
-            $session = new Session();
-            $session->buscaDados($pdo);
-            $path = "../../include/".$session->getPanel()."/menu.php";
+            $path = "../../include/admin/menu.php";
             include $path;
         ?>
     </nav>
@@ -73,13 +69,13 @@
                         <p class="fs076e w3-text-red w3-left mr10 ml30">CPF Inválido!!</p>
                         <span class="fs076e w3-text-red w3-left cp" onclick="document.getElementById('cpfErro').style.display='none'">&times;</span>
                     </div>
-                    <input type="text" name="idUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10" value="<?php echo $id;?>" style="display: none;">
+                    <input type="text" name="idUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10" value="" style="display: none;">
                     <div class="w3-row">
                         <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                             <label for="nomeUsuario" class="fs087e w3-text-white" style="">Nome *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="nomeUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="15" onkeypress="return onlyletter(event)" onkeyup="letter(this);" placeholder="Primeiro Nome" value="<?php echo $nome;?>" required>
+                            <input type="text" name="nomeUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="15" onkeypress="return onlyletter(event)" onkeyup="letter(this);" placeholder="Primeiro Nome" value="" required>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -87,7 +83,7 @@
                             <label for="snomeUsuario" class="fs087e w3-text-white mt05">Sobrenome *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="snomeUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="15" onkeypress="return onlyletter(event)" onkeyup="letter(this);" placeholder="Sobrenome" value="<?php echo $snome;?>" required>
+                            <input type="text" name="snomeUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="15" onkeypress="return onlyletter(event)" onkeyup="letter(this);" placeholder="Sobrenome" value="" required>
                         </div>
                     </div>
 
@@ -96,7 +92,7 @@
                             <label for="cpfUsuario" class="fs087e w3-text-white mt05">CPF *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="cpfUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e cpf" onblur="cpf(this);" style="border-radius: 0 6px 6px 0;" placeholder="CPF" value="<?php echo $cpf;?>" required>
+                            <input type="text" name="cpfUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e cpf" onblur="cpf(this);" style="border-radius: 0 6px 6px 0;" placeholder="CPF" value="" required>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -104,7 +100,7 @@
                             <label for="telefoneUsuario" class="fs087e w3-text-white mt05">Telefone</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="telefoneUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e tel" style="border-radius: 0 6px 6px 0;" placeholder="Telefone" value="<?php echo $tel;?>">
+                            <input type="text" name="telefoneUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e tel" style="border-radius: 0 6px 6px 0;" placeholder="Telefone" value="">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -112,7 +108,7 @@
                             <label for="celularUsuario" class="fs087e w3-text-white mt05">Celular</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="celularUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e cel" style="border-radius: 0 6px 6px 0;" placeholder="Celular" value="<?php echo $cel;?>">
+                            <input type="text" name="celularUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e cel" style="border-radius: 0 6px 6px 0;" placeholder="Celular" value="">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -120,7 +116,7 @@
                             <label for="emailUsuario" class="fs087e w3-text-white mt05">Email *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="email" name="emailUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" onkeyup="letter(this);" placeholder="Email" value="<?php echo $email;?>" required>
+                            <input type="email" name="emailUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" onkeyup="letter(this);" placeholder="Email" value="" required>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -130,9 +126,9 @@
                         <div class="w3-rest">
                             <select name="funcUsuario" id="" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" required>
                                 <option value="" disabled selected>Selecione uma função</option>
-                                <option value="admin" <?php echo $panel == "admin" ? "selected" : "";?>>ADMINISTRADOR</option>
-                                <option value="vende" <?php echo $panel == "vende" ? "selected" : "";?>>VENDEDOR</option>
-                                <option value="tecno" <?php echo $panel == "tecno" ? "selected" : "";?>>TÉCNICO</option>
+                                <option value="admin">ADMINISTRADOR</option>
+                                <option value="vende">VENDEDOR</option>
+                                <option value="tecno">TÉCNICO</option>
                             </select>
                         </div>
                     </div>
@@ -141,10 +137,10 @@
                             <label for="userUsuario" class="fs087e w3-text-white">Nome de Usuário *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="userUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="10" placeholder="Nome de Usuário" value="<?php echo $user;?>" required>
+                            <input type="text" name="userUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="10" placeholder="Nome de Usuário" value="" required>
                         </div>
                     </div>
-                    <div class="w3-row" <?php echo $add;?>>
+                    <div class="w3-row" >
                         <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                             <label for="senhaUsuario" class="fs087e w3-text-white mt05">Senha *</label>
                         </div>
@@ -159,14 +155,14 @@
                         <div class="w3-rest">
                             <select name="status" id="" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" required>
                                 <option value="" disabled selected>Selecione um status</option>
-                                <option value="1" <?php echo $status == 1 ? "selected" : "";?>>ATIVADO</option>
-                                <option value="0" <?php echo $status == 0 ? "selected" : "";?>>DESATIVADO</option>
+                                <option value="1">ATIVADO</option>
+                                <option value="0">DESATIVADO</option>
                             </select>
                         </div>
                     </div>
-                    <button name="adicionar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $add;?>><i class="fa fa-save mr03"></i>Adicionar</button>
-                    <button name="salvar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $edt;?>><i class="fa fa-save mr03"></i>Salvar</button>
-                    <button class="w3-btn w3-blue-gray w3-center fs087e bradius" type="reset" <?php echo $add;?>><i class="fa fa-eraser mr03"></i>Limpar</button>
+                    <button name="adicionar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" ><i class="fa fa-save mr03"></i>Adicionar</button>
+                    <button name="salvar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" ><i class="fa fa-save mr03"></i>Salvar</button>
+                    <button class="w3-btn w3-blue-gray w3-center fs087e bradius" type="reset" ><i class="fa fa-eraser mr03"></i>Limpar</button>
                     <a class="w3-btn w3-deep-orange w3-center fs087e bradius" href="../users"><i class="fa fa-close mr03"></i>Cancelar</a>
                 </form>
             </div>

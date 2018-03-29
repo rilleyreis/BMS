@@ -7,11 +7,34 @@ a:visited, a:active{color: gray;}
 
 /*Zerar valores*/
 *{margin: 0; padding: 0; text-decoration: none; list-style: none;}
-.body{background-image: url("../../img/fundo.jpg");background-repeat: no-repeat; overflow: hidden; background-position: center;}
+/*.body{background-image: url("../../img/fundo.jpg");background-repeat: no-repeat; overflow: hidden; background-position: center;}*/
+.body{background:  linear-gradient(to right, #360033, #0b8793);}
 /*Alinhamento*/
 .tac{text-align: center;}
 .fleft{float: left;}
 .fright{float: right;}
+
+/*ScrollBar*/
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ccc;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 
 /*Background*/
 .bgc1a{background-color: #1A1A1A;}
@@ -95,6 +118,7 @@ a:visited, a:active{color: gray;}
 /*height*/
 .hfull{height: 100%;}
 .h675{height: 675px;}
+.h600{height: 599px;}
 .h500{height: 500px;}
 .h460{height: 460px;}
 .h450{height: 450px;}
@@ -271,6 +295,7 @@ a:visited, a:active{color: gray;}
 .w385{width: 385px;}
 .w365{width: 365px;}
 .w350{width: 350px;}
+.w320{width: 320px;}
 .w300{width: 300px;}
 .w285{width: 285px;}
 .w250{width: 250px;}

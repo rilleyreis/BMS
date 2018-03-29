@@ -1,7 +1,5 @@
 <?php
     require '../../util/config.php';
-    require '../../php/model/Session.php';
-    require '../../include/admin/checkin.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -25,28 +23,25 @@
     <script type="text/javascript" src="../../app/js/format.js"></script>
 
     <script>
-        $(function () {
-            $.getJSON("../../php/control/produto/forn_prod.php", function (dados) {
-                var fornece = [];
-                $(dados).each(function (key, value) {
-                    fornece.push(value.cnpj_emp + "|" + value.fant_emp);
-                });
-                $("#forn_prod").autocomplete({
-                    source: fornece
-                });
-            });
-        });
+        // $(function () {
+        //     $.getJSON("../../php/control/produto/forn_prod.php", function (dados) {
+        //         var fornece = [];
+        //         $(dados).each(function (key, value) {
+        //             fornece.push(value.cnpj_emp + "|" + value.fant_emp);
+        //         });
+        //         $("#forn_prod").autocomplete({
+        //             source: fornece
+        //         });
+        //     });
+        // });
     </script>
 
     <title>BMS - Administrador</title>
 </head>
 <body>
-<?php include '../../php/control/produto/prod_dados.php';?>
 <nav class="w3-sidebar hfull" style="width: 15%">
     <?php
-    $session = new Session();
-    $session->buscaDados($pdo);
-    $path = "../../include/".$session->getPanel()."/menu.php";
+    $path = "../../include/admin/menu.php";
     include $path;
     ?>
 </nav>
@@ -74,13 +69,13 @@
                 <p class="fs076e w3-text-blue">Todos os campos com (*) são obrigatórios!</p>
             </div>
             <form action="" method="post">
-                <input type="text" name="id_prod" hidden="hidden" value="<?php echo $id;?>">
+                <input type="text" name="id_prod" hidden="hidden" value="">
                 <div class="w3-row">
                     <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
                         <label for="" class="fs087e w3-text-white" style="">Nome *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="nome_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Nome" value="<?php echo $nome;?>" required>
+                        <input type="text" name="nome_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Nome" value="" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -88,7 +83,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Descrição *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="desc_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Descrição" value="<?php echo $desc;?>" required>
+                        <input type="text" name="desc_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Descrição" value="" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -96,7 +91,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Fornecedor *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="forn_prod" id="forn_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="20" placeholder="Fornecedor" value="<?php echo $forn;?>" required>
+                        <input type="text" name="forn_prod" id="forn_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="20" placeholder="Fornecedor" value="" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -104,7 +99,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Valor de Compra *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="compra_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 money fs087e" style="border-radius: 0 6px 6px 0;" placeholder="Valor de Compra" value="<?php echo $compra;?>" required>
+                        <input type="text" name="compra_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 money fs087e" style="border-radius: 0 6px 6px 0;" placeholder="Valor de Compra" value="" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -112,7 +107,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Valor de Venda *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="venda_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 money fs087e" style="border-radius: 0 6px 6px 0;" placeholder="Valor de Venda" value="<?php echo $venda;?>" required>
+                        <input type="text" name="venda_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 money fs087e" style="border-radius: 0 6px 6px 0;" placeholder="Valor de Venda" value="" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -120,7 +115,7 @@
                         <label for="" class="fs087e w3-text-white" style="">Quantidade *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="qtd_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeypress="return onlynumber(event)" maxlength="4" style="border-radius: 0 6px 6px 0;" placeholder="Quantidade em Estoque" value="<?php echo $estoque;?>" required>
+                        <input type="text" name="qtd_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeypress="return onlynumber(event)" maxlength="4" style="border-radius: 0 6px 6px 0;" placeholder="Quantidade em Estoque" value="" required>
                     </div>
                 </div>
                 <div class="w3-row">
@@ -128,15 +123,15 @@
                         <label for="" class="fs087e w3-text-white" style="">Estoque Mínimo *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="min_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeypress="return onlynumber(event)" maxlength="4" style="border-radius: 0 6px 6px 0;" placeholder="Estoque Mínimo" value="<?php echo $minimo;?>" required>
+                        <input type="text" name="min_prod" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeypress="return onlynumber(event)" maxlength="4" style="border-radius: 0 6px 6px 0;" placeholder="Estoque Mínimo" value="" required>
                     </div>
                 </div>
 
 
 
-                <button name="adicionar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $add;?>><i class="fa fa-save"></i> Adicionar</button>
-                <button name="salvar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $edt;?>><i class="fa fa-save"></i> Salvar</button>
-                <button class="w3-btn w3-deep-orange w3-center fs087e bradius" type="reset" <?php echo $add;?>><i class="fa fa-eraser"></i> Limpar</button>
+                <button name="adicionar" class="w3-btn w3-green w3-center fs087e bradius" type="submit"><i class="fa fa-save"></i> Adicionar</button>
+                <button name="salvar" class="w3-btn w3-green w3-center fs087e bradius" type="submit"><i class="fa fa-save"></i> Salvar</button>
+                <button class="w3-btn w3-deep-orange w3-center fs087e bradius" type="reset"><i class="fa fa-eraser"></i> Limpar</button>
                 <a class="w3-btn w3-blue-gray w3-center fs087e bradius" href="../produto"><i class="fa fa-close"></i> Cancelar</a>
             </form>
         </div>

@@ -1,7 +1,5 @@
 <?php
     require '../../util/config.php';
-    require '../../php/model/Session.php';
-    require '../../include/admin/checkin.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -19,14 +17,8 @@
     <title>BMS - Administrador</title>
 </head>
 <body>
-<?php include '../../php/control/produto/prod_index.php';?>
 <nav class="w3-sidebar hfull" style="width: 15%">
-    <?php
-    $session = new Session();
-    $session->buscaDados($pdo);
-    $path = "../../include/".$session->getPanel()."/menu.php";
-    include $path;
-    ?>
+    <?php include "../../include/admin/menu.php"; ?>
 </nav>
 <div class="bgcMenu h40 pt10" style="margin-left: 15%">
     <div class="hfull">
@@ -68,48 +60,6 @@
                     <th class="w3-border w3-border-gray" style="width: 10%">Estoque</th>
                     <th class="w3-border w3-border-gray" style="width: 15%">Preço</th>
                     <th class="w3-border w3-border-gray" style="width: 20%"></th>
-                    </thead>
-                    <tbody class="fs087e">
-                    <?php
-                    if($qtd_prod > 0) {
-                    $cont = 0;
-                    foreach ($prod_exibir as $row) { ?>
-                        <tr>
-                            <td class="w3-border w3-center"><?php echo $row['idPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['nomePRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['descPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo $row['estkPRODUTO']; ?></td>
-                            <td class="w3-border"><?php echo "R$ " . $row['vendaPRODUTO']; ?></td>
-                            <td class="w3-border">
-                                <a onclick="document.getElementById('modal<?php echo $cont; ?>').style.display='block'" class="w3-btn w3-blue-gray mr03" name="view" title="Visualizar"><i class="fa fa-eye"></i></a>
-                                <button class="w3-btn w3-green mr03" name="sel" value="<?php echo $row['idPRODUTO']; ?>" title="Editar"><i class="fa fa-pencil"></i></button>
-                                <label for="prodExcl<?php echo $cont; ?>"><a class="w3-btn w3-red" name="excl" onclick="document.getElementById('modal').style.display='block'"title="Excluir"><i class="fa fa-trash"></i></a></label>
-                                <input type="radio" name="prodExcl" id="prodExcl<?php echo $cont; ?>"value="<?php echo $row['idPRODUTO'] ?>" hidden>
-                                <label for="prodAdd<?php echo $cont; ?>"><a class="w3-btn w3-indigo" name="add" onclick="document.getElementById('modalAdd').style.display='block'"title="Adicionar"><i class="fa fa-plus"></i></a></label>
-                                <input type="radio" name="prodAdd" id="prodAdd<?php echo $cont; ?>"value="<?php echo $row['idPRODUTO'] ?>" hidden>
-                            </td>
-                        </tr>
-                        <div id="modal<?php echo $cont; ?>" class="w3-modal">
-                            <div class="w3-modal-content w3-animate-top w3-center w300">
-                                <header class="w3-container w3-gray">
-                                    <span
-                                        onclick="document.getElementById('modal<?php echo $cont; ?>').style.display='none'"
-                                        class="w3-button w3-display-topright">&times;</span>
-                                    <h2>Dados do Produto</h2>
-                                </header>
-                                <div class="w3-container">
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">ID: <?php echo $row['idPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome: <?php echo $row['nomePRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Descrição: <?php echo $row['descPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Estoque: <?php echo $row['estkPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Estoque Minimo: <?php echo $row['estkminPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Valor de Compra: R$<?php echo $row['custoPRODUTO']; ?></p>
-                                    <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Valor de Venda: R$<?php echo $row['vendaPRODUTO']; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <?php $cont++;}}?>
-                    </tbody>
                 </table>
 <!--                modal Excluir-->
                 <div id="modal" class="w3-modal">
@@ -142,27 +92,6 @@
                     </div>
                 </div>
             </form>
-            <!--                Inicio da paginação-->
-            <?php
-            if($qtd_prod > 0){
-                if($total_pags > 1){?>
-                    <div class="w3-center mt10">
-                        <div class="w3-bar w3-border w3-round">
-                            <?php for($i = 1; $i <= $total_pags; $i++){
-                                if($i == $pag_atual){?>
-                                    <span class="w3-button w3-blue-gray"><?php echo $i;?></span>
-                                <?php }else{?>
-                                    <a href="?pag=<?php echo $i;?>" class="w3-button w3-hover-blue-gray"><?php echo $i;?></a>
-                                <?php }?>
-                            <?php }?>
-                        </div>
-                    </div>
-                    <?php
-                }
-            }
-            ?>
-            <!--                Final Paginação-->
-            <p class="fs087e p10"><?php echo $msgTable;?></p>
         </div>
     </div>
 
