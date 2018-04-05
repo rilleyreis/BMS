@@ -14,8 +14,13 @@
     <title>BMS</title>
 </head>
 <body>
+    <?php include 'php/control/login.php';?>
     <div class="w3-container body" style="height: 100vh; width: 100vw;">
         <div class="w3-container bradius w500 h400 bgcba6 m0a mt130 mb110">
+            <div class="<?php echo $color;?> mb05 bradius mt05" id="erroLogin" style="<?php echo $erro;?> padding: 3px;">
+                <span class="fs087e <?php echo $colorText;?> w3-right cp" onclick="document.getElementById('erroLogin').style.display='none'">&times;</span>
+                <p class="fs087e <?php echo $colorText;?>"><?php echo $msg;?></p>
+            </div>
             <div class="w450 ml10 mr10 mt50">
                 <fieldset>
                     <legend class="w100 h80 m0a tac p5" style="border: lightgray solid 1px; border-radius: 60px">
@@ -36,7 +41,7 @@
                         </div>
                         <div class="w3-row w3-section">
                             <div class="w3-col mr50" style="width: 230px;">
-                                <input type="submit" class="w3-btn w3-green w230 bradius" name="entrar" value="Entrar"></input>
+                                <input type="submit" class="w3-btn w3-green w230 bradius" name="logar" value="Entrar"></input>
                             </div>
                             <div class="w3-rest w3-text-white">
                                 <a href="" class="fs087e">Esqueceu a Senha?</a>

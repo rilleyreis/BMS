@@ -4,6 +4,9 @@
 a:visited, a:active{color: gray;}
 .txt:focus{z-index: 2;}
 .menusup{border-style: none groove none groove; border-color: #000086;}
+nav, a{
+    font-size: 0.9em;
+}
 
 /*Zerar valores*/
 *{margin: 0; padding: 0; text-decoration: none; list-style: none;}

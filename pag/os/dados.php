@@ -51,15 +51,14 @@
         </div>
     </div>
 </div>
-<div class="bgcC1 h40 pt10 pl20" style="margin-left: 15%">
+<div class="bgcC1 h40 pt10 pl20 fs087e" style="margin-left: 15%">
     <p class="fs087e w3-text-gray "><a href="../admin.php" class="w3-hover-text-dark-gray"><i class="fa fa-home"></i> Home ></a><a href="../os" class="w3-hover-text-dark-gray ml10">OS ></a><a
             href="dados.php" class="w3-hover-text-dark-gray ml10"> Dados ></a></p>
 </div>
 <div class="w3-container" style="margin-left: 15%;">
     <div class="w3-card mt35">
-        <header class="w3-gray fs095e w3-text-gray">
+        <header class="w3-gray fs095e w3-text-gray fs095e">
             <i class="fa fa-file-text p10" style="border-right-style: groove; border-right-color: gray"></i> Dados OS
-            <p class="fwb w3-right p5 mr10"</p>
         </header>
         <div class="p10">
             <div>
@@ -80,8 +79,8 @@
                     </div>
                 </div>
                 <div class="mb10">
-                    <header class="w3-gray w3-text-gray">
-                        <i class="fa fa-barcode p10 tac" style="border-right-style: groove; border-right-color: gray;"></i> Status da OS
+                    <header class="w3-gray w3-text-gray fs095e">
+                        <i class="fa fa-file-text p10 tac" style="border-right-style: groove; border-right-color: gray;"></i> Status da OS
                         <i id="down" class="fa fa-angle-double-down p10 tac w3-right cp fs095e" style="border-left-style: groove; border-left-color: gray;"></i>
                         <i id="up" class="fa fa-angle-double-up p10 tac w3-right cp fs095e" style="border-left-style: groove; border-left-color: gray;"></i>
                     </header>
@@ -204,7 +203,41 @@
                         </select>
                     </div>
                 </div>
+<!--                Serviço-->
+                <div class="mb10">
+                    <header class="w3-gray w3-text-gray fs095e">
+                        <i class="fa fa-file-text p10 tac" style="border-right-style: groove; border-right-color: gray;"></i> Serviços a Fazer
+                    </header>
+                    <div class="w3-border w3-border-gray p10" id="service">
+                        <div class="w3-row mt10">
+                            <button name="adicionarS" class="w3-btn w3-green w3-center fs087e bradius w200 w3-right" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
+                            <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 150px; border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                <label for="" class="fs087e w3-text-white" style="">Serviço </label>
+                            </div>
+                            <div class="w3-rest" style="width: 700px;">
+                                <input type="text" name="servico" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Servico" value="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+<!--                Produto-->
+                <div class="mb10">
+                    <header class="w3-gray w3-text-gray fs095e">
+                        <i class="fa fa-file-text p10 tac" style="border-right-style: groove; border-right-color: gray;"></i> Produtos a Utilizar
+                    </header>
+                    <div class="w3-border w3-border-gray p10" id="produto">
+                        <div class="w3-row mt10">
+                            <button name="adicionarS" class="w3-btn w3-green w3-center fs087e bradius w200 w3-right" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
+                            <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 150px; border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                <label for="" class="fs087e w3-text-white" style="">Produto </label>
+                            </div>
+                            <div class="w3-rest" style="width: 700px;">
+                                <input type="text" name="Produto" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Produto" value="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

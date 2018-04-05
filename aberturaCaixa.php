@@ -22,8 +22,13 @@
     <title>BMS</title>
 </head>
 <body>
+<?php include "php/control/abrirCaixa.php";?>
 <div class="w3-container body" style="height: 100vh; width: 100vw;">
     <div class="w3-container bradius w500 h450 bgcba m0a mt120 mb110">
+        <div class="<?php echo $color;?> mb05 bradius mt05" id="erroLogin" style="<?php echo $erro;?> padding: 3px;">
+            <span class="fs087e <?php echo $colorText;?> w3-right cp" onclick="document.getElementById('erroLogin').style.display='none'">&times;</span>
+            <p class="fs087e <?php echo $colorText;?>"><?php echo $msg;?></p>
+        </div>
         <div class="w450 ml10 mr10 mt15">
             <fieldset>
                 <legend class="w100 h80 m0a tac p15" style="border: lightgray solid 1px; border-radius: 60px">
@@ -36,25 +41,25 @@
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;"><i class=" w3-xlarge fa fa-user-o"></i></div>
                         <div class="w3-rest">
-                            <input type="text" class="w3-input w3-border" name="usuario" value="" style="border-radius: 0 6px 6px 0;" readonly>
+                            <input type="text" class="w3-input w3-border" name="usuario" value="<?php echo $nome;?>" style="border-radius: 0 6px 6px 0;" readonly>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;" style="width: 50px;"><i class="w3-xlarge fa fa-calendar-o"></i></div>
                         <div class="w3-rest">
-                            <input type="date" class="w3-input w3-border" name="data" value="" style="border-radius: 0 6px 6px 0;" readonly>
+                            <input type="date" class="w3-input w3-border" name="data" value="<?php echo date("Y-m-d");?>" style="border-radius: 0 6px 6px 0;" readonly>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;" style="width: 50px;"><i class="w3-xlarge fa fa-clock-o"></i></div>
                         <div class="w3-rest">
-                            <input type="text" class="w3-input w3-border" name="hora" value="" style="border-radius: 0 6px 6px 0;" readonly>
+                            <input type="text" class="w3-input w3-border" name="hora" value="<?php echo date("H:i");?>" style="border-radius: 0 6px 6px 0;" readonly>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;" style="width: 50px;"><i class="w3-xlarge fa fa-dollar"></i></div>
                         <div class="w3-rest">
-                            <input type="text" class="w3-input w3-border money" name="troco" value="" style="border-radius: 0 6px 6px 0;" autofocus>
+                            <input type="text" class="w3-input w3-border money" name="troco" style="border-radius: 0 6px 6px 0;" autofocus>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
