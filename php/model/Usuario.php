@@ -7,11 +7,21 @@
  */
 
 class Usuario{
+    private $id;
     private $usuario;
     private $senha;
     private $panel;
     private $funcao;
+    private $ativo;
     private $idPF;
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function setId($id){
+        $this->id = $id;
+    }
 
     public function getUsuario(){
         return $this->usuario;
@@ -45,6 +55,14 @@ class Usuario{
         $this->funcao = $funcao;
     }
 
+    public function getAtivo(){
+        return $this->ativo;
+    }
+
+    public function setAtivo($ativo){
+        $this->ativo = $ativo;
+    }
+
     public function getIdPF(){
         return $this->idPF;
     }
@@ -60,5 +78,57 @@ class Usuario{
             return $query;
         else
             return false;
+    }
+
+    public function buscaDados($pdo){
+        $sql = "SELECT * FROM `USERS` WHERE `idUSER` = '$this->id'";
+        $query = $pdo->query($sql);
+        if($query->rowCount() > 0)
+            return $query;
+        else
+            return false;
+    }
+
+    public function buscaQtd($pdo){
+        $sql = "SELECT * FROM `USERS_DATA` WHERE ativo = 1";
+        $query = $pdo->query($sql);
+        return $query->rowCount();
+    }
+
+    public function buscaLtda($pdo, $inicio, $fim){
+        $sql = "SELECT * FROM `USERS_DATA` WHERE ativo = 1 ORDER BY fnome ASC LIMIT $inicio,$fim";
+        $query = $pdo->query($sql);
+        if($query->rowCount() > 0)
+            return $query;
+        else
+            return 0;
+    }
+
+    public function salvar($pdo){
+        $sql = "INSERT INTO `USERS`(`funcaoUSER`, `panelUSER`, `usuarioUSER`, `senhaUSER`, `ativoUSER`, `PFISICA_idPFISICA`)";
+        $sql .= "VALUES (:funcao, :panel, :user, :senha, :ativo, :idpf)";
+        try{
+            $insert = $pdo->prepare($sql);
+            $insert->execute(array(":funcao"=>$this->funcao, ":panel"=>$this->panel, ":user"=>$this->usuario, ":senha"=>$this->senha, ":ativo"=>$this->ativo, ":idpf"=>$this->idPF));
+            echo "<script>alert('Usuário cadastrado com sucesso');</script>";
+            header("Location:../users");
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function editar($pdo){
+        $sql = "UPDATE users SET `panelUSER` = :panel, `funcaoUSER` = :func, `ativoUSER` = :ativo, `usuarioUSER` = :usuario WHERE `idUSER` = :id";
+        $update = $pdo->prepare($sql);
+        $update->execute(array(':panel'=>$this->panel, ':func'=>$this->funcao, ':status'=>$this->status, ':usuario'=>$this->usuario, ':id'=>$this->id));
+
+        echo "<script>alert('Cadastro editado com sucesso');</script>";
+        header("Location:../users");
+    }
+    public function excluir($pdo){
+        $sql = "UPDATE users SET `ativoUSER` = 0 WHERE `idUSER` = :id";
+        $update = $pdo->prepare($sql);
+        $update->execute(array(':id'=>$this->id));
+        header("Location:../users");
     }
 }

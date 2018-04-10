@@ -1,33 +1,77 @@
-
-<div class="wfull hfull bgcMenu">
-    <div class="h115 w100 pt10 ml45">
-        <a href="../admin"><img src="../../img/logo.png" alt="" class="wfull hfull"></a>
-    </div>
-    <h6 class="fs095e w3-text-white mt05 w3-center">Business Manager System</h6>
-    <div class="w3-container bgcba mb10 mt10">
-        <h6 class="fs087e w3-text-white">Menu</h6>
-    </div>
-    <div class="wfull">
-        <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="../cliente">Clientes</a>
-        <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="../fornecedor">Fornecedor</a>
-        <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="../produto">Produtos</a>
-        <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="">Serviços</a>
-        <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="">OS</a>
-        <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(1)">Financeiro <i class="fa fa-caret-down"></i></button>
-        <div id="menu1" class="w3-hide bgcMenu w3-card fs087e">
-            <a href="" class="w3-button w3-text-white wfull" style="margin-left: -45px;">Venda</a>
-            <a href="" class="w3-button w3-text-white wfull" style="margin-left: -42px;">Lançamento</a>
+<nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
+    <div class="hfull wfull bgcMenu w3-text-white p5">
+        <div class="w3-container tac">
+            <div class="s4 dbl">
+                <?php
+                    $nivel = "../";
+                    if(file_exists("../img/logo.png")) {
+                        $nivel = "";
+                        ?>
+                        <img src="../img/logo.png" class="w100">
+                        <?php
+                    }else{
+                ?>
+                        <img src="../../img/logo.png" class="w100">
+                <?php }?>
+            </div>
+            <div class="w3-bar dbl mt05">
+                <span class="dbl">Business Manager System</span>
+            </div>
+            <div class="m0a">
+                <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fas fa-user"></i></a>
+                <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
         </div>
-        <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(2)">Configuração <i class="fa fa-caret-down"></i></button>
-        <div id="menu2" class="w3-hide bgcMenu w3-card fs087e">
-            <a href="../users" class="w3-button w3-text-white wfull" style="margin-left: -45px;">Usuário</a>
-            <a href="../empresa" class="w3-button w3-text-white wfull" style="margin-left: -42px;">Empresa</a>
+        <hr>
+        <div class="w3-container">
+            <a href="<?php echo $nivel?>admin"><h5><i class="fas fa-tachometer-alt"></i> Dashboard</h5></a>
+        </div>
+        <div class="w3-bar-block">
+            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>cliente"><i class="fas fa-users fa-fw mr03"></i>  Clientes</a>
+            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>fornecedor"><i class="fas fa-industry fa-fw mr03"></i> Fornecedores</a>
+            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>produto"><i class="fas fa-pallet fa-fw mr03"></i> Produtos</a>
+            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>service"><i class="fas fa-wrench fa-fw mr03"></i> Serviços</a>
+            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>os"><i class="fas fa-file-alt fa-fw mr03"></i> OS</a>
+            <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(1)"><i class="fas fa-exchange-alt fa-fw mr03"></i> Financeiro <i class="fa fa-caret-down"></i></button>
+            <div id="menu1" class="w3-hide bgcMenu fs087e wfull">
+                <a href="" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-shopping-basket fa-fw mr03"></i> Venda</a>
+                <a href="" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-chart-line fa-fw mr03"></i> Lançamento</a>
+            </div>
+            <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(2)"><i class="fas fa-cogs fa-fw mr03"></i> Configuração <i class="fa fa-caret-down"></i></button>
+            <div id="menu2" class="w3-hide bgcMenu fs087e wfull">
+                <a href="<?php echo $nivel?>users" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-user fa-fw mr03"></i> Usuário</a>
+                <a href="<?php echo $nivel?>empresa" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-building fa-fw mr03"></i> Empresa</a>
+            </div>
         </div>
     </div>
-</div>
+</nav>
 
 
 <script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+            overlayBg.style.display = "none";
+        } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+    }
+
+
     function openMenu(id) {
         var x = document.getElementById("menu"+id);
         if (x.className.indexOf("w3-show") == -1) {

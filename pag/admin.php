@@ -1,170 +1,254 @@
 <?php
+    session_start();
     require '../util/config.php';
 ?>
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Rilley Reis">
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="author" content="Rilley Reis">
 
-    <link rel="stylesheet" href="../app/css/style.css">
-    <link rel="stylesheet" href="../app/css/font-awesome.css">
-    <link rel="stylesheet" href="../app/css/w3.css">
+<link rel="stylesheet" href="../app/css/style.css">
+<link rel="stylesheet" href="../app/css/w3.css">
 
-    <title>BMS - Administrador</title>
-</head>
-<body>
-    <nav class="w3-sidebar hfull" style="width: 15%">
-        <div class="wfull hfull bgcMenu">
-            <div class="h115 w100 pt10 ml45 m0a">
-                <a href="admin.php"><img src="../img/logo.png" alt="" class="wfull hfull"></a>
+<script defer src="../app/js/fontawesome-all.min.js"></script>
+
+<title>BMS - Business Manager System</title>
+
+<body class="w3-light-grey">
+<?php include "../php/control/adminHome.php"?>
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
+    <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['fnomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
+<!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
+<!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
+<!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
+<!--    </div>-->
+</div>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Clique para fechar Menu" id="myOverlay"></div>
+
+<!-- Sidebar/menu -->
+<?php include '../include/admin/menu.php'?>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+    <!-- Header -->
+    <header class="w3-container" style="padding-top:22px">
+        <h5><b><i class="fas fa-tachometer-alt"></i> My Dashboard</b></h5>
+    </header>
+
+    <div class="w3-row-padding w3-margin-bottom">
+        <button class="w3-quarter w3-btn w3-red">
+            <div class="w3-container w3-red w3-padding-16 tac">
+                <div class=""><i class="fas fa-users w3-xxxlarge"></i></div>
+                <div class="w3-clear"></div>
+                <h4>Clientes</h4>
             </div>
-            <h6 class="fs095e w3-text-white mt05 w3-center">Business Manager System</h6>
-            <div class="w3-container bgcba mb10 mt10">
-                <h6 class="fs087e w3-text-white">Menu</h6>
+        </button>
+        <button class="w3-quarter w3-btn w3-blue">
+            <div class="w3-container w3-blue w3-padding-16 tac">
+                <div class=""><i class="fas fa-file-alt w3-xxxlarge"></i></div>
+                <div class="w3-clear"></div>
+                <h4>OS</h4>
             </div>
-            <div class="wfull">
-                <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="cliente">Clientes</a>
-                <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="fornecedor">Fornecedor</a>
-                <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="produto">Produtos</a>
-                <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="service">Serviços</a>
-                <a class="w3-button w3-block w3-left-align wfull w3-text-white fs095e" href="">OS</a>
-                <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(1)">Financeiro <i class="fa fa-caret-down"></i></button>
-                <div id="menu1" class="w3-hide bgcMenu w3-card fs087e wfull">
-                    <a href="" class="w3-button w3-text-white wfull">Venda</a>
-                    <a href="" class="w3-button w3-text-white wfull">Lançamento</a>
+        </button>
+        <button class="w3-quarter w3-btn w3-teal">
+            <div class="w3-container w3-teal w3-padding-16 tac">
+                <div class=""><i class="fas fa-shopping-basket w3-xxxlarge"></i></div>
+                <div class="w3-clear"></div>
+                <h4>Vendas</h4>
+            </div>
+        </button>
+        <button class="w3-quarter w3-btn w3-orange">
+            <div class="w3-container w3-orange w3-text-white w3-padding-16 tac">
+                <div class=""><i class="fas fa-clipboard w3-xxxlarge"></i></div>
+                <div class="w3-clear"></div>
+                <h4>Relatórios</h4>
+            </div>
+        </button>
+    </div>
+
+    <div class="w3-panel">
+        <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-third">
+                <h5>Caixa</h5>
+                <div class="p5">
+                    <div class="h100 p5 tac bbtsc1">
+                        <h1 class="fs11e">Troco</h1>
+                        <h1 class="fs20e">R$ <?php echo $troco?></h1>
+                    </div>
+                    <div class="h100 p5 tac">
+                        <h1 class="fs11e">Em Caixa</h1>
+                        <h1 class="fs20e">R$ <?php echo $troco?></h1>
+                    </div>
                 </div>
-                <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(2)">Configuração <i class="fa fa-caret-down"></i></button>
-                <div id="menu2" class="w3-hide bgcMenu w3-card fs087e w3-left wfull">
-                    <a href="users" class="w3-button w3-text-white wfull">Usuário</a>
-                    <a href="empresa" class="w3-button w3-text-white wfull">Empresa</a>
-                </div>
             </div>
-        </div>
-    </nav>
-    <div class="bgcMenu h40 pt10" style="margin-left: 15%">
-        <div class="hfull">
-            <div class="fs087e">
-                <nav class="w3-text-gray">
-                    <a href="#" class="p10 w3-hover-text-white menusup"><i class="fa fa-gears mr10"></i> Meus Dados</a>
-                    <a href="#" class="p10 w3-hover-text-white menusup" style="margin-left: -8px;"><i class="fa fa-sign-out mr10"></i> Sair do Sistema</a>
-                </nav>
+            <div class="w3-twothird">
+                <h5>Ordens de Serviço</h5>
+                <table class="w3-table w3-striped w3-white">
+                    <tr>
+                        <td><i class="fas fa-file-alt w3-text-blue w3-large"></i></td>
+                        <td>Abertas</td>
+                        <td><i>10</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="far fa-clipboard w3-text-red w3-large"></i></td>
+                        <td>Orçadas</td>
+                        <td><i>15</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-clipboard-check w3-text-teal w3-large"></i></td>
+                        <td>Aprovadas</td>
+                        <td><i>17</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-files-o w3-text-red w3-large"></i></td>
+                        <td>Realizadas</td>
+                        <td><i>25</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-dollar w3-text-blue w3-large"></i></td>
+                        <td>Retiradas</td>
+                        <td><i>28</i></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
-    <div class="bgcC1 h40 pt10 pl20" style="margin-left: 15%">
-        <p class="fs087e w3-text-gray "><a href="../_admin" class="w3-hover-text-dark-gray"><i class="fa fa-home"></i> Home ></a></p>
-    </div>
-    <div class="w3-container" style="margin-left: 15%;">
-        <button class="w3-btn w3-indigo w150 h65 mt25 w3-center ml30 w3-hover-grey" onclick="window.location='cliente/dados.php'">
-            <p class="fs20e" style="margin-top: -5px;"><i class="fa fa-users"></i></p>
-            <p class="fs12e" style="margin-top: -8px;">Clientes</p>
-        </button>
-        <button class="w3-btn w3-brown w150 h65 mt25 w3-center ml30 w3-hover-grey" onclick="window.location='fornecedor/dados.php'">
-            <p class="fs20e" style="margin-top: -5px;"><i class="fa fa-industry"></i></p>
-            <p class="fs12e" style="margin-top: -8px;">Fornecedores</p>
-        </button>
-        <button class="w3-btn w3-green w150 h65 mt25 w3-center ml30 w3-hover-grey" onclick="window.location='produto/dados.php'">
-            <p class="fs20e" style="margin-top: -5px;"><i class="fa fa-barcode"></i></p>
-            <p class="fs12e" style="margin-top: -8px;">Produtos</p>
-        </button>
-        <button class="w3-btn w3-blue-gray w150 h65 mt25 w3-center ml30 w3-hover-grey" onclick="window.location='venda'">
-            <p class="fs20e" style="margin-top: -5px;"><i class="fa fa-shopping-cart"></i></p>
-            <p class="fs12e" style="margin-top: -8px;">Vendas</p>
-        </button>
-        <button class="w3-btn w3-teal w150 h65 mt25 w3-center ml30 w3-hover-grey" onclick="window.location='os/dados.php'">
-            <p class="fs20e" style="margin-top: -5px;"><i class="fa fa-file-text"></i></p>
-            <p class="fs12e" style="margin-top: -8px;">OS's</p>
-        </button>
-        <button class="w3-btn w3- w150 h65 mt25 w3-center ml30 w3-hover-grey" onclick="window.location=''">
-            <p class="fs20e w3-text-white" style="margin-top: -5px;"><i class="fa fa-file-text"></i></p>
-            <p class="fs12e w3-text-white" style="margin-top: -8px;">Relatórios</p>
-        </button>
-
-        <div class="w3-card mt25 wfull pb10">
-            <header class="w3-gray w3-text-gray mb15">
-                <i class="fa fa-info p5 mr05 tac" style="border-right-style: groove; border-right-color: gray; width: 3%"></i>Informações Rápidas
-            </header>
-            <div class="w3-card dib" style="width: 20%; margin-left: 4%;">
-                <header class="tac w3-blue-gray w3-text-white">
-                    Produtos
-                </header>
-                <div class="p5">
-                    <div class="dbl h80 p5 tac bbtsc1 mb05">
-                        Info 1
-                    </div>
-                    <div class="dbl h80 p5 tac">
-                        Info 2
-                    </div>
-                </div>
-            </div>
-            <div class="w3-card dib" style="width: 20%; margin-left: 4%;">
-                <header class="tac w3-blue-gray w3-text-white">
-                    Ordem de Serviço
-                </header>
-                <div class="p5">
-                    <div class="dbl h80 p5 tac bbtsc1 mb05">
-                        Info 1
-                    </div>
-                    <div class="dbl h80 p5 tac">
-                        Info 2
-                    </div>
-                </div>
-            </div>
-            <div class="w3-card dib" style="width: 20%; margin-left: 4%;">
-                <header class="tac w3-blue-gray w3-text-white">
-                    Caixa
-                </header>
-                <div class="p5">
-                    <div class="dbl h80 p5 tac bbtsc1 mb05">
-                        Info 1
-                    </div>
-                    <div class="dbl h80 p5 tac">
-                        Info 2
-                    </div>
-                </div>
-            </div>
-            <div class="w3-card dib" style="width: 20%; margin-left: 4%;">
-                <header class="tac w3-blue-gray w3-text-white">
-                    Outro
-                </header>
-                <div class="p5">
-                    <div class="dbl h80 p5 tac bbtsc1 mb05">
-                        Info 1
-                    </div>
-                    <div class="dbl h80 p5 tac">
-                        Info 2
-                    </div>
-                </div>
-            </div>
-
+    <hr>
+    <div class="w3-container">
+        <h5>Estatísticas do Sistema</h5>
+        <p>New Visitors</p>
+        <div class="w3-grey">
+            <div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
         </div>
 
-        <div class="w3-card mt25">
-            <header class="w3-gray w3-text-gray">
-                <i class="fa fa-signal p5 mr05" style="border-right-style: groove; border-right-color: gray"></i>Ordens de Serviços
-            </header>
-            <div class="">
+        <p>New Users</p>
+        <div class="w3-grey">
+            <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+        </div>
 
+        <p>Bounce Rate</p>
+        <div class="w3-grey">
+            <div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="w3-container">
+        <h5>Countries</h5>
+        <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+            <tr>
+                <td>United States</td>
+                <td>65%</td>
+            </tr>
+            <tr>
+                <td>UK</td>
+                <td>15.7%</td>
+            </tr>
+            <tr>
+                <td>Russia</td>
+                <td>5.6%</td>
+            </tr>
+            <tr>
+                <td>Spain</td>
+                <td>2.1%</td>
+            </tr>
+            <tr>
+                <td>India</td>
+                <td>1.9%</td>
+            </tr>
+            <tr>
+                <td>France</td>
+                <td>1.5%</td>
+            </tr>
+        </table><br>
+        <button class="w3-button w3-dark-grey">More Countries  <i class="fa fa-arrow-right"></i></button>
+    </div>
+    <hr>
+    <div class="w3-container">
+        <h5>Recent Users</h5>
+        <ul class="w3-ul w3-card-4 w3-white">
+            <li class="w3-padding-16">
+                <img src="/w3images/avatar2.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                <span class="w3-xlarge">Mike</span><br>
+            </li>
+            <li class="w3-padding-16">
+                <img src="/w3images/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                <span class="w3-xlarge">Jill</span><br>
+            </li>
+            <li class="w3-padding-16">
+                <img src="/w3images/avatar6.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                <span class="w3-xlarge">Jane</span><br>
+            </li>
+        </ul>
+    </div>
+    <hr>
+
+    <div class="w3-container">
+        <h5>Recent Comments</h5>
+        <div class="w3-row">
+            <div class="w3-col m2 text-center">
+                <img class="w3-circle" src="/w3images/avatar3.png" style="width:96px;height:96px">
+            </div>
+            <div class="w3-col m10 w3-container">
+                <h4>John <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span></h4>
+                <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="w3-col m2 text-center">
+                <img class="w3-circle" src="/w3images/avatar1.png" style="width:96px;height:96px">
+            </div>
+            <div class="w3-col m10 w3-container">
+                <h4>Bo <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15 PM</span></h4>
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
             </div>
         </div>
     </div>
+    <br>
+    <div class="w3-container w3-dark-grey w3-padding-32">
+        <div class="w3-row">
+            <div class="w3-container w3-third">
+                <h5 class="w3-bottombar w3-border-green">Demographic</h5>
+                <p>Language</p>
+                <p>Country</p>
+                <p>City</p>
+            </div>
+            <div class="w3-container w3-third">
+                <h5 class="w3-bottombar w3-border-red">System</h5>
+                <p>Browser</p>
+                <p>OS</p>
+                <p>More</p>
+            </div>
+            <div class="w3-container w3-third">
+                <h5 class="w3-bottombar w3-border-orange">Target</h5>
+                <p>Users</p>
+                <p>Active</p>
+                <p>Geo</p>
+                <p>Interests</p>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        function openMenu(id) {
-            var x = document.getElementById("menu"+id);
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-                x.previousElementSibling.className += " w3-green";
-            } else {
-                x.className = x.className.replace(" w3-show", "");
-                x.previousElementSibling.className =
-                    x.previousElementSibling.className.replace(" w3-green", "");
-            }
-        }
-    </script>
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-16 w3-light-grey">
+        <h4>FOOTER</h4>
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </footer>
+
+    <!-- End page content -->
+</div>
+
+
+
 </body>
 </html>

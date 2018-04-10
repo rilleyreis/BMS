@@ -76,4 +76,24 @@ class PFisica{
         $query = $pdo->query($sql);
         return $query;
     }
+
+    public function salvar($pdo){
+        $sql = "INSERT INTO `PFISICA`(`fnomePFISICA`, `lnomePFISICA`, `cpfPFISICA`, `celPFISICA`, `telPFISICA`, `emailPFISICA`)";
+        $sql .= "VALUES (:fnome, :lnome, :cpf, :cel, :tel, :email)";
+        try{
+            $insert = $pdo->prepare($sql);
+            $insert->execute(array(":fnome"=>$this->fnome, ":lnome"=>$this->lnome, ":cpf"=>$this->cpf, ":cel"=>$this->celular, ":tel"=>$this->telefone, ":email"=>$this->email));
+            $sql = "SELECT LAST_INSERT_ID()";
+            $query = $pdo->query($sql);
+            return $query->fetch();
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function editar($pdo){
+        $sql = "UPDATE `PFISICA` SET `fnomePFISICA` = :fnome, `lnomePFISICA` = :lnome, `cpfPFISICA` = :cpf, `celPFISICA` = :cel, `telPFISICA` = :tel, `emailPFISICA` = :email WHERE idUSER = :id";
+        $update = $pdo->prepare($sql);
+        $update->execute(array(":fnome"=>$this->fnome, ":lnome"=>$this->lnome, ":cpf"=>$this->cpf, ":cel"=>$this->celular, ":tel"=>$this->telefone, ":email"=>$this->email, ":id"=>$this->id));;
+    }
 }

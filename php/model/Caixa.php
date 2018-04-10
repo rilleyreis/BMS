@@ -56,7 +56,6 @@ class Caixa{
     public function caixaAberto($pdo){
         $sql = "SELECT * FROM `CAIXA` WHERE `dataCAIXA` LIKE '$this->data'";
         $query = $pdo->query($sql);
-        echo $sql;
         return $query->rowCount() > 0 ? true : false;
     }
 
@@ -69,5 +68,11 @@ class Caixa{
         }catch (PDOException $e){
             echo $e->getMessage();
         }
+    }
+
+    public function dadosCaixa($pdo){
+        $sql = "SELECT * FROM `CAIXA` WHERE `dataCAIXA` LIKE '$this->data'";
+        $query = $pdo->query($sql);
+        return $query;
     }
 }

@@ -1,12 +1,13 @@
+@font-face { font-family: "relaway";src: url("font/raleway.ttf")format("truetype");}
 
 
 /*Classes especificas*/
+
+body {font-family: "raleway"; font-size: 0.9em;}
 a:visited, a:active{color: gray;}
 .txt:focus{z-index: 2;}
 .menusup{border-style: none groove none groove; border-color: #000086;}
-nav, a{
-    font-size: 0.9em;
-}
+
 
 /*Zerar valores*/
 *{margin: 0; padding: 0; text-decoration: none; list-style: none;}
@@ -14,6 +15,8 @@ nav, a{
 .body{background:  linear-gradient(to right, #360033, #0b8793);}
 /*Alinhamento*/
 .tac{text-align: center;}
+.tal{text-align: left;}
+.vac{vertical-align: center}
 .fleft{float: left;}
 .fright{float: right;}
 
@@ -101,6 +104,7 @@ nav, a{
 .fs17e{font-size: 1.7em;}
 .fs14e{font-size: 1.4em;}
 .fs11e{font-size: 1.1em;}
+.fs10e{font-size: 1em;}
 .fs095e{font-size: 0.95em;}
 .fs087e{font-size: 0.87em;}
 .fs076e{font-size: 0.76em;}
@@ -323,3 +327,4 @@ nav, a{
 .w3-input-50{padding:8px;border:none;border-bottom:1px solid #ccc;width:49.75%}
 .w3-input-40{padding:8px;border:none;border-bottom:1px solid #ccc;width:40%}
 .w3-input-25{padding:8px;border:none;border-bottom:1px solid #ccc;width:24.75%}
+.w3-navy,.w3-hover-navy:hover{color: #fff;background-color: navy;}
