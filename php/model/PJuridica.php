@@ -91,4 +91,10 @@ class PJuridica{
             echo $e->getMessage();
         }
     }
+
+    public function editar($pdo){
+        $sql = "UPDATE `PJURIDICA` SET `cnpjPJURIDICA` = :cnpj, `razsocPJURIDICA` = :rsocial, `nomefantPJURIDICA` = :fant, `iePJURIDICA` = :ie, `telPJURIDICA` = :tel, `emailPJURIDICA` = :email WHERE `idPJURIDICA` = :id";
+        $update = $pdo->prepare($sql);
+        $update->execute(array(":cnpj"=>$this->cnpj, ":rsocial"=>$this->rsocial, ":fant"=>$this->fant, ":ie"=>$this->ie, ":tel"=>$this->tel, ":email"=>$this->email, ":id"=>$this->id));
+    }
 }

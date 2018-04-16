@@ -41,7 +41,7 @@ require '../../util/config.php';
 <div class="w3-main p15" style="margin-left: 300px; margin-top: 43px;">
     <div class="w3-row-padding w3-margin-bottom">
         <button class="w3-quarter w3-btn w3-green w3-round-large" onclick="window.location='dados.php'">
-            <div class="w3-container w3-green w3-padding-16 tac">
+            <div class="w3-container w3-green w3-padding-small tac">
                 <div class=""><i class="fas fa-plus w3-xxxlarge"></i></div>
                 <div class="w3-clear"></div>
                 <h4>Adicionar Usuário</h4>
@@ -73,14 +73,14 @@ require '../../util/config.php';
         </header>
         <div class="pb05" style="overflow-x: auto;">
             <form action="" method="post" id="frm1">
-                <table class="w3-table w3-striped">
+                <table class="w3-table w3-striped fs087e">
                     <thead class="bgcTH fs095e">
                         <th class="w3-border w3-border-gray w3-center" style="width: 5%">#</th>
-                        <th class="w3-border w3-border-gray" style="width: 25%">Nome</th>
+                        <th class="w3-border w3-border-gray" style="width: 20%">Nome</th>
                         <th class="w3-border w3-border-gray" style="width: 15%">Telefone</th>
                         <th class="w3-border w3-border-gray" style="width: 25%">Email</th>
                         <th class="w3-border w3-border-gray" style="width: 15%">Função</th>
-                        <th class="w3-border w3-border-gray" style="width: 15%"></th>
+                        <th class="w3-border w3-border-gray" style="width: 20%"></th>
                     </thead>
                     <tbody class="fs087e">
                             <?php

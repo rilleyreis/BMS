@@ -123,7 +123,7 @@ require '../../util/config.php';
                         <label for="funcUsuario" class="fs087e w3-text-white mt05">Função *</label>
                     </div>
                     <div class="w3-rest">
-                        <select name="funcUsuario" id="" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" required>
+                        <select name="funcUsuario" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" required>
                             <option value="" disabled selected>Selecione uma função</option>
                             <option <?php echo $panel == "admin" ? "selected" : "";?> value="admin">ADMINISTRADOR</option>
                             <option <?php echo $panel == "vende" ? "selected" : "";?> value="vende">VENDEDOR</option>
@@ -152,16 +152,16 @@ require '../../util/config.php';
                         <label for="statusUsuario" class="fs087e w3-text-white mt05">Situação *</label>
                     </div>
                     <div class="w3-rest">
-                        <select name="status" id="" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" required>
+                        <select name="status" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;" required>
                             <option value="" disabled selected>Selecione um status</option>
                             <option <?php echo $ativo == 1 ? "selected" : "";?> value="1">ATIVADO</option>
                             <option <?php echo $ativo == 0 ? "selected" : "";?> value="0">DESATIVADO</option>
                         </select>
                     </div>
                 </div>
-                <button name="adicionar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $add?>><i class="fas fa-save mr03"></i>Adicionar</button>
-                <button name="salvar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $edt?>><i class="fas fa-edit mr03"></i>Editar</button>
-                <button class="w3-btn w3-blue-gray w3-center fs087e bradius" type="reset" <?php echo $add?>><i class="fas fa-eraser mr03"></i>Limpar</button>
+                <button name="adicionar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $add;?>><i class="fas fa-save mr03"></i>Adicionar</button>
+                <button name="editar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $edt;?>><i class="fas fa-edit mr03"></i>Editar</button>
+                <button class="w3-btn w3-blue-gray w3-center fs087e bradius" type="reset" <?php echo $add;?>><i class="fas fa-eraser mr03"></i>Limpar</button>
                 <a class="w3-btn w3-deep-orange w3-center fs087e bradius" href="../users"><i class="fas fa-times mr03"></i>Cancelar</a>
             </form>
         </div>

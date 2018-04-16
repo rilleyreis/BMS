@@ -66,7 +66,8 @@ if (isset($_POST['adicionar'])){
 
     $usuario->salvar($pdo);
 }
-elseif (isset($_POST['salvar'])){
+elseif (isset($_POST['editar'])){
+    echo "<script>alert('OI');</script>";
     pegaDados();
     $idPF = $_POST['idPF'];
     $id = $_POST['id'];

@@ -51,6 +51,12 @@ class Empresa{
         return $queryFet['QTD'];
     }
 
+    public function buscaDados($pdo){
+        $sql = "SELECT * FROM `EMPRESA` WHERE ativoEMPRESA = 1";
+        $query = $pdo->query($sql);
+        return $query;
+    }
+
     public function salvar($pdo){
         $sql = "INSERT INTO `EMPRESA`(`logoEMPRESA`, `ativoEMPRESA`, `PJURIDICA_idPJURIDICA`, `ENDERECO_idENDERECO`)";
         $sql .= "VALUES (:logo, 1, :pj, :end)";
@@ -61,5 +67,11 @@ class Empresa{
         }catch (PDOException $e){
             echo $e;
         }
+    }
+
+    public function editarLogo($pdo){
+        $sql = "UPDATE `EMPRESA` SET `logoEMPRESA` = :logo WHERE `idEMPRESA` = :id";
+        $update = $pdo->prepare($sql);
+        $update->execute(array(":logo"=>$this->logo, ":id"=>$this->id));
     }
 }

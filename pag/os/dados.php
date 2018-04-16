@@ -1,88 +1,116 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Rilley Reis">
+<?php
+session_start();
+require '../../util/config.php';
+?>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="author" content="Rilley Reis">
 
-    <link rel="stylesheet" href="../../app/css/style.css">
-    <link rel="stylesheet" href="../../app/css/font-awesome.css">
-    <link rel="stylesheet" href="../../app/css/w3.css">
-    <link rel="stylesheet" href="../../app/css/jquery-ui.css">
+<link rel="stylesheet" href="../../app/css/style.css">
+<link rel="stylesheet" href="../../app/css/w3.css">
+<link rel="stylesheet" href="../../app/css/jquery-ui.css">
+<!--<link rel="stylesheet" href="../../app/css/fa-svg-with-js.css">-->
+<!--<link rel="stylesheet" href="../../app/css/font-awesome.css">-->
 
-    <script type="text/javascript" src="../../app/js/jquery-1.12.4.js"></script>
-    <script type='text/javascript' src="../../app/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="../../app/js/jquery.maskedinput.js"></script>
-    <script type="text/javascript" src="../../app/js/jquery.maskMoney.js"></script>
-    <script type="text/javascript" src="../../app/js/masks.js"></script>
+<script defer src="../../app/js/fontawesome-all.min.js"></script>
+<script type="text/javascript" src="../../app/js/jquery-1.12.4.js"></script>
+<script type='text/javascript' src="../../app/js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../app/js/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="../../app/js/jquery.maskMoney.js"></script>
+<script type="text/javascript" src="../../app/js/masks.js"></script>
 
-    <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
+        $("#up").hide();
+        $("#down").click(function () {
+            $("#status").slideDown("slow");
+            $("#down").hide();
+            $("#up").show();
+        });
+        $("#up").click(function () {
+            $("#status").slideUp("slow");
+            $("#down").show();
             $("#up").hide();
-            $("#down").click(function () {
-                $("#status").slideDown("slow");
-                $("#down").hide();
-                $("#up").show();
-            });
-            $("#up").click(function () {
-                $("#status").slideUp("slow");
-                $("#down").show();
-                $("#up").hide();
-            });
-        })
-    </script>
+        });
+    });
+</script>
+
+<title>BMS - Business Manager System</title>
+
+<body class="w3-light-grey">
+<?php //include '../../php/control/produto/prod_index.php'?>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Clique para fechar Menu" id="myOverlay"></div>
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
+    <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['fnomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
+    <!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
+    <!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
+    <!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
+    <!--    </div>-->
+</div>
 
 
-    <title>BMS - Administrador</title>
-</head>
-<body>
-<nav class="w3-sidebar hfull" style="width: 15%">
-    <?php include '../../include/admin/menu.php';?>
-</nav>
-<div class="bgcMenu h40 pt10" style="margin-left: 15%">
-    <div class="hfull">
-        <div class="fs087e">
-            <nav class="w3-text-gray">
-                <a href="#" class="p10 w3-hover-text-white menusup"><i class="fa fa-gears mr10"></i> Meus Dados</a>
-                <a href="#" class="p10 w3-hover-text-white menusup" style="margin-left: -8px;"><i class="fa fa-sign-out mr10"></i> Sair do Sistema</a>
-            </nav>
-        </div>
-    </div>
-</div>
-<div class="bgcC1 h40 pt10 pl20 fs087e" style="margin-left: 15%">
-    <p class="fs087e w3-text-gray "><a href="../admin.php" class="w3-hover-text-dark-gray"><i class="fa fa-home"></i> Home ></a><a href="../os" class="w3-hover-text-dark-gray ml10">OS ></a><a
-            href="dados.php" class="w3-hover-text-dark-gray ml10"> Dados ></a></p>
-</div>
-<div class="w3-container" style="margin-left: 15%;">
+<!-- Sidebar/menu -->
+<?php include '../../include/'.$_SESSION['panelUser'].'/menu.php'?>
+
+<div class="w3-main p15" style="margin-left: 300px; margin-top: 43px;">
     <div class="w3-card mt35">
-        <header class="w3-gray fs095e w3-text-gray fs095e">
-            <i class="fa fa-file-text p10" style="border-right-style: groove; border-right-color: gray"></i> Dados OS
+        <header class="w3-gray w3-text-gray">
+            <div class="w3-row">
+                <div class="w3-col tac p8" style="width: 5%; border-right-style: groove; border-right-color: gray;">
+                    <i class="fas fa-file"></i>
+                </div>
+                <div class="w3-col p8" style="width: 65%;">
+                    Ordem de Serviço
+                </div>
+            </div>
         </header>
         <div class="p10">
             <div>
-                <div class="w3-row dib w500 mr50">
-                    <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 100px; border-radius: 6px 0 0 6px; padding: 6.5px;">
-                        <label for="" class="fs087e w3-text-white" style="">Protocolo</label>
+                <div class="w3-row">
+                    <div class="w3-half">
+                        <div class="w3-row">
+                            <div class="w3-third w3-col w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                <label for="" class="fs087e w3-text-white" style="">Protocolo</label>
+                            </div>
+                            <div class="w3-twothird">
+                                <input type="text" name="protocolo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Protocolo" value="" required>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w3-rest">
-                        <input type="text" name="protocolo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Protocolo" value="" required>
-                    </div>
-                </div>
-                <div class="w3-row dib w500 ml50">
-                    <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 100px; border-radius: 6px 0 0 6px; padding: 6.5px;">
-                        <label for="" class="fs087e w3-text-white" style="">Vendedor</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input type="text" name="vendedor" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Vendedor" value="" required>
+                    <div class="w3-half">
+                        <div class="w3-row">
+                            <div class="w3-third w3-col w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                <label for="" class="fs087e w3-text-white" style="">Vendedor</label>
+                            </div>
+                            <div class="w3-twothird">
+                                <input type="text" name="vendedor" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Vendedor" value="" required>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mb10">
                     <header class="w3-gray w3-text-gray fs095e">
-                        <i class="fa fa-file-text p10 tac" style="border-right-style: groove; border-right-color: gray;"></i> Status da OS
-                        <i id="down" class="fa fa-angle-double-down p10 tac w3-right cp fs095e" style="border-left-style: groove; border-left-color: gray;"></i>
-                        <i id="up" class="fa fa-angle-double-up p10 tac w3-right cp fs095e" style="border-left-style: groove; border-left-color: gray;"></i>
+                        <div class="w3-row">
+                            <div class="w3-col tac p8" style="width:5%; border-right-style: groove; border-right-color: gray;">
+                                <i class="fas fa-file"></i>
+                            </div>
+                            <div class="w3-col p8" style="width: 90%;">
+                                Status da OS
+                            </div>
+                            <div class="w3-col tac p8" style="width: 5%;border-left-style: groove; border-left-color: gray;">
+                                <i id="down" class="fas fa-angle-double-down cp fs095e"></i>
+                                <i id="up" class="fas fa-angle-double-up cp fs095e"></i>
+                            </div>
+                        </div>
                     </header>
                    <div class="w3-border w3-border-gray p10 dnn" id="status">
                        <div class="w3-row mt10">
@@ -205,17 +233,26 @@
                 </div>
 <!--                Serviço-->
                 <div class="mb10">
-                    <header class="w3-gray w3-text-gray fs095e">
-                        <i class="fa fa-file-text p10 tac" style="border-right-style: groove; border-right-color: gray;"></i> Serviços a Fazer
+                    <header class="w3-gray w3-text-gray">
+                        <div class="w3-row">
+                            <div class="w3-col tac p8" style="width: 5%; border-right-style: groove; border-right-color: gray;">
+                                <i class="fas fa-file"></i>
+                            </div>
+                            <div class="w3-col p8" style="width: 65%;">
+                                Serviço a Fazer
+                            </div>
+                        </div>
                     </header>
                     <div class="w3-border w3-border-gray p10" id="service">
-                        <div class="w3-row mt10">
-                            <button name="adicionarS" class="w3-btn w3-green w3-center fs087e bradius w200 w3-right" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
-                            <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 150px; border-radius: 6px 0 0 6px; padding: 6.5px;">
-                                <label for="" class="fs087e w3-text-white" style="">Serviço </label>
+                        <div class="w3-row mt10 wfull">
+                            <div class="w3-quarter w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                <label for="" class="fs087e w3-text-white">Serviço </label>
                             </div>
-                            <div class="w3-rest" style="width: 700px;">
-                                <input type="text" name="servico" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Servico" value="" readonly>
+                            <div class="w3-half">
+                                <input type="text" name="servicoOS" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Produto" value="" readonly>
+                            </div>
+                            <div class="w3-quarter">
+                                <button name="adicionarS" class="w3-btn w3-green fs087e bradius" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
                             </div>
                         </div>
                     </div>
@@ -223,17 +260,26 @@
 
 <!--                Produto-->
                 <div class="mb10">
-                    <header class="w3-gray w3-text-gray fs095e">
-                        <i class="fa fa-file-text p10 tac" style="border-right-style: groove; border-right-color: gray;"></i> Produtos a Utilizar
-                    </header>
-                    <div class="w3-border w3-border-gray p10" id="produto">
-                        <div class="w3-row mt10">
-                            <button name="adicionarS" class="w3-btn w3-green w3-center fs087e bradius w200 w3-right" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
-                            <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 150px; border-radius: 6px 0 0 6px; padding: 6.5px;">
-                                <label for="" class="fs087e w3-text-white" style="">Produto </label>
+                    <header class="w3-gray w3-text-gray">
+                        <div class="w3-row">
+                            <div class="w3-col tac p8" style="width: 5%; border-right-style: groove; border-right-color: gray;">
+                                <i class="fas fa-file"></i>
                             </div>
-                            <div class="w3-rest" style="width: 700px;">
-                                <input type="text" name="Produto" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Produto" value="" readonly>
+                            <div class="w3-col p8" style="width: 65%;">
+                                Produtos a Utilizar
+                            </div>
+                        </div>
+                    </header>
+                    <div class="w3-border w3-border-gray p10 wfull" id="produto">
+                        <div class="w3-row mt10 wfull">
+                            <div class="w3-quarter w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                <label for="" class="fs087e w3-text-white">Produto </label>
+                            </div>
+                            <div class="w3-half">
+                                <input type="text" name="produtoOS" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Produto" value="" readonly>
+                            </div>
+                            <div class="w3-quarter">
+                                <button name="adicionarP" class="w3-btn w3-green fs087e bradius" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
                             </div>
                         </div>
                     </div>

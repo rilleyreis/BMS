@@ -43,7 +43,10 @@ require '../../php/model/PJuridica.php';
 $endereco = new Endereco();
 $pjuridica = new PJuridica();
 $empresa = new Empresa();
-$logo = "/img";
+$logo = "img/";
+$idEnd = "";
+$idPJ = "";
+$id = "";
 
 if(isset($_POST['adicionar'])){
     pegaDados();
@@ -65,9 +68,75 @@ if(isset($_POST['adicionar'])){
     $pjuridica->setEmail($email);
     $idPJ = $pjuridica->salvar($pdo);
     $empresa->setLogo($novoNome);
-    $empresa->setIdPJ($idPJ);
-    $empresa->setIdEnd($idEnd);
+    $empresa->setIdPJ($idPJ[0]);
+    $empresa->setIdEnd($idEnd[0]);
     $empresa->salvar($pdo);
+}
+if(isset($_POST['editar'])){
+    pegaDados();
+    $endereco->setId($_POST['idEnd']);
+    $endereco->setRua($rua);
+    $endereco->setNum($num);
+    $endereco->setBairro($bairro);
+    $endereco->setCidade($cidade);
+    $endereco->setUf($uf);
+    $endereco->setCep($cep);
+    $endereco->editar($pdo);
+    $pjuridica->setId($_POST['idPJ']);
+    $pjuridica->setCnpj($cnpj);
+    $pjuridica->setRsocial($rsocial);
+    $pjuridica->setFant($fant);
+    $pjuridica->setIe($ie);
+    $pjuridica->setTel($tel);
+    $pjuridica->setEmail($email);
+    $pjuridica->editar($pdo);
+}
+if(isset($_POST['editarLogo'])){
+    $id = $_POST['id'];
+    $dados = $empresa->buscaDados($pdo);
+    foreach ($dados as $dado) {
+        $logo .= $dado['logoEMPRESA'];
+    }
+    if(file_exists($logo))
+        unlink($logo);
+    $logo = "img/";
+    $extensão = strtolower(substr($_FILES['arquivo']['name'], -4));
+    $novoNome = "logo".$extensão;
+    move_uploaded_file($_FILES['arquivo']['tmp_name'], $logo.$novoNome);
+    $empresa->setId($id);
+    $empresa->setLogo($novoNome);
+    $empresa->editarLogo($pdo);
 }
 
 $qtd_emp = $empresa->buscaQtd($pdo);
+if($qtd_emp > 0){
+    $dados = $empresa->buscaDados($pdo);
+    foreach ($dados as $dado) {
+        $id = $dado['idEMPRESA'];
+        $logo .= $dado['logoEMPRESA'];
+        $idPJ = $dado['PJURIDICA_idPJURIDICA'];
+        $idEnd = $dado['ENDERECO_idENDERECO'];
+    }
+    $endereco->setId($idEnd[0]);
+    $dados = $endereco->buscar($pdo);
+    foreach ($dados as $dado) {
+        $rua = $dado['ruaENDERECO'];
+        $num = $dado['numENDERECO'];
+        $bairro = $dado['bairroENDERECO'];
+        $cidade = $dado['cidadeENDERECO'];
+        $uf = $dado['ufENDERECO'];
+        $cep = $dado['cepENDERECO'];
+    }
+    $pjuridica->setId($idPJ[0]);
+    $dados = $pjuridica->buscar($pdo);
+    foreach ($dados as $dado) {
+        $cnpj = $dado['cnpjPJURIDICA'];
+        $rsocial = $dado['razsocPJURIDICA'];
+        $fant = $dado['nomefantPJURIDICA'];
+        $ie = $dado['iePJURIDICA'];
+        $tel = $dado['telPJURIDICA'];
+        $email = $dado['emailPJURIDICA'];
+    }
+}
+
+unset($_POST, $_FILES);

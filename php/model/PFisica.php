@@ -92,7 +92,7 @@ class PFisica{
     }
 
     public function editar($pdo){
-        $sql = "UPDATE `PFISICA` SET `fnomePFISICA` = :fnome, `lnomePFISICA` = :lnome, `cpfPFISICA` = :cpf, `celPFISICA` = :cel, `telPFISICA` = :tel, `emailPFISICA` = :email WHERE idUSER = :id";
+        $sql = "UPDATE `PFISICA` SET `fnomePFISICA` = :fnome, `lnomePFISICA` = :lnome, `cpfPFISICA` = :cpf, `celPFISICA` = :cel, `telPFISICA` = :tel, `emailPFISICA` = :email WHERE idPFISICA = :id";
         $update = $pdo->prepare($sql);
         $update->execute(array(":fnome"=>$this->fnome, ":lnome"=>$this->lnome, ":cpf"=>$this->cpf, ":cel"=>$this->celular, ":tel"=>$this->telefone, ":email"=>$this->email, ":id"=>$this->id));;
     }

@@ -72,7 +72,7 @@ class Endereco{
     }
 
     public function buscar($pdo){
-        $sql = "SELECT * FROM `ENDERECO` WHERE `idENERECO` = $this->id";
+        $sql = "SELECT * FROM `ENDERECO` WHERE `idENDERECO` = $this->id";
         $query = $pdo->query($sql);
         return($query);
     }
@@ -89,5 +89,11 @@ class Endereco{
         }catch (PDOException $e){
             echo $e->getMessage();
         }
+    }
+
+    public function editar($pdo){
+        $sql = "UPDATE `ENDERECO` SET `ruaENDERECO` = :rua, `numENDERECO` = :num, `bairroENDERECO` = :bairro, `cidadeENDERECO` = :cid, `ufENDERECO` = :uf, `cepENDERECO` = :cep WHERE `idENDERECO` = :id";
+        $update = $pdo->prepare($sql);
+        $update->execute(array(":rua"=>$this->rua, ":num"=>$this->num, ":bairro"=>$this->bairro, ":cid"=>$this->cidade, ":uf"=>$this->uf, ":cep"=>$this->cep, ":id"=>$this->id));
     }
 }

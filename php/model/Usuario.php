@@ -89,6 +89,12 @@ class Usuario{
             return false;
     }
 
+    public function buscaAll($pdo){
+        $sql = "SELECT * FROM `USERS_DATA` WHERE `ativo` = 1 AND `panel` = 'tecno'";
+        $query = $pdo->query($sql);
+        return $query->fetchAll();
+    }
+
     public function buscaQtd($pdo){
         $sql = "SELECT * FROM `USERS_DATA` WHERE ativo = 1";
         $query = $pdo->query($sql);
@@ -126,7 +132,7 @@ class Usuario{
         header("Location:../users");
     }
     public function excluir($pdo){
-        $sql = "UPDATE users SET `ativoUSER` = 0 WHERE `idUSER` = :id";
+        $sql = "UPDATE `USERS` SET `ativoUSER` = 0 WHERE `idUSER` = :id";
         $update = $pdo->prepare($sql);
         $update->execute(array(':id'=>$this->id));
         header("Location:../users");
