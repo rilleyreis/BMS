@@ -19,7 +19,7 @@ if(isset($_POST['usrExcl'])){
     $usuario->setId($_POST['usrExcl']);
     $usuario->excluir($pdo);
 }
-$num_usuario = $usuario->buscaQtd($pdo);
+$num_usuario = $usuario->buscaQtd($pdo, "");
 if ($num_usuario == 0){
     $msgTable = "Nenhum registro encontrado";
 }else {
@@ -27,7 +27,23 @@ if ($num_usuario == 0){
     $total_pags = ceil($num_usuario / $qtd_pags);
     $pag_atual = (isset($_GET['pag']) ? (int)$_GET['pag'] : 1);
     $inicio = ($qtd_pags * $pag_atual) - $qtd_pags;
-    $usr_exibir = $usuario->buscaLtda($pdo, $inicio, $qtd_pags);
+    $usr_exibir = $usuario->buscaLtda($pdo, $inicio, $qtd_pags, "");
     $pag_prox = $pag_atual + 1;
     $pag_ant = $pag_atual - 2;
+}
+
+if(isset($_POST['buscar']) || isset($_POST['buscarDado'])) {
+    $nomeBusca = trim(strip_tags($_POST['buscarDado']));
+    $num_usuario = $usuario->buscaQtd($pdo, $nomeBusca);
+    if ($num_usuario == 0) {
+        $msgTable = "Nenhum registro encontrado";
+    } else {
+        $qtd_pags = 10;
+        $total_pags = ceil($num_usuario / $qtd_pags);
+        $pag_atual = (isset($_GET['pag']) ? (int)$_GET['pag'] : 1);
+        $inicio = ($qtd_pags * $pag_atual) - $qtd_pags;
+        $usr_exibir = $usuario->buscaLtda($pdo, $inicio, $qtd_pags, $nomeBusca);
+        $pag_prox = $pag_atual + 1;
+        $pag_ant = $pag_atual - 2;
+    }
 }

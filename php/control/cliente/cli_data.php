@@ -2,15 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Rilley Reis
- * Date: 13/04/2018
- * Time: 02:42
+ * Date: 27/04/2018
+ * Time: 17:25
  */
 
 require '../../../util/config.php';
 require '../../../php/model/Pessoa.php';
 
-$fornece = new Pessoa();
+$cliente = new Pessoa();
 
-$dados = $fornece->buscaAll($pdo, "F");
-
+$dados = $cliente->buscaAll($pdo, "C");
 echo json_encode($dados);

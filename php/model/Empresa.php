@@ -8,8 +8,7 @@
 
 class Empresa{
     private $id;
-    private $idPJ;
-    private $idEnd;
+    private $idPE;
     private $logo;
 
     public function getId(){
@@ -20,20 +19,12 @@ class Empresa{
         $this->id = $id;
     }
 
-    public function getIdPJ(){
-        return $this->idPJ;
+    public function getIdPE(){
+        return $this->idPE;
     }
 
-    public function setIdPJ($idPJ){
-        $this->idPJ = $idPJ;
-    }
-
-    public function getIdEnd(){
-        return $this->idEnd;
-    }
-
-    public function setIdEnd($idEnd){
-        $this->idEnd = $idEnd;
+    public function setIdPE($idPE){
+        $this->idPE = $idPE;
     }
 
     public function getLogo(){
@@ -44,25 +35,26 @@ class Empresa{
         $this->logo = $logo;
     }
 
+
     public function buscaQtd($pdo){
-        $sql = "SELECT COUNT(*) AS 'QTD' FROM `EMPRESA` WHERE ativoEMPRESA = 1";
+        $sql = "SELECT COUNT(*) AS 'QTD' FROM `EMPRESA`";
         $query = $pdo->query($sql);
         $queryFet = $query->fetch();
         return $queryFet['QTD'];
     }
 
     public function buscaDados($pdo){
-        $sql = "SELECT * FROM `EMPRESA` WHERE ativoEMPRESA = 1";
+        $sql = "SELECT * FROM `EMPRESA`";
         $query = $pdo->query($sql);
         return $query;
     }
 
     public function salvar($pdo){
-        $sql = "INSERT INTO `EMPRESA`(`logoEMPRESA`, `ativoEMPRESA`, `PJURIDICA_idPJURIDICA`, `ENDERECO_idENDERECO`)";
-        $sql .= "VALUES (:logo, 1, :pj, :end)";
+        $sql = "INSERT INTO `EMPRESA`(`logoEMPRESA`, `PESSOA_idPESSOA`)";
+        $sql .= "VALUES (:logo, :pe)";
         try{
             $insert = $pdo->prepare($sql);
-            $insert->execute(array(":logo"=>$this->logo, ":pj"=>$this->idPJ, ":end"=>$this->idEnd));
+            $insert->execute(array(":logo"=>$this->logo, ":pe"=>$this->idPE));
             echo "<script>alert('Empresa cadastrado com sucesso');</script>";
         }catch (PDOException $e){
             echo $e;

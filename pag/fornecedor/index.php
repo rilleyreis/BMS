@@ -25,7 +25,7 @@ require '../../util/config.php';
 <!-- Top container -->
 <div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['fnomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
+    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['nomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
     <!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
     <!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
     <!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
@@ -88,8 +88,8 @@ require '../../util/config.php';
                     if($num_forn > 0){
                         foreach ($forn_exibir as $row) {?>
                             <tr>
-                                <td class="w3-border"><?php echo $row['cnpj'];?></td>
-                                <td class="w3-border"><?php echo $row['nomefant'];?></td>
+                                <td class="w3-border"><?php echo $row['cpf_cnpj'];?></td>
+                                <td class="w3-border"><?php echo $row['nome'];?></td>
                                 <td class="w3-border"><?php echo $row['tel'];?></td>
                                 <td class="w3-border"><?php echo $row['email'];?></td>
                                 <td class="w3-border"><?php echo $row['ativo'] == 0 ? "Desativado" : "Ativado";?></td>
@@ -121,14 +121,14 @@ require '../../util/config.php';
                                         <h2>Dados do Forncedor</h2>
                                     </header>
                                     <div class="w3-container">
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CNPJ: <?php echo $row['cnpj'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Razão Social: <?php echo $row['razsoc'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome Fantasia: <?php echo $row['nomefant'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Inscrição Estadual: <?php echo $row['ie'];?></p>
+                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CNPJ: <?php echo $row['cpf_cnpj'];?></p>
+                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Razão Social: <?php echo $row['snome'];?></p>
+                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome Fantasia: <?php echo $row['nome'];?></p>
+                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Inscrição Estadual: <?php echo $row['rgie'];?></p>
                                         <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Rua: <?php echo $row['rua'];?></p>
                                         <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Número: <?php echo $row['num'];?></p>
                                         <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Bairro: <?php echo $row['bairro'];?></p>
-                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Cidade: <?php echo $row['city'];?></p>
+                                        <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Cidade: <?php echo $row['cidade'];?></p>
                                         <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Estado: <?php echo $row['uf'];?></p>
                                         <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CEP: <?php echo $row['cep'];?></p>
                                         <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Telefone: <?php echo $row['tel'];?></p>

@@ -6,7 +6,8 @@
  * Time: 00:12
  */
 require '../../php/model/Usuario.php';
-require '../../php/model/PFisica.php';
+require '../../php/model/Pessoa.php';
+require '../../php/model/Endereco.php';
 
 $usuario = new Usuario();
 $id = "";
@@ -14,23 +15,30 @@ $nome = "";
 $snome = "";
 $cpf = "";
 $tel = "";
-$cel = "";
+$rg = "";
 $email = "";
 $user = "";
 $senha = "";
 $panel = "";
 $funcao = "";
 $ativo = 0;
+$rua = "";
+$num = "";
+$bairro = "";
+$cidade = "";
+$uf = "";
+$cep = "";
 $idPF = "";
+$idEnd = "";
 $edt = "style='display:none'";
 $add = "";
 
 function pegaDados(){
-    global $nome, $snome, $cpf, $cel, $tel, $email, $panel, $funcao, $user, $ativo, $senha;
+    global $nome, $snome, $cpf, $rg, $tel, $email, $panel, $funcao, $user, $ativo, $senha, $rua, $num, $bairro, $cidade, $uf, $cep;
     $nome = trim(strip_tags($_POST['nomeUsuario']));
     $snome = trim(strip_tags($_POST['snomeUsuario']));
     $cpf = trim(strip_tags($_POST['cpfUsuario']));
-    $cel = trim(strip_tags($_POST['celularUsuario']));
+    $rg = trim(strip_tags($_POST['rgUsuario']));
     $tel = trim(strip_tags($_POST['telefoneUsuario']));
     $email = trim(strip_tags($_POST['emailUsuario']));
     $panel = trim(strip_tags($_POST['funcUsuario']));
@@ -40,57 +48,77 @@ function pegaDados(){
         case "tecno" : $funcao = "TÉCNICO"; break;
     }
     $user = trim(strip_tags($_POST['userUsuario']));
-    $ativo = $_POST['status'];
-    $senha = base64_encode(trim(strip_tags($_POST['senhaUsuario'])));
+    $senha = md5(trim(strip_tags($_POST['senhaUsuario'])));
+    $rua = $_POST['ruaCliente'];
+    $num = $_POST['numeroCliente'];
+    $bairro = $_POST['bairroCliente'];
+    $cidade  = $_POST['cidade'];
+    $uf = $_POST['uf'];
+    $cep = $_POST['cep'];
 }
 
 if (isset($_POST['adicionar'])){
     pegaDados();
-    $pfisica = new PFisica();
+    $endereco = new Endereco();
+    $endereco->setId($idEnd);
+    $endereco->setRua($rua);
+    $endereco->setNum($num);
+    $endereco->setBairro($bairro);
+    $endereco->setCidade($cidade);
+    $endereco->setUf($uf);
+    $endereco->setCep($cep);
+    $idEnd = $endereco->salvar($pdo);
 
+    $pfisica = new Pessoa();
     $pfisica->setFnome($nome);
     $pfisica->setLnome($snome);
-    $pfisica->setCpf($cpf);
-    $pfisica->setCelular($cel);
+    $pfisica->setCpfCnpj($cpf);
+    $pfisica->setIe($rg);
     $pfisica->setTelefone($tel);
     $pfisica->setEmail($email);
-
+    $pfisica->setTipo("U");
+    $pfisica->setIdEnd($idEnd[0]);
     $idPF = $pfisica->salvar($pdo);
 
     $usuario->setFuncao($funcao);
     $usuario->setPanel($panel);
     $usuario->setUsuario($user);
     $usuario->setSenha($senha);
-    $usuario->setAtivo($ativo);
     $usuario->setIdPF($idPF[0]);
-
     $usuario->salvar($pdo);
 }
 elseif (isset($_POST['editar'])){
     echo "<script>alert('OI');</script>";
     pegaDados();
     $idPF = $_POST['idPF'];
-    $id = $_POST['id'];
-    $pfisica = new PFisica();
+    $id = $_POST['idUser'];
+    $idEnd = $_POST['idEnd'];
 
+    $endereco = new Endereco();
+    $endereco->setId($idEnd);
+    $endereco->setRua($rua);
+    $endereco->setNum($num);
+    $endereco->setBairro($bairro);
+    $endereco->setCidade($cidade);
+    $endereco->setUf($uf);
+    $endereco->setCep($cep);
+    $endereco->editar($pdo);
+
+    $pfisica = new Pessoa();
     $pfisica->setId($idPF);
     $pfisica->setFnome($nome);
     $pfisica->setLnome($snome);
-    $pfisica->setCpf($cpf);
-    $pfisica->setCelular($cel);
+    $pfisica->setCpfCnpj($cpf);
+    $pfisica->setIe($rg);
     $pfisica->setTelefone($tel);
     $pfisica->setEmail($email);
-
-    $idPF = $pfisica->editar($pdo);
+    $pfisica->editar($pdo);
 
     $usuario->setId($id);
     $usuario->setFuncao($funcao);
     $usuario->setPanel($panel);
     $usuario->setUsuario($user);
     $usuario->setSenha($senha);
-    $usuario->setAtivo($ativo);
-    $usuario->setIdPF($idPF[0]);
-
     $usuario->editar($pdo);
 }
 elseif(isset($_GET['edt'])){
@@ -103,19 +131,30 @@ elseif(isset($_GET['edt'])){
         $user = $row['usuarioUSER'];
         $funcao = $row['funcaoUSER'];
         $panel = $row['panelUSER'];
-        $ativo = $row['ativoUSER'];
-        $idPF = $row['PFISICA_idPFISICA'];
+        $idPF = $row['PESSOA_idPESSOA'];
     }
-    $pfisica = new PFisica();
+    $pfisica = new Pessoa();
     $pfisica->setId($idPF);
     $dadosPF = $pfisica->buscaDados($pdo);
     foreach ($dadosPF as $item) {
-        $nome = $item['fnomePFISICA'];
-        $snome = $item['lnomePFISICA'];
-        $cpf = $item['cpfPFISICA'];
-        $cel = $item['celPFISICA'];
-        $tel = $item['telPFISICA'];
-        $email = $item['emailPFISICA'];
+        $nome = $item['nomePESSOA'];
+        $snome = $item['snomePESSOA'];
+        $cpf = $item['cpfcnpjPESSOA'];
+        $rg = $item['rgiePESSOA'];
+        $tel = $item['telPESSOA'];
+        $email = $item['emailPESSOA'];
+        $ativo = $item['ativoPESSOA'];
+        $idEnd = $item['ENDERECO_idENDERECO'];
     }
-
+    $endereco = new Endereco();
+    $endereco->setId($idEnd);
+    $dadosEnd = $endereco->buscar($pdo);
+    foreach ($dadosEnd as $item) {
+        $cep = $item['cepENDERECO'];
+        $rua = $item['ruaENDERECO'];
+        $bairro = $item['bairroENDERECO'];
+        $num = $item['numENDERECO'];
+        $cidade = $item['cidadeENDERECO'];
+        $uf = $item['ufENDERECO'];
+    }
 }

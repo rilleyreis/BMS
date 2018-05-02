@@ -25,7 +25,7 @@ require '../../util/config.php';
 <!-- Top container -->
 <div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['fnomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
+    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['nomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
     <!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
     <!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
     <!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
@@ -88,8 +88,8 @@ require '../../util/config.php';
                         if($num_cliente > 0){
                             foreach ($cli_exibir as $row) {?>
                                 <tr>
-                                    <td class="w3-border"><?php echo strlen($row['cpf/cnpj']) > 14 ? $row['nome/fantasia'] : $row['nome/fantasia']." ".$row['snome/razao'];?></td>
-                                    <td class="w3-border"><?php echo $row['cpf/cnpj'];?></td>
+                                    <td class="w3-border"><?php echo strlen($row['cpf_cnpj']) == 14 ? $row['nome']." ".$row['snome'] : $row['nome'];?></td>
+                                    <td class="w3-border"><?php echo $row['cpf_cnpj'];?></td>
                                     <td class="w3-border"><?php echo $row['tel'];?></td>
                                     <td class="w3-border"><?php echo $row['email'];?></td>
                                     <td class="w3-border"><?php echo $row['ativo'] == 0 ? "Desativado" : "Ativado";?></td>
@@ -99,11 +99,7 @@ require '../../util/config.php';
                                                 <a onclick="document.getElementById('modal<?php echo $cont;?>').style.display='block'" class="w3-btn w3-blue-gray mr03" name="view" title="Visualizar"><i class="fa fa-eye"></i></a>
                                             </div>
                                             <div class="w3-third">
-                                                <?php
-                                                $tipo = "";
-                                                strlen($row['cpf/cnpj']) > 14 ? $tipo = "pj" : $tipo = "pf";
-                                                ?>
-                                                <button class="w3-btn w3-green mr03" name="sel" value="<?php echo $row['id'].";".$tipo;?>" title="Editar"><i class="fas fa-edit"></i></button>
+                                                <button class="w3-btn w3-green mr03" name="sel" value="<?php echo $row['id'];?>" title="Editar"><i class="fas fa-edit"></i></button>
                                             </div>
                                             <div class="w3-third">
                                                 <?php
@@ -119,24 +115,27 @@ require '../../util/config.php';
                                     </td>
                                 </tr>
 
-<!--                                <div id="modal<?php //echo $cont;?>" class="w3-modal">-->
-<!--                                    <div class="w3-modal-content w3-animate-top w3-center" style="width: 400px;">-->
-<!--                                        <header class="w3-container w3-gray">-->
-<!--                                            <span onclick="document.getElementById('modal<?php //echo $cont;?>//').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-//                                            <h2>Dados do Cliente</h2>
-//                                        </header>
-//                                        <div class="w3-container">
-//                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome: <?php //echo $row['nome'];?><!--</p>-->
-<!--                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CPF: --><?php //echo $row['cpf'];?><!--</p>-->
-<!--                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Celular: --><?php //echo $row['cel_cli'] == "" ? "Nada consta" : $row['cel_cli'];?><!--</p>-->
-<!--                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Telefone: --><?php //echo $row['tel_cli'] == "" ? "Nada consta" : $row['tel_cli'];?><!--</p>-->
-<!--                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Email: --><?php //echo $row['email_cli'];?><!--</p>-->
-<!--                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Rua: --><?php //echo $row['rua_cli'];?><!--</p>-->
-<!--                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Número: --><?php //echo $row['num_cli'];?><!--</p>-->
-<!--                                            <p class="w3-left-align fs11e">Bairro: --><?php //echo $row['bairro_cli'];?><!--</p>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <div id="modal<?php echo $cont;?>" class="w3-modal">
+                                    <div class="w3-modal-content w3-animate-top w3-center" style="width: 600px;">
+                                        <header class="w3-container w3-gray">
+                                            <span onclick="document.getElementById('modal<?php echo $cont;?>').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                            <h2>Dados do Cliente</h2>
+                                        </header>
+                                        <div class="w3-container">
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">CPF/CNPJ: <?php echo $row['cpf_cnpj'];?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Nome/Nome Fantasia: <?php echo $row['nome'];?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Sobrenome/Razão Social: <?php echo $row['snome']?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">RG/IE: <?php echo $row['rgie']?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Telefone: <?php echo $row['tel'] == "" ? "Nada consta" : $row['tel'];?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Email: <?php echo $row['email'];?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Rua: <?php echo $row['rua'];?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Número: <?php echo $row['num'];?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Bairro: <?php echo $row['bairro'];?></p>
+                                            <p class="w3-left-align fs11e w3-border-bottom w3-border-gray">Cidade: <?php echo $row['cidade'];?></p>
+                                            <p class="w3-left-align fs11e">UF: <?php echo $row['uf'];?></p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <?php $cont++;}}?>
                         </tbody>
                     </table>

@@ -32,6 +32,7 @@
             <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>produto"><i class="fas fa-pallet fa-fw mr03"></i> Produtos</a>
             <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>service"><i class="fas fa-wrench fa-fw mr03"></i> Serviços</a>
             <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>os"><i class="fas fa-file-alt fa-fw mr03"></i> OS</a>
+            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>users"><i class="fas fa-user fa-fw mr03"></i> Usuário</a>
             <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(1)"><i class="fas fa-exchange-alt fa-fw mr03"></i> Financeiro <i class="fa fa-caret-down"></i></button>
             <div id="menu1" class="w3-hide bgcMenu fs087e wfull">
                 <a href="" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-shopping-basket fa-fw mr03"></i> Venda</a>
@@ -39,7 +40,6 @@
             </div>
             <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(2)"><i class="fas fa-cogs fa-fw mr03"></i> Configuração <i class="fa fa-caret-down"></i></button>
             <div id="menu2" class="w3-hide bgcMenu fs087e wfull">
-                <a href="<?php echo $nivel?>users" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-user fa-fw mr03"></i> Usuário</a>
                 <a href="<?php echo $nivel?>empresa" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-building fa-fw mr03"></i> Empresa</a>
             </div>
         </div>

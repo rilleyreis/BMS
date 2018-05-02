@@ -11,8 +11,8 @@ session_start();
 include "util/config.php";
 require "php/model/Caixa.php";
 
-$nome = $_SESSION['fnomeUser'];
-$nome .= " ".$_SESSION['lnomeUser'];
+$nome = $_SESSION['nomeUser'];
+$nome .= " ".$_SESSION['snomeUser'];
 $erro = "display: none;";
 $msg = "";
 $color = "";
@@ -39,7 +39,7 @@ if(isset($_POST['abrir'])){
         $msg = "Caixa Aberto. Redirecionando";
         $color = "w3-pale-blue";
         $colorText = "w3-text-blue";
-        header("Refresh:3; url=pag/admin");
+        header("Refresh:2; url=pag/admin");
     }else{
         echo "NÃO FOI";
     }

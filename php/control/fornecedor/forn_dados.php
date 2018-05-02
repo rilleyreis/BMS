@@ -36,16 +36,13 @@ function pegaDados(){
 }
 
 
-require '../../php/model/Fornecedor.php';
+require '../../php/model/Pessoa.php';
 require '../../php/model/Endereco.php';
-require '../../php/model/PJuridica.php';
 
-$fornece = new Fornecedor();
+$fornece = new Pessoa();
 $endereco = new Endereco();
-$pjuridica = new PJuridica();
 $id = "";
 $idEnd = "";
-$idPJ = "";
 $edt = "style='display:none'";
 $add = "";
 $rdo = "";
@@ -59,17 +56,16 @@ if(isset($_POST['adicionar'])){
     $endereco->setUf($est_forn);
     $endereco->setCep($cep_forn);
     $idEnd = $endereco->salvar($pdo);
-    $pjuridica->setCnpj($cnpj_forn);
-    $pjuridica->setRsocial($raz_forn);
-    $pjuridica->setFant($fant_forn);
-    $pjuridica->setIe($ie_forn);
-    $pjuridica->setTel($tel_forn);
-    $pjuridica->setEmail($email_forn);
-    $idPJ = $pjuridica->salvar($pdo);
+    $fornece->setCpfCnpj($cnpj_forn);
+    $fornece->setLnome($raz_forn);
+    $fornece->setFnome($fant_forn);
+    $fornece->setIe($ie_forn);
+    $fornece->setTelefone($tel_forn);
+    $fornece->setEmail($email_forn);
     $fornece->setIdEnd($idEnd[0]);
-    $fornece->setIdPJ($idPJ[0]);
-    $fornece->setAtivo(1);
-    $fornece->salvar($pdo);
+    $fornece->setTipo("F");
+    $idPJ = $fornece->salvar($pdo);
+    header("Location:../fornecedor");
 
 }elseif (isset($_POST['editar'])){
     pegaDados();
@@ -81,14 +77,14 @@ if(isset($_POST['adicionar'])){
     $endereco->setUf($est_forn);
     $endereco->setCep($cep_forn);
     $endereco->editar($pdo);
-    $pjuridica->setId($_POST['idPJ']);
-    $pjuridica->setCnpj($cnpj_forn);
-    $pjuridica->setRsocial($raz_forn);
-    $pjuridica->setFant($fant_forn);
-    $pjuridica->setIe($ie_forn);
-    $pjuridica->setTel($tel_forn);
-    $pjuridica->setEmail($email_forn);
-    $pjuridica->editar($pdo);
+    $fornece->setId($_POST['id']);
+    $fornece->setCpfCnpj($cnpj_forn);
+    $fornece->setLnome($raz_forn);
+    $fornece->setFnome($fant_forn);
+    $fornece->setIe($ie_forn);
+    $fornece->setTelefone($tel_forn);
+    $fornece->setEmail($email_forn);
+    $fornece->editar($pdo);
     echo "<script>alert('Fornecedor editado com sucesso');</script>";
     header("Location:../fornecedor");
 }
@@ -98,8 +94,13 @@ if(isset($_GET['edt'])){
     $fornece->setId($id);
     $dados = $fornece->buscaDados($pdo);
     foreach ($dados as $dado) {
-        $id = $dado['idFORNECEDOR'];
-        $idPJ = $dado['PJURIDICA_idPJURIDICA'];
+        $id = $dado['idPESSOA'];
+        $cnpj_forn = $dado['cpfcnpjPESSOA'];
+        $raz_forn = $dado['snomePESSOA'];
+        $fant_forn = $dado['nomePESSOA'];
+        $ie_forn = $dado['rgiePESSOA'];
+        $tel_forn = $dado['telPESSOA'];
+        $email_forn = $dado['emailPESSOA'];
         $idEnd = $dado['ENDERECO_idENDERECO'];
     }
     $endereco->setId($idEnd[0]);
@@ -111,16 +112,6 @@ if(isset($_GET['edt'])){
         $cid_forn = $dado['cidadeENDERECO'];
         $est_forn = $dado['ufENDERECO'];
         $cep_forn = $dado['cepENDERECO'];
-    }
-    $pjuridica->setId($idPJ[0]);
-    $dados = $pjuridica->buscar($pdo);
-    foreach ($dados as $dado) {
-        $cnpj_forn = $dado['cnpjPJURIDICA'];
-        $raz_forn = $dado['razsocPJURIDICA'];
-        $fant_forn = $dado['nomefantPJURIDICA'];
-        $ie_forn = $dado['iePJURIDICA'];
-        $tel_forn = $dado['telPJURIDICA'];
-        $email_forn = $dado['emailPJURIDICA'];
     }
     $add = "style='display:none'";
     $edt = "";

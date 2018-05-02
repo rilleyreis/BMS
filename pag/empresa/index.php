@@ -4,28 +4,14 @@ require '../../util/config.php';
 ?>
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="author" content="Rilley Reis">
-
-<link rel="stylesheet" href="../../app/css/style.css">
-<link rel="stylesheet" href="../../app/css/w3.css">
-<!--<link rel="stylesheet" href="../../app/css/fa-svg-with-js.css">-->
-<!--<link rel="stylesheet" href="../../app/css/font-awesome.css">-->
-
-<script defer src="../../app/js/fontawesome-all.min.js"></script>
-
-<title>BMS - Business Manager System</title>
-
+<?php include '../../include/headDados.php';?>
 <body class="w3-light-grey">
 <?php include '../../php/control/empresa/emp_index.php'?>
 
 <!-- Top container -->
 <div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['fnomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
+    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['nomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
     <!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
     <!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
     <!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
@@ -51,12 +37,6 @@ require '../../util/config.php';
             </div>
         </header>
         <div class="p10">
-            <?php if($qtd_emp == 0){?>
-                <div class="p8 w3-pale-red mb15">
-                    <p class="fs087e fcred">Nenhum cadastro foi realizado até o momento. Os dados cadastrados estarão disponíveis na impressão da OS.</p>
-                </div>
-                <a onclick="document.getElementById('modal').style.display='block'" class="w3-btn w3-green w3-round" name="cad" title="Cadastrar"><i class="fa fa-plus"></i> Cadastrar</a>
-            <?php }else{?>
                 <div class="mb15 w3-row h200">
                     <div class="pl10 pr10 pt40 pb40 w3-col w3-border w3-border-gray h150" style="width: 20%; border-right: gray;">
                         <div class="h80"><img src="<?php echo $logo?>" alt="Logotipo Empresa" class="wfull hfull"></div>
@@ -72,8 +52,6 @@ require '../../util/config.php';
                     <a onclick="document.getElementById('modal').style.display='block'" class="w3-btn w3-green w3-round" name="editDados" title="Editar Dados"><i class="fa fa-edit"></i> Alterar Dados</a>
                     <a onclick="document.getElementById('modalLogo').style.display='block'" class="w3-btn w3-deep-orange w3-round" name="editLogo" title="Editar Logo"><i class="fa fa-image"></i> Alterar Logo</a>
                 </div>
-
-            <?php }?>
         </div>
     </div>
 
@@ -89,7 +67,7 @@ require '../../util/config.php';
                         <p class="fs076e w3-text-blue">Todos os campos com (*) são obrigatórios!</p>
                         <input type="hidden" name="idEmp" value="<?php echo $id;?>">
                         <input type="hidden" name="idEnd" value="<?php echo $idEnd;?>">
-                        <input type="hidden" name="idPJ" value="<?php echo $idPJ;?>">
+                        <input type="hidden" name="idPE" value="<?php echo $idPE;?>">
                     </div>
                     <div class="w3-pale-red mb05 bradius" id="cnpjErro" style="display: none; padding: 3px;">
                         <span class="fs076e w3-text-red w3-right cp" onclick="document.getElementById('cnpjErro').style.display='none'">&times;</span>

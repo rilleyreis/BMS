@@ -30,7 +30,7 @@ require '../../util/config.php';
             var fornece = [];
             console.log(dados);
             $(dados).each(function (key, value) {
-                fornece.push(value.id + "|" + value.cnpj + "|" + value.nomefant);
+                fornece.push(value.idPESSOA + "|" + value.cpfcnpjPESSOA + "|" + value.nomePESSOA);
             });
             $("#forn").autocomplete({
                 source: fornece
@@ -38,9 +38,6 @@ require '../../util/config.php';
         });
     });
 </script>
-
-<title>BMS - Business Manager System</title>
-
 <body class="w3-light-grey">
 <?php include '../../php/control/produto/prod_dados.php'?>
 
@@ -50,7 +47,7 @@ require '../../util/config.php';
 <!-- Top container -->
 <div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['fnomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
+    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['nomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
     <!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
     <!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
     <!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
@@ -100,7 +97,7 @@ require '../../util/config.php';
                         <label for="" class="fs087e w3-text-white" style="">Fornecedor </label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="fornecedor" id="forn" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="20" placeholder="Fornecedor" value="<?php echo $fornecedor;?>">
+                        <input type="text" name="fornecedor" id="forn" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" placeholder="Fornecedor" value="<?php echo $fornecedor;?>">
                     </div>
                 </div>
                 <div class="w3-row">

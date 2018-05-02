@@ -20,7 +20,7 @@ require '../../util/config.php';
 <title>BMS - Business Manager System</title>
 
 <body class="w3-light-grey">
-<?php //include '../../php/control/produto/prod_index.php'?>
+<?php include '../../php/control/os/os_index.php'?>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Clique para fechar Menu" id="myOverlay"></div>
@@ -78,11 +78,9 @@ require '../../util/config.php';
                     <thead class="bgcTH fs095e">
                     <th class="w3-border w3-border-gray w3-center" style="width: 10%">Protocolo</th>
                     <th class="w3-border w3-border-gray" style="width: 20%">Cliente</th>
-                    <th class="w3-border w3-border-gray" style="width: 10%">Data Inicial</th>
-                    <th class="w3-border w3-border-gray" style="width: 10%">Data Final</th>
                     <th class="w3-border w3-border-gray" style="width: 12%">Status</th>
-                    <th class="w3-border w3-border-gray" style="width: 20%">Responsável</th>
-                    <th class="w3-border w3-border-gray" style="width: 18%"></th>
+                    <th class="w3-border w3-border-gray" style="width: 20%">Técnico</th>
+                    <th class="w3-border w3-border-gray" style="width: 18%">Ações</th>
                     </thead>
                 </table>
             </form>

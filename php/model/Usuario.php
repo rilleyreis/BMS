@@ -12,7 +12,6 @@ class Usuario{
     private $senha;
     private $panel;
     private $funcao;
-    private $ativo;
     private $idPF;
 
     public function getId(){
@@ -55,14 +54,6 @@ class Usuario{
         $this->funcao = $funcao;
     }
 
-    public function getAtivo(){
-        return $this->ativo;
-    }
-
-    public function setAtivo($ativo){
-        $this->ativo = $ativo;
-    }
-
     public function getIdPF(){
         return $this->idPF;
     }
@@ -95,14 +86,14 @@ class Usuario{
         return $query->fetchAll();
     }
 
-    public function buscaQtd($pdo){
-        $sql = "SELECT * FROM `USERS_DATA` WHERE ativo = 1";
+    public function buscaQtd($pdo, $nome){
+        $sql = "SELECT * FROM `USERS_DATA` WHERE `nomeFull` LIKE '%$nome%'";
         $query = $pdo->query($sql);
         return $query->rowCount();
     }
 
-    public function buscaLtda($pdo, $inicio, $fim){
-        $sql = "SELECT * FROM `USERS_DATA` WHERE ativo = 1 ORDER BY fnome ASC LIMIT $inicio,$fim";
+    public function buscaLtda($pdo, $inicio, $fim, $nome){
+        $sql = "SELECT * FROM `USERS_DATA` WHERE `nomeFull` LIKE '%$nome%' ORDER BY fnome ASC LIMIT $inicio,$fim";
         $query = $pdo->query($sql);
         if($query->rowCount() > 0)
             return $query;
@@ -111,11 +102,11 @@ class Usuario{
     }
 
     public function salvar($pdo){
-        $sql = "INSERT INTO `USERS`(`funcaoUSER`, `panelUSER`, `usuarioUSER`, `senhaUSER`, `ativoUSER`, `PFISICA_idPFISICA`)";
-        $sql .= "VALUES (:funcao, :panel, :user, :senha, :ativo, :idpf)";
+        $sql = "INSERT INTO `USERS`(`funcaoUSER`, `panelUSER`, `usuarioUSER`, `senhaUSER`, `PESSOA_idPESSOA`)";
+        $sql .= "VALUES (:funcao, :panel, :user, :senha, :idpf)";
         try{
             $insert = $pdo->prepare($sql);
-            $insert->execute(array(":funcao"=>$this->funcao, ":panel"=>$this->panel, ":user"=>$this->usuario, ":senha"=>$this->senha, ":ativo"=>$this->ativo, ":idpf"=>$this->idPF));
+            $insert->execute(array(":funcao"=>$this->funcao, ":panel"=>$this->panel, ":user"=>$this->usuario, ":senha"=>$this->senha, ":idpf"=>$this->idPF));
             echo "<script>alert('Usuário cadastrado com sucesso');</script>";
             header("Location:../users");
         }catch (PDOException $e){
@@ -124,9 +115,9 @@ class Usuario{
     }
 
     public function editar($pdo){
-        $sql = "UPDATE users SET `panelUSER` = :panel, `funcaoUSER` = :func, `ativoUSER` = :ativo, `usuarioUSER` = :usuario WHERE `idUSER` = :id";
+        $sql = "UPDATE `USERS` SET `panelUSER` = :panel, `funcaoUSER` = :func, `usuarioUSER` = :usuario WHERE `idUSER` = :id";
         $update = $pdo->prepare($sql);
-        $update->execute(array(':panel'=>$this->panel, ':func'=>$this->funcao, ':status'=>$this->status, ':usuario'=>$this->usuario, ':id'=>$this->id));
+        $update->execute(array(':panel'=>$this->panel, ':func'=>$this->funcao, ':usuario'=>$this->usuario, ':id'=>$this->id));
 
         echo "<script>alert('Cadastro editado com sucesso');</script>";
         header("Location:../users");
