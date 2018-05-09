@@ -7,5 +7,147 @@
  */
 
 class OS{
+    private $id;
+    private $protocolo;
+    private $vendedor;
+    private $telefone;
+    private $responsavel;
+    private $objeto;
+    private $itens;
+    private $defeitos;
+    private $status;
+    private $valor;
+    private $tecnico;
+    private $cliente;
 
+    public function getId(){
+        return $this->id;
+    }
+
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function getProtocolo(){
+        return $this->protocolo;
+    }
+
+    public function setProtocolo($protocolo){
+        $this->protocolo = $protocolo;
+    }
+
+    public function getVendedor(){
+        return $this->vendedor;
+    }
+
+    public function setVendedor($vendedor){
+        $this->vendedor = $vendedor;
+    }
+
+    public function getTelefone(){
+        return $this->telefone;
+    }
+
+    public function setTelefone($telefone){
+        $this->telefone = $telefone;
+    }
+
+    public function getResponsavel(){
+        return $this->responsavel;
+    }
+
+    public function setResponsavel($responsavel){
+        $this->responsavel = $responsavel;
+    }
+
+    public function getObjeto(){
+        return $this->objeto;
+    }
+
+    public function setObjeto($objeto){
+        $this->objeto = $objeto;
+    }
+
+    public function getItens(){
+        return $this->itens;
+    }
+
+    public function setItens($itens){
+        $this->itens = $itens;
+    }
+
+    public function getDefeitos(){
+        return $this->defeitos;
+    }
+
+    public function setDefeitos($defeitos){
+        $this->defeitos = $defeitos;
+    }
+
+    public function getValor(){
+        return $this->valor;
+    }
+
+    public function setValor($valor){
+        $this->valor = $valor;
+    }
+
+    public function getStatus(){
+        return $this->status;
+    }
+
+    public function setStatus($status){
+        $this->status = $status;
+    }
+
+    public function getTecnico(){
+        return $this->tecnico;
+    }
+
+    public function setTecnico($tecnico){
+        $this->tecnico = $tecnico;
+    }
+
+    public function getCliente(){
+        return $this->cliente;
+    }
+
+    public function setCliente($cliente){
+        $this->cliente = $cliente;
+    }
+
+    public function buscaQtd($pdo){
+        $sql = "SELECT * FROM `ORDEMSERVICO`";
+        $query = $pdo->query($sql);
+        return $query->rowCount();
+    }
+
+    public function buscaLtda($pdo, $inicio, $fim){
+        $sql = "SELECT * FROM `OS_DATA` ORDER BY `id` ASC LIMIT $inicio, $fim";
+        $query = $pdo->query($sql);
+        if($query->rowCount() > 0)
+            return $query;
+        else
+            return 0;
+    }
+
+    public function buscaDados($pdo){
+        $sql = "SELECT * FROM `OS_DATA` WHERE `id` = $this->id";
+        $query = $pdo->query($sql);
+        return $query;
+    }
+
+    public function salvar($pdo){
+        $sql = "INSERT INTO `ORDEMSERVICO` (`protocoloORDEMSERVICO`, `vendedorORDEMSERVICO`, `telefoneORDEMSERVICO`, `responsavelORDEMSERVICO`, `objrecebidoORDEMSERVICO`, `itemdeixadoORDEMSERVICO`, `defeitosORDEMSERVICO`, `statusORDEMSERVICO`, `valorORDEMSERVICO`, `USERS_idUSER`, `idCLIENTE`)";
+        $sql .= "VALUES (:prot, :vend, :tel, :resp, :obj, :item, :def, :status, :valor, :tecnico, :cli)";
+        try{
+            $insert = $pdo->prepare($sql);
+            $insert->execute(array(":prot"=>$this->protocolo, ":vend"=>$this->vendedor, ":tel"=>$this->telefone, ":resp"=>$this->responsavel, ":obj"=>$this->objeto, ":item"=>$this->itens, ":def"=>$this->defeitos, ":status"=>$this->status, ":valor"=>$this->valor, ":tecnico"=>$this->tecnico, ":cli"=>$this->cliente));
+            $sql = "SELECT LAST_INSERT_ID()";
+            $query = $pdo->query($sql);
+            return $query->fetch();
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }

@@ -3,44 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="528644d8-a213-4dd6-8212-f75af741dd00" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/admin/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/admin/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/cliente/dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/cliente/dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/cliente/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/cliente/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/empresa/img/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/pag/empresa/img/logo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/empresa/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/empresa/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/fornecedor/dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/fornecedor/dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/fornecedor/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/fornecedor/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pag/os/dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/os/dados.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pag/os/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/os/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/produto/dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/produto/dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/produto/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/produto/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/service/dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/service/dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/service/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/service/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/users/dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/users/dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pag/users/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/users/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/abrirCaixa.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/abrirCaixa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/cliente/cli_dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/cliente/cli_dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/cliente/cli_index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/cliente/cli_index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/empresa/emp_index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/empresa/emp_index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/fornecedor/forn_dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/fornecedor/forn_dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/fornecedor/forn_index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/fornecedor/forn_index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/produto/forn_prod.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/produto/forn_prod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/produto/prod_dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/produto/prod_dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/users/user_serv.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/users/usr_dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/users/usr_dados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/control/users/usr_index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/users/usr_index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/model/Empresa.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/model/Empresa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/model/Fornecedor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/model/PFisica.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/model/PJuridica.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pag/venda/pdv.php" beforeDir="false" afterPath="$PROJECT_DIR$/pag/venda/pdv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/control/os/os_dados.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/os/os_dados.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/control/os/os_index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/control/os/os_index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/model/Cliente.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/model/DSO.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/model/DSO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/model/OS.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/model/OS.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/model/Produto.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/model/Produto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/model/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/model/Usuario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/util/database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/system.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/teste.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/model/Servicos.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/model/Servicos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/util/views.sql" beforeDir="false" afterPath="$PROJECT_DIR$/util/views.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,38 +40,8 @@
       <file leaf-file-name="views.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/util/views.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="database.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/util/database.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pag/os/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="os_index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/control/os/os_index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#6#93#0#PHP" />
-              </folding>
+            <state relative-caret-position="474">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
             </state>
           </provider>
         </entry>
@@ -106,20 +49,86 @@
       <file leaf-file-name="dados.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pag/os/dados.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="80" column="6" lean-forward="true" selection-start-line="80" selection-start-column="6" selection-end-line="80" selection-end-column="6" />
+            <state relative-caret-position="221">
+              <caret line="396" column="85" selection-start-line="396" selection-start-column="85" selection-end-line="396" selection-end-column="85" />
+              <caret line="399" column="85" selection-start-line="399" selection-start-column="85" selection-end-line="399" selection-end-column="85" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#form#0;n#div#0;n#div#12;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#form#0;n#div#0;n#div#12;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#5;n#thead#0;n#table#0;n#form#0;n#div#0;n#div#12;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#3;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#2;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="os_dados.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="os_dados.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/control/os/os_dados.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="40" column="39" lean-forward="true" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+            <state relative-caret-position="400">
+              <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Serv_OS.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/model/Serv_OS.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+              <folding>
+                <element signature="n#getId#0;n#Serv_OS#0;n#!!top" />
+                <element signature="n#setId#0;n#Serv_OS#0;n#!!top" />
+                <element signature="n#getIdOS#0;n#Serv_OS#0;n#!!top" />
+                <element signature="n#setIdOS#0;n#Serv_OS#0;n#!!top" />
+                <element signature="n#getIdServ#0;n#Serv_OS#0;n#!!top" />
+                <element signature="n#setIdServ#0;n#Serv_OS#0;n#!!top" />
+                <element signature="n#salvar#0;n#Serv_OS#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Prod_OS.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/model/Prod_OS.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="519">
+              <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+              <folding>
+                <element signature="n#getId#0;n#Prod_OS#0;n#!!top" />
+                <element signature="n#setId#0;n#Prod_OS#0;n#!!top" />
+                <element signature="n#getQtd#0;n#Prod_OS#0;n#!!top" />
+                <element signature="n#setQtd#0;n#Prod_OS#0;n#!!top" />
+                <element signature="n#getIdOS#0;n#Prod_OS#0;n#!!top" />
+                <element signature="n#setIdOS#0;n#Prod_OS#0;n#!!top" />
+                <element signature="n#getIdProd#0;n#Prod_OS#0;n#!!top" />
+                <element signature="n#setIdProd#0;n#Prod_OS#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DSO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/model/DSO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
+              <folding>
+                <element signature="n#getId#0;n#DSO#0;n#!!top" />
+                <element signature="n#setId#0;n#DSO#0;n#!!top" />
+                <element signature="n#getData#0;n#DSO#0;n#!!top" />
+                <element signature="n#setData#0;n#DSO#0;n#!!top" />
+                <element signature="n#getHora#0;n#DSO#0;n#!!top" />
+                <element signature="n#setHora#0;n#DSO#0;n#!!top" />
+                <element signature="n#getStatus#0;n#DSO#0;n#!!top" />
+                <element signature="n#setStatus#0;n#DSO#0;n#!!top" />
+                <element signature="n#getIdOs#0;n#DSO#0;n#!!top" />
+                <element signature="n#setIdOs#0;n#DSO#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,17 +136,35 @@
       <file leaf-file-name="OS.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/model/OS.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DSO.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/php/model/DSO.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            <state relative-caret-position="1207">
+              <caret line="128" column="26" selection-start-line="128" selection-start-column="26" selection-end-line="128" selection-end-column="26" />
+              <folding>
+                <element signature="n#getId#0;n#OS#0;n#!!top" />
+                <element signature="n#setId#0;n#OS#0;n#!!top" />
+                <element signature="n#getProtocolo#0;n#OS#0;n#!!top" />
+                <element signature="n#setProtocolo#0;n#OS#0;n#!!top" />
+                <element signature="n#getVendedor#0;n#OS#0;n#!!top" />
+                <element signature="n#setVendedor#0;n#OS#0;n#!!top" />
+                <element signature="n#getTelefone#0;n#OS#0;n#!!top" />
+                <element signature="n#setTelefone#0;n#OS#0;n#!!top" />
+                <element signature="n#getResponsavel#0;n#OS#0;n#!!top" />
+                <element signature="n#setResponsavel#0;n#OS#0;n#!!top" />
+                <element signature="n#getObjeto#0;n#OS#0;n#!!top" />
+                <element signature="n#setObjeto#0;n#OS#0;n#!!top" />
+                <element signature="n#getItens#0;n#OS#0;n#!!top" />
+                <element signature="n#setItens#0;n#OS#0;n#!!top" />
+                <element signature="n#getDefeitos#0;n#OS#0;n#!!top" />
+                <element signature="n#setDefeitos#0;n#OS#0;n#!!top" />
+                <element signature="n#getValor#0;n#OS#0;n#!!top" />
+                <element signature="n#setValor#0;n#OS#0;n#!!top" />
+                <element signature="n#getStatus#0;n#OS#0;n#!!top" />
+                <element signature="n#setStatus#0;n#OS#0;n#!!top" />
+                <element signature="n#getTecnico#0;n#OS#0;n#!!top" />
+                <element signature="n#setTecnico#0;n#OS#0;n#!!top" />
+                <element signature="n#getCliente#0;n#OS#0;n#!!top" />
+                <element signature="n#setCliente#0;n#OS#0;n#!!top" />
+                <element signature="n#buscaQtd#0;n#OS#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -227,19 +254,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/model/Fornecedor.php" />
-        <option value="$PROJECT_DIR$/php/control/produto/prod_index.php" />
-        <option value="$PROJECT_DIR$/php/model/PFisica.php" />
-        <option value="$PROJECT_DIR$/php/model/Cliente.php" />
-        <option value="$PROJECT_DIR$/php/control/servico/serv_index.php" />
-        <option value="$PROJECT_DIR$/php/control/servico/user_serv.php" />
-        <option value="$PROJECT_DIR$/php/model/Servicos.php" />
-        <option value="$PROJECT_DIR$/php/control/servico/serv_dados.php" />
-        <option value="$PROJECT_DIR$/app/js/cep.js" />
         <option value="$PROJECT_DIR$/app/css/style.css" />
         <option value="$PROJECT_DIR$/emitente.php" />
         <option value="$PROJECT_DIR$/php/model/Empresa.php" />
-        <option value="$PROJECT_DIR$/include/admin/menu.php" />
         <option value="$PROJECT_DIR$/php/model/Usuario.php" />
         <option value="$PROJECT_DIR$/php/control/users/usr_index.php" />
         <option value="$PROJECT_DIR$/php/control/fornecedor/forn_index.php" />
@@ -255,8 +272,6 @@
         <option value="$PROJECT_DIR$/php/model/Pessoa.php" />
         <option value="$PROJECT_DIR$/php/control/produto/forn_prod.php" />
         <option value="$PROJECT_DIR$/php/control/produto/prod_dados.php" />
-        <option value="$PROJECT_DIR$/php/model/Produto.php" />
-        <option value="$PROJECT_DIR$/util/views.sql" />
         <option value="$PROJECT_DIR$/pag/admin.php" />
         <option value="$PROJECT_DIR$/pag/cliente/index.php" />
         <option value="$PROJECT_DIR$/pag/users/index.php" />
@@ -272,12 +287,24 @@
         <option value="$PROJECT_DIR$/include/headDados.php" />
         <option value="$PROJECT_DIR$/util/database.sql" />
         <option value="$PROJECT_DIR$/pag/cliente/dados.php" />
-        <option value="$PROJECT_DIR$/pag/os/dados.php" />
-        <option value="$PROJECT_DIR$/pag/os/index.php" />
+        <option value="$PROJECT_DIR$/php/control/venda/prods_data.php" />
+        <option value="$PROJECT_DIR$/php/model/Produto.php" />
+        <option value="$PROJECT_DIR$/pag/venda/pdv.php" />
+        <option value="$PROJECT_DIR$/php/control/os/add_prod.php" />
+        <option value="$PROJECT_DIR$/include/admin/menu.php" />
         <option value="$PROJECT_DIR$/php/control/os/os_index.php" />
-        <option value="$PROJECT_DIR$/php/control/os/os_dados.php" />
+        <option value="$PROJECT_DIR$/php/model/Cliente.php" />
         <option value="$PROJECT_DIR$/php/model/OS.php" />
         <option value="$PROJECT_DIR$/php/model/DSO.php" />
+        <option value="$PROJECT_DIR$/php/control/servico/serv_data.php" />
+        <option value="$PROJECT_DIR$/php/model/Servicos.php" />
+        <option value="$PROJECT_DIR$/pag/os/index.php" />
+        <option value="$PROJECT_DIR$/php/control/os/os_serv_dados.php" />
+        <option value="$PROJECT_DIR$/php/model/Serv_OS.php" />
+        <option value="$PROJECT_DIR$/util/views.sql" />
+        <option value="$PROJECT_DIR$/php/model/Prod_OS.php" />
+        <option value="$PROJECT_DIR$/pag/os/dados.php" />
+        <option value="$PROJECT_DIR$/php/control/os/os_dados.php" />
       </list>
     </option>
   </component>
@@ -433,12 +460,14 @@
       <workItem from="1524023592469" duration="8171000" />
       <workItem from="1524524719182" duration="12588000" />
       <workItem from="1524668815305" duration="4437000" />
-      <workItem from="1524695333690" duration="31328000" />
+      <workItem from="1524695333690" duration="47465000" />
+      <workItem from="1525731219760" duration="6757000" />
+      <workItem from="1525890567198" duration="7047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="590672000" />
+    <option name="totallyTimeSpent" value="620613000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -476,23 +505,23 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32735425" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20790629" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20790629" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3287037" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32735425" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" weight="0.32980332" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -510,81 +539,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="30" />
+      <option name="time" value="32" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/model/PJuridica.php" />
-    <entry file="file://$PROJECT_DIR$/app/js/masks.js">
+    <entry file="file://$PROJECT_DIR$/php/control/os/os_serv_dados.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="36" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/model/Empresa.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/emitente.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="68" column="27" lean-forward="true" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emitente.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="43" column="30" lean-forward="true" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/superglobals/_superglobals.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2651">
-          <caret line="173" selection-start-line="173" selection-end-line="173" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/teste.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/empresa/emp_index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/fornecedor/forn_dados.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/fornecedor/forn_index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/users/usr_index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        <state relative-caret-position="221">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -599,13 +561,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-824">
           <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/cliente/cli_index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -627,37 +582,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="84" column="35" lean-forward="true" selection-start-line="84" selection-start-column="35" selection-end-line="85" selection-end-column="34" />
-          <folding>
-            <element signature="n#getId#0;n#Usuario#0;n#!!top" />
-            <element signature="n#setId#0;n#Usuario#0;n#!!top" />
-            <element signature="n#getUsuario#0;n#Usuario#0;n#!!top" />
-            <element signature="n#setUsuario#0;n#Usuario#0;n#!!top" />
-            <element signature="n#getSenha#0;n#Usuario#0;n#!!top" />
-            <element signature="n#setSenha#0;n#Usuario#0;n#!!top" />
-            <element signature="n#getPanel#0;n#Usuario#0;n#!!top" />
-            <element signature="n#setPanel#0;n#Usuario#0;n#!!top" />
-            <element signature="n#getFuncao#0;n#Usuario#0;n#!!top" />
-            <element signature="n#setFuncao#0;n#Usuario#0;n#!!top" />
-            <element signature="n#getIdPF#0;n#Usuario#0;n#!!top" />
-            <element signature="n#setIdPF#0;n#Usuario#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pag/produto/forn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/produto/forn_prod.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pag/produto/forn.php" />
     <entry file="file://$PROJECT_DIR$/php/control/produto/prod_dados.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="519">
@@ -665,24 +593,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/model/Produto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pag/admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="25" column="136" selection-start-line="25" selection-start-column="136" selection-end-line="25" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pag/cliente/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="27" column="136" selection-start-line="27" selection-start-column="136" selection-end-line="27" selection-end-column="136" />
         </state>
       </provider>
     </entry>
@@ -714,13 +628,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/users/user_serv.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/users/user_serv.php" />
     <entry file="file://$PROJECT_DIR$/php/control/abrirCaixa.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -739,13 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/admin/menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="34" column="129" selection-start-line="34" selection-start-column="129" selection-end-line="34" selection-end-column="129" />
         </state>
       </provider>
     </entry>
@@ -784,20 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/views.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/database.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/headDados.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-365">
@@ -819,86 +706,242 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/cliente/cli_dados.php">
+    <entry file="file://$PROJECT_DIR$/app/css/w3.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="28" />
+        <state relative-caret-position="214">
+          <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/produto/forn_prod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/venda/prods_data.php" />
+    <entry file="file://$PROJECT_DIR$/util/database.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="56" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pag/venda/pdv.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="37" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/admin/menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="43" column="115" selection-start-line="43" selection-start-column="115" selection-end-line="43" selection-end-column="115" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/model/Pessoa.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="133" column="12" lean-forward="true" selection-start-line="133" selection-start-column="12" selection-end-line="135" selection-end-column="35" />
+        <state relative-caret-position="207">
+          <caret line="119" column="5" lean-forward="true" selection-start-line="112" selection-start-column="4" selection-end-line="119" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pag/cliente/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="175" column="65" lean-forward="true" selection-start-line="155" selection-start-column="16" selection-end-line="175" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/cliente/cli_index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="16" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/cliente/cli_dados.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="95" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/model/Cliente.php" />
+    <entry file="file://$PROJECT_DIR$/php/model/OS.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="128" column="26" selection-start-line="128" selection-start-column="26" selection-end-line="128" selection-end-column="26" />
           <folding>
-            <element signature="n#getId#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setId#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#getCpfCnpj#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setCpfCnpj#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#getFnome#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setFnome#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#getLnome#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setLnome#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setIe#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#getTelefone#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setTelefone#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#getEmail#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setEmail#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#getTipo#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setTipo#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#getAtivo#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setAtivo#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#getIdEnd#0;n#Pessoa#0;n#!!top" />
-            <element signature="n#setIdEnd#0;n#Pessoa#0;n#!!top" />
+            <element signature="n#getId#0;n#OS#0;n#!!top" />
+            <element signature="n#setId#0;n#OS#0;n#!!top" />
+            <element signature="n#getProtocolo#0;n#OS#0;n#!!top" />
+            <element signature="n#setProtocolo#0;n#OS#0;n#!!top" />
+            <element signature="n#getVendedor#0;n#OS#0;n#!!top" />
+            <element signature="n#setVendedor#0;n#OS#0;n#!!top" />
+            <element signature="n#getTelefone#0;n#OS#0;n#!!top" />
+            <element signature="n#setTelefone#0;n#OS#0;n#!!top" />
+            <element signature="n#getResponsavel#0;n#OS#0;n#!!top" />
+            <element signature="n#setResponsavel#0;n#OS#0;n#!!top" />
+            <element signature="n#getObjeto#0;n#OS#0;n#!!top" />
+            <element signature="n#setObjeto#0;n#OS#0;n#!!top" />
+            <element signature="n#getItens#0;n#OS#0;n#!!top" />
+            <element signature="n#setItens#0;n#OS#0;n#!!top" />
+            <element signature="n#getDefeitos#0;n#OS#0;n#!!top" />
+            <element signature="n#setDefeitos#0;n#OS#0;n#!!top" />
+            <element signature="n#getValor#0;n#OS#0;n#!!top" />
+            <element signature="n#setValor#0;n#OS#0;n#!!top" />
+            <element signature="n#getStatus#0;n#OS#0;n#!!top" />
+            <element signature="n#setStatus#0;n#OS#0;n#!!top" />
+            <element signature="n#getTecnico#0;n#OS#0;n#!!top" />
+            <element signature="n#setTecnico#0;n#OS#0;n#!!top" />
+            <element signature="n#getCliente#0;n#OS#0;n#!!top" />
+            <element signature="n#setCliente#0;n#OS#0;n#!!top" />
+            <element signature="n#buscaQtd#0;n#OS#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/produto/prods_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" selection-start-line="8" selection-end-line="15" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/model/Servicos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="66" column="35" lean-forward="true" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/model/DSO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="n#getId#0;n#DSO#0;n#!!top" />
+            <element signature="n#setId#0;n#DSO#0;n#!!top" />
+            <element signature="n#getData#0;n#DSO#0;n#!!top" />
+            <element signature="n#setData#0;n#DSO#0;n#!!top" />
+            <element signature="n#getHora#0;n#DSO#0;n#!!top" />
+            <element signature="n#setHora#0;n#DSO#0;n#!!top" />
+            <element signature="n#getStatus#0;n#DSO#0;n#!!top" />
+            <element signature="n#setStatus#0;n#DSO#0;n#!!top" />
+            <element signature="n#getIdOs#0;n#DSO#0;n#!!top" />
+            <element signature="n#setIdOs#0;n#DSO#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/servico/serv_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/os/os_index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/os/os_serv_dados.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pag/os/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="114" column="24" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="114" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/model/Produto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/control/os/add_prod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/model/Serv_OS.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding>
+            <element signature="n#getId#0;n#Serv_OS#0;n#!!top" />
+            <element signature="n#setId#0;n#Serv_OS#0;n#!!top" />
+            <element signature="n#getIdOS#0;n#Serv_OS#0;n#!!top" />
+            <element signature="n#setIdOS#0;n#Serv_OS#0;n#!!top" />
+            <element signature="n#getIdServ#0;n#Serv_OS#0;n#!!top" />
+            <element signature="n#setIdServ#0;n#Serv_OS#0;n#!!top" />
+            <element signature="n#salvar#0;n#Serv_OS#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/views.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/model/Prod_OS.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+          <folding>
+            <element signature="n#getId#0;n#Prod_OS#0;n#!!top" />
+            <element signature="n#setId#0;n#Prod_OS#0;n#!!top" />
+            <element signature="n#getQtd#0;n#Prod_OS#0;n#!!top" />
+            <element signature="n#setQtd#0;n#Prod_OS#0;n#!!top" />
+            <element signature="n#getIdOS#0;n#Prod_OS#0;n#!!top" />
+            <element signature="n#setIdOS#0;n#Prod_OS#0;n#!!top" />
+            <element signature="n#getIdProd#0;n#Prod_OS#0;n#!!top" />
+            <element signature="n#setIdProd#0;n#Prod_OS#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pag/os/dados.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="80" column="6" lean-forward="true" selection-start-line="80" selection-start-column="6" selection-end-line="80" selection-end-column="6" />
+        <state relative-caret-position="221">
+          <caret line="396" column="85" selection-start-line="396" selection-start-column="85" selection-end-line="396" selection-end-column="85" />
+          <caret line="399" column="85" selection-start-line="399" selection-start-column="85" selection-end-line="399" selection-end-column="85" />
           <folding>
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pag/os/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/control/os/os_index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#6#93#0#PHP" />
+            <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#form#0;n#div#0;n#div#12;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#form#0;n#div#0;n#div#12;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#5;n#thead#0;n#table#0;n#form#0;n#div#0;n#div#12;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#thead#0;n#table#0;n#div#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/control/os/os_dados.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="40" column="39" lean-forward="true" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/model/OS.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/model/DSO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        <state relative-caret-position="400">
+          <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
         </state>
       </provider>
     </entry>

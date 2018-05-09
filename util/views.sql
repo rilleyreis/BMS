@@ -21,3 +21,34 @@ CREATE VIEW `PESSOA_DATA` AS
 CREATE VIEW `SERV_DATA` AS
     SELECT S.`idSERVICO`, S.`nomeSERVICO`, S.`descricaoSERVICO`, S.`valorSERVICO`, S.`ativoSERVICO`, S.`USERS_idUSER`, CONCAT(U.`fnome`, ' ', U.`lnome`) AS 'userSERVICO'
     FROM `SERVICO` S INNER JOIN `USERS_DATA` U ON S.`USERS_idUSER` = U.`id`
+
+-- ----------------------------------------------------
+-- View `OS_DATA`
+-- ----------------------------------------------------
+CREATE VIEW `OS_DATA` AS
+    SELECT  OS.`idORDEMSERVICO` AS 'id', OS.`protocoloORDEMSERVICO` AS 'protocolo', OS.`vendedorORDEMSERVICO` AS 'vendedor', OS.`telefoneORDEMSERVICO` AS 'telefone', OS.`responsavelORDEMSERVICO` AS 'responsavel', OS.`objrecebidoORDEMSERVICO` AS 'objeto', OS.`itemdeixadoORDEMSERVICO` AS 'itens', OS.`defeitosORDEMSERVICO` AS 'defeitos', OS.`statusORDEMSERVICO` AS 'status', OS.`valorORDEMSERVICO` AS 'valor',
+            PE.`nome` AS 'cliente', U.`nomeFull` AS 'tecnico'
+    FROM `ORDEMSERVICO` OS  INNER JOIN `USERS_DATA` U ON OS.`USERS_idUSER` = U.`id`
+                            INNER JOIN `PESSOA_DATA` PE ON OS.`idCLIENTE` = PE.`id`
+
+-- ----------------------------------------------------
+-- View `OS_SERV_DATA`
+-- ----------------------------------------------------
+CREATE VIEW `OS_SERV_DATA` AS
+    SELECT OSS.`idOS_SERV` AS 'id', S.`nomeSERVICO` AS 'nome', S.`valorSERVICO` AS 'valor', OSS.`ORDEMSERVICO_idORDEMSERVICO` AS 'idOS'
+    FROM `OS_SERV` OSS INNER JOIN `SERVICO` S ON OSS.`SERVICO_idSERVICO` = S.`idSERVICO`
+
+
+-- ----------------------------------------------------
+-- View `OS_SERV_DATA`
+-- ----------------------------------------------------
+CREATE VIEW `OS_PROD_DATA` AS
+    SELECT OSP.`idOS_PROD` AS 'id', P.`nomePRODUTO` AS 'nome', P.`vendaPRODUTO` AS 'valorunit', OSP.`qtdOS_PROD` AS 'qtd', (P.`vendaPRODUTO` * OSP.`qtdOS_PROD`) AS 'valortot', OSP.`ORDEMSERVICO_idORDEMSERVICO` AS 'idOS'
+    FROM `OS_PROD` OSP INNER JOIN `PRODUTO` P ON OSP.`PRODUTO_idPRODUTO` = P.`idPRODUTO`
+    ORDER BY OSP.`idOS_PROD`
+
+
+
+-- TESTE DE STATUS
+--SELECT `statusORDEMSERVICO`, COUNT(`statusORDEMSERVICO`) AS 'QTD' FROM `ORDEMSERVICO`
+--GROUP BY `statusORDEMSERVICO`

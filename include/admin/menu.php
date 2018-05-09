@@ -1,4 +1,4 @@
-<nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
+<nav class="w3-sidebar w3-collapse w3-animate-left fs095e" style="z-index:3;width:300px;" id="mySidebar">
     <div class="hfull wfull bgcMenu w3-text-white p5">
         <div class="w3-container tac">
             <div class="s4 dbl">
@@ -24,22 +24,47 @@
         </div>
         <hr>
         <div class="w3-container">
-            <a href="<?php echo $nivel?>admin"><h5><i class="fas fa-tachometer-alt"></i> Dashboard</h5></a>
+            <a href="<?php echo $nivel?>admin"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         </div>
         <div class="w3-bar-block">
-            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>cliente"><i class="fas fa-users fa-fw mr03"></i>  Clientes</a>
-            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>fornecedor"><i class="fas fa-industry fa-fw mr03"></i> Fornecedores</a>
-            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>produto"><i class="fas fa-pallet fa-fw mr03"></i> Produtos</a>
-            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>service"><i class="fas fa-wrench fa-fw mr03"></i> Serviços</a>
-            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>os"><i class="fas fa-file-alt fa-fw mr03"></i> OS</a>
-            <a class="w3-bar-item w3-hover-gray w3-block w3-left-align wfull w3-text-white fs095e" href="<?php echo $nivel?>users"><i class="fas fa-user fa-fw mr03"></i> Usuário</a>
-            <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(1)"><i class="fas fa-exchange-alt fa-fw mr03"></i> Financeiro <i class="fa fa-caret-down"></i></button>
+            <button class="w3-button w3-block w3-left-align w3-text-white wfull mt05" onclick="openMenu(1)"><i class="fas fa-users fa-fw mr03"></i> Clientes <i class="fa fa-caret-down"></i></button>
             <div id="menu1" class="w3-hide bgcMenu fs087e wfull">
+                <a href="<?php echo $nivel?>cliente" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-users fa-fw mr03" ></i> Gerenciar</a>
+                <a href="<?php echo $nivel?>cliente/dados" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-plus-square fa-fw mr03"></i> Adicionar</a>
+            </div>
+            <button class="w3-button w3-block w3-left-align w3-text-white wfull" onclick="openMenu(2)"><i class="fas fa-industry fa-fw mr03"></i> Fornecedor <i class="fa fa-caret-down"></i></button>
+            <div id="menu2" class="w3-hide bgcMenu fs087e wfull">
+                <a href="<?php echo $nivel?>fornecedor" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-industry fa-fw mr03" ></i> Gerenciar</a>
+                <a href="<?php echo $nivel?>fornecedor/dados"class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-plus-square fa-fw mr03"></i> Adicionar</a>
+            </div>
+            <button class="w3-button w3-block w3-left-align w3-text-white wfull" onclick="openMenu(3)"><i class="fas fa-pallet fa-fw mr03"></i> Produtos <i class="fa fa-caret-down"></i></button>
+            <div id="menu3" class="w3-hide bgcMenu fs087e wfull">
+                <a href="<?php echo $nivel?>produto" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-pallet fa-fw mr03" ></i> Gerenciar</a>
+                <a href="<?php echo $nivel?>produto/dados" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-plus-square fa-fw mr03"></i> Adicionar</a>
+                <a href="" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-exchange-alt fa-fw mr03"></i> Troca</a>
+            </div>
+            <button class="w3-button w3-block w3-left-align w3-text-white wfull" onclick="openMenu(4)"><i class="fas fa-wrench fa-fw mr03"></i> Serviços <i class="fa fa-caret-down"></i></button>
+            <div id="menu4" class="w3-hide bgcMenu fs087e wfull">
+                <a href="<?php echo $nivel?>serice" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-wrench fa-fw mr03" ></i> Gerenciar</a>
+                <a href="<?php echo $nivel?>serice/dados"class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-plus-square fa-fw mr03"></i> Adicionar</a>
+            </div>
+            <button class="w3-button w3-block w3-left-align w3-text-white wfull" onclick="openMenu(5)"><i class="fas fa-file-alt fa-fw mr03"></i> Ordem de Serviço <i class="fa fa-caret-down"></i></button>
+            <div id="menu5" class="w3-hide bgcMenu fs087e wfull">
+                <a href="<?php echo $nivel?>os" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-file-alt fa-fw mr03" ></i> Gerenciar</a>
+                <a href="<?php echo $nivel?>os/dados"class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-plus-square fa-fw mr03"></i> Adicionar</a>
+            </div>
+            <button class="w3-button w3-block w3-left-align w3-text-white wfull" onclick="openMenu(6)"><i class="fas fa-user fa-fw mr03"></i> Usuários <i class="fa fa-caret-down"></i></button>
+            <div id="menu6" class="w3-hide bgcMenu fs087e wfull">
+                <a href="<?php echo $nivel?>users" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-user fa-fw mr03" ></i> Gerenciar</a>
+                <a href="<?php echo $nivel?>users/dados"class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-plus-square fa-fw mr03"></i> Adicionar</a>
+            </div>
+            <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(7)"><i class="fas fa-donate fa-fw mr03"></i> Financeiro <i class="fa fa-caret-down"></i></button>
+            <div id="menu7" class="w3-hide bgcMenu fs087e wfull">
                 <a href="" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-shopping-basket fa-fw mr03"></i> Venda</a>
                 <a href="" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-chart-line fa-fw mr03"></i> Lançamento</a>
             </div>
-            <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(2)"><i class="fas fa-cogs fa-fw mr03"></i> Configuração <i class="fa fa-caret-down"></i></button>
-            <div id="menu2" class="w3-hide bgcMenu fs087e wfull">
+            <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(8)"><i class="fas fa-cogs fa-fw mr03"></i> Configuração <i class="fa fa-caret-down"></i></button>
+            <div id="menu8" class="w3-hide bgcMenu fs087e wfull">
                 <a href="<?php echo $nivel?>empresa" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-building fa-fw mr03"></i> Empresa</a>
             </div>
         </div>

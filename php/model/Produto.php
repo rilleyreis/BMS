@@ -99,11 +99,16 @@ class Produto{
         return $query;
     }
 
+    public function buscaAll($pdo){
+        $sql = "SELECT * FROM `PRODUTO` WHERE `ativoPRODUTO` =  1";
+        $query = $pdo->query($sql);
+        return $query->fetchAll();
+    }
+
     public function salvar($pdo){
         $sql = "INSERT INTO `PRODUTO` (`nomePRODUTO`, `descricaoPRODUTO`, `compraPRODUTO`, `vendaPRODUTO`, `estoquePRODUTO`, `minimoPRODUTO`, `ativoPRODUTO`, `idFORNECEDOR`)";
         $sql .= " VALUES (:nome, :descricao, :compra, :venda, :estoque, :minimo, 1, :fornecedor)";
         try{
-            echo "<script>alert('TESTE 2')</script>";
             $insert = $pdo->prepare($sql);
             $insert->execute(array(":nome"=>$this->nome,":descricao"=>$this->descricao,":compra"=>$this->compra,":venda"=>$this->venda,":estoque"=>$this->estoque,":minimo"=>$this->minimo, ":fornecedor"=>$this->fornecedor));
             echo "<script>alert('Produto cadastrado com sucesso!')</script>";

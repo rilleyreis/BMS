@@ -23,6 +23,7 @@ date_default_timezone_set("America/Sao_Paulo");
 <script type="text/javascript" src="../../app/js/jquery.maskedinput.js"></script>
 <script type="text/javascript" src="../../app/js/jquery.maskMoney.js"></script>
 <script type="text/javascript" src="../../app/js/masks.js"></script>
+<script type="text/javascript" src="../../app/js/format.js"></script>
 
 <script>
     function baixar() {
@@ -56,6 +57,24 @@ date_default_timezone_set("America/Sao_Paulo");
             });
             $("#cliente").autocomplete({
                 source: clients
+            });
+        });
+        $.getJSON("../../php/control/produto/prods_data.php", function (dados) {
+            var produtos = [];
+            $(dados).each(function (key, value) {
+                produtos.push(value.idPRODUTO + "|" + value.nomePRODUTO);
+            });
+            $("#prod").autocomplete({
+                source: produtos
+            });
+        });
+        $.getJSON("../../php/control/servico/serv_data.php", function (dados) {
+            var servicos = [];
+            $(dados).each(function (key, value) {
+                servicos.push(value.idSERVICO + "|" + value.nomeSERVICO);
+            });
+            $("#serv").autocomplete({
+                source: servicos
             });
         });
     });
@@ -106,7 +125,7 @@ date_default_timezone_set("America/Sao_Paulo");
                                     <label for="" class="fs087e w3-text-white" style="">Protocolo</label>
                                 </div>
                                 <div class="w3-twothird">
-                                    <input type="text" name="protocolo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="30" placeholder="Protocolo" value="<?php echo $protocolo;?>" readonly="readonly">
+                                    <input type="text" name="protocolo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" placeholder="Protocolo" value="<?php echo $protocolo;?>" readonly="readonly">
                                 </div>
                             </div>
                         </div>
@@ -139,10 +158,31 @@ date_default_timezone_set("America/Sao_Paulo");
                         <div class="w3-border w3-border-gray p10 dnn" id="status">
                             <table class="w3-table w3-striped fs087e">
                                 <thead class="bgcTH fs087e">
-                                <th class="w3-border w3-border-gray w3-center w3-third">Status</th>
-                                <th class="w3-border w3-border-gray w3-center w3-third">Data</th>
-                                <th class="w3-border w3-border-gray w3-center w3-third">Hora</th>
+                                    <th class="w3-border w3-border-gray w3-center w3-third">Status</th>
+                                    <th class="w3-border w3-border-gray w3-center w3-third">Data</th>
+                                    <th class="w3-border w3-border-gray w3-center w3-third">Hora</th>
                                 </thead>
+                                <tboby>
+                                <?php if($edt == ""){
+                                    foreach ($dsoExibir as $item) {?>
+                                        <tr>
+                                            <td class="w3-border w3-center w3-third"><?php
+                                                switch ($item['statusDSO']){
+                                                    case 'aberto': echo "ABERTO"; break;
+                                                    case 'orcado': echo "ORÇADO"; break;
+                                                    case 'aprova': echo "APROVADO"; break;
+                                                    case 'cancel': echo "CANCELADO"; break;
+                                                    case 'realiza': echo "REALIZADO"; break;
+                                                    case 'retira': echo "RETIRADO"; break;
+                                                }
+                                                ?></td>
+                                            <td class="w3-border w3-center w3-third"><?php echo $item['dataDSO'];?></td>
+                                            <td class="w3-border w3-center w3-third"><?php echo $item['horaDSO'];?></td>
+                                        </tr>
+                                <?php
+                                    }
+                                }?>
+                                </tboby>
                             </table>
                         </div>
                     </div>
@@ -153,7 +193,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Cliente *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" id="cliente" name="cliente" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Cliente" value="" required>
+                            <input type="text" id="cliente" name="cliente" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Cliente" value="<?php echo $cliente;?>" required <?php echo $rdo;?>>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -161,7 +201,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Telefone *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="telCliente" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Telefone" value="" required>
+                            <input type="text" name="telCliente" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Telefone" value="<?php echo $telefone;?>" required <?php echo $rdo;?>>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -169,7 +209,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Técnico *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" id="user" name="tecnico" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Técnico" value="" required>
+                            <input type="text" id="user" name="tecnico" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Técnico" value="<?php echo $tecnico;?>" required <?php echo $rdo;?>>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -177,7 +217,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Responsável</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="responsavel" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Responsável" value="" required>
+                            <input type="text" name="responsavel" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="50" placeholder="Responsável" value="<?php echo $responsavel;?>" required <?php echo $rdo;?>>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -185,7 +225,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Objeto Recebido *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="objeto" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Objeto Recebido" value="" required>
+                            <input type="text" name="objeto" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Objeto Recebido" value="<?php echo $objrecebido;?>" required <?php echo $rdo;?>>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -193,7 +233,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Itens Deixados</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="itens" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Itens Deixados" value="" required>
+                            <input type="text" name="itens" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Itens Deixados" value="<?php echo $itemdeixado;?>" required <?php echo $rdo;?>>
                         </div>
                     </div>
                     <div class="w3-row">
@@ -201,7 +241,23 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Defeitos Listados *</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="defeitos" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Defeitos Listados" value="" required>
+                            <input type="text" name="defeitos" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Defeitos Listados" value="<?php echo $defeitos;?>" required <?php echo $rdo;?>>
+                        </div>
+                    </div>
+                    <div class="w3-row"  <?php echo $edt;?>>
+                        <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px">
+                            <label for="" class="fs087e w3-text-white" style="">Laudo</label>
+                        </div>
+                        <div class="w3-rest">
+                            <input type="text" name="defeitos" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Laudo" value="<?php echo $laudo;?>">
+                        </div>
+                    </div>
+                    <div class="w3-row"  <?php echo $edt;?>>
+                        <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px">
+                            <label for="" class="fs087e w3-text-white" style="">Soluções </label>
+                        </div>
+                        <div class="w3-rest">
+                            <input type="text" name="defeitos" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Soluções" value="<?php echo $solucao;?>">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -213,6 +269,7 @@ date_default_timezone_set("America/Sao_Paulo");
                                 <option value="aberto" <?php echo $status == "" || $status == "aberto" ? "selected" : "hidden";?>>ABERTO</option>
                                 <option value="orcado" <?php echo $status == "orcado" || $status == "aberto" ? "selected" : "hidden";?>>ORÇAMENTO</option>
                                 <option value="aprova" <?php echo $status == "aprova" || $status == "orcado" ? "selected" : "hidden";?>>APROVADO</option>
+                                <option value="cancel" <?php echo $status == "cancel" || $status == "orcado" ? "selected" : "hidden";?>>CANCELADA</option>
                                 <option value="realiza" <?php echo $status == "realiza" || $status == "aprova" ? "selected" : "hidden";?>>REALIZADO</option>
                                 <option value="retira" <?php echo $status == "realiza" ? "selected" : "hidden";?>>RETIRADO</option>
                             </select>
@@ -231,17 +288,60 @@ date_default_timezone_set("America/Sao_Paulo");
                             </div>
                         </header>
                         <div class="w3-border w3-border-gray p10" id="service">
-                            <div class="w3-row mt10 wfull">
-                                <div class="w3-quarter w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
-                                    <label for="" class="fs087e w3-text-white">Serviço </label>
+                            <form action="" id="addServicos" method="post">
+                                <input type="hidden" name="idOs" value="<?php echo $id;?>">
+                                <div class="w3-row mt10 wfull">
+                                    <div class="w3-quarter w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                        <label for="" class="fs087e w3-text-white">Serviço </label>
+                                    </div>
+                                    <div class="w3-half">
+                                        <input type="text" id="serv" name="servicoOS" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Serviço" value="" >
+                                    </div>
+                                    <div class="w3-quarter">
+                                        <button id="adicionarS" name="adicionarS" class="w3-btn w3-green fs087e bradius wfull" type="submit" style="padding: 8px;"><i class="fas fa-plus"></i> Adicionar</button>
+                                    </div>
                                 </div>
-                                <div class="w3-half">
-                                    <input type="text" name="servicoOS" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Produto" value="" readonly>
-                                </div>
-                                <div class="w3-quarter">
-                                    <button name="adicionarS" class="w3-btn w3-green fs087e bradius" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
-                                </div>
-                            </div>
+                                <table class="w3-table w3-striped fs087e">
+                                    <thead class="bgcTH fs095e">
+                                    <th class="w3-border w3-border-gray w3-center" style="width: 40%">Serviço</th>
+                                    <th class="w3-border w3-border-gray" style="width: 40%">Valor (R$)</th>
+                                    <th class="w3-border w3-border-gray" style="width: 20%">Ações</th>
+                                    </thead>
+                                    <tbody class="fs087e">
+                                    <?php
+                                    $cont = 0;
+                                    $valorTotal = 0;
+                                    if($num_serv > 0) {
+                                        foreach ($servs_exibir as $row) { ?>
+                                            <tr>
+                                                <td class="w3-border"><?php echo $row['nome']; ?></td>
+                                                <td class="w3-border"><?php echo number_format($row['valor'], 2, ',', '.'); ?></td>
+                                                <td class="w3-border">
+                                                    <div class="w3-row">
+                                                        <div class="w3-third">
+                                                            <button class="w3-btn w3-red" name="exclS" value="<?php echo $row['id']; ?>" title="Excluir"><i class="fas fa-trash"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                            $cont++;
+                                            $valorTotal += $row['valor'];
+                                        }}
+                                            ?>
+                                    </tbody>
+                                </table>
+                                <?php if($num_serv > 0) {?>
+                                    <div class="w3-row mt05">
+                                        <div class="w3-twothird w3-col w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                            <label for="" class="fs087e w3-text-white" style="">Valor Total</label>
+                                        </div>
+                                        <div class="w3-third">
+                                            <input type="text" name="protocolo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10 fwb" style="border-radius: 0 6px 6px 0;" placeholder="Protocolo" value=" R$ <?php echo number_format($valorTotal, 2, ',', '.');?>" readonly="readonly">
+                                        </div>
+                                    </div>
+                                <?php }?>
+                            </form>
                         </div>
                     </div>
 
@@ -259,16 +359,75 @@ date_default_timezone_set("America/Sao_Paulo");
                         </header>
                         <div class="w3-border w3-border-gray p10 wfull" id="produto">
                             <div class="w3-row mt10 wfull">
-                                <div class="w3-quarter w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
-                                    <label for="" class="fs087e w3-text-white">Produto </label>
-                                </div>
-                                <div class="w3-half">
-                                    <input type="text" name="produtoOS" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" maxlength="30" placeholder="Produto" value="" readonly>
+                                <div class="w3-row w3-half">
+                                    <div class="w3-third w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                        <label for="" class="fs087e w3-text-white">Produto </label>
+                                    </div>
+                                    <div class="w3-twothird">
+                                        <input type="text" id="prod" name="produtoOS" class="w3-input w3-border w3-border-gray w3-hover-border-blue fs087e mb10" onkeyup="letter(this);" maxlength="30" placeholder="Produto" value="" >
+                                    </div>
                                 </div>
                                 <div class="w3-quarter">
-                                    <button name="adicionarP" class="w3-btn w3-green fs087e bradius" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
+                                    <input type="text" id="qtdProd" name="qtdProd" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10" style="border-radius: 0 6px 6px 0;" onkeyup="" placeholder="Quantidade" value="" >
+                                </div>
+                                <div class="w3-quarter">
+                                    <button name="adicionarP" class="w3-btn w3-green fs087e bradius wfull" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
                                 </div>
                             </div>
+                            <table class="w3-table w3-striped fs087e">
+                                <thead class="bgcTH fs095e">
+                                <th class="w3-border w3-border-gray w3-center" style="width: 35%">Produto</th>
+                                <th class="w3-border w3-border-gray w3-center" style="width: 15%">Quantidade</th>
+                                <th class="w3-border w3-border-gray" style="width: 20%">Valor Unit(R$)</th>
+                                <th class="w3-border w3-border-gray" style="width: 20%">Valor Total(R$)</th>
+                                <th class="w3-border w3-border-gray" style="width: 10%">Ações</th>
+                                </thead>
+                                <tbody class="fs087e">
+                                <?php
+                                $cont = 0;
+                                $valorTotal = 0;
+                                if($num_prod > 0) {
+                                    foreach ($prods_exibir as $row) { ?>
+                                        <tr>
+                                            <td class="w3-border"><?php echo $row['nome']; ?></td>
+                                            <td class="w3-border">
+                                                <div class="w3-row">
+                                                    <div class="w3-third"><?php echo $row['qtd']; ?></div>
+                                                    <div class="w3-third">
+                                                        <button class="w3-btn w3-blue" name="minusP" value="<?php echo $row['id']; ?>" title="DiminuirQtd"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                    <div class="w3-third">
+                                                        <button class="w3-btn w3-blue" name="plusP" value="<?php echo $row['id']; ?>" title="AumentarQtd"><i class="fas fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="w3-border"><?php echo number_format($row['valorunit'], 2, ',', '.'); ?></td>
+                                            <td class="w3-border"><?php echo number_format($row['valortot'], 2, ',', '.'); ?></td>
+                                            <td class="w3-border">
+                                                <div class="w3-row">
+                                                    <div class="w3-third">
+                                                        <button class="w3-btn w3-red" name="exclP" value="<?php echo $row['id']; ?>" title="Excluir"><i class="fas fa-trash"></i></button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        $cont++;
+                                        $valorTotal += $row['valortot'];
+                                    }}
+                                ?>
+                                </tbody>
+                            </table>
+                            <?php if($num_prod > 0) {?>
+                                <div class="w3-row mt05">
+                                    <div class="w3-twothird w3-col w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
+                                        <label for="" class="fs087e w3-text-white" style="">Valor Total</label>
+                                    </div>
+                                    <div class="w3-third">
+                                        <input type="text" name="protocolo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10 fwb" style="border-radius: 0 6px 6px 0;" placeholder="Protocolo" value=" R$ <?php echo number_format($valorTotal, 2, ',', '.');?>" readonly="readonly">
+                                    </div>
+                                </div>
+                            <?php }?>
                         </div>
                     </div>
                 </div>

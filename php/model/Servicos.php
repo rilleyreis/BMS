@@ -69,6 +69,12 @@ class Servicos{
         return $queryFet['QTD'];
     }
 
+    public function buscaAll($pdo){
+        $sql = "SELECT * FROM `SERVICO` WHERE `ativoSERVICO` =  1";
+        $query = $pdo->query($sql);
+        return $query->fetchAll();
+    }
+
     public function buscaLtda($pdo, $inicio, $fim){
         $sql = "SELECT * FROM `SERV_DATA` ORDER BY nomeSERVICO ASC LIMIT $inicio,$fim";
         $query = $pdo->query($sql);
