@@ -19,8 +19,11 @@ $erro = "display: none;";
 $msg = "";
 $color = "";
 $colorText = "";
+$usuario = new Usuario();
 
-if(isset($_POST['logar'])){
+$qtdUser = $usuario->buscaQtd($pdo, "");
+
+if(isset($_POST['logar']) AND $qtdUser > 0){
     $user = trim(strip_tags($_POST['usuario']));
     $pass = md5(trim(strip_tags($_POST['senha'])));
     if($user == "" || $pass == ""){
@@ -29,7 +32,6 @@ if(isset($_POST['logar'])){
         $color = "w3-pale-red";
         $colorText = "w3-text-red";
     }else{
-        $usuario = new Usuario();
         $usuario->setUsuario($user);
         $usuario->setSenha($pass);
         $dadosUser = $usuario->buscaUser($pdo);
@@ -64,18 +66,19 @@ if(isset($_POST['logar'])){
             $color = "w3-pale-blue";
             $colorText = "w3-text-blue";
 
-            $empresa = new Empresa();
-            if($empresa->buscaQtd($pdo) == 0){
-                header("Refresh:2; url=emitente");
-            }else {
-                $caixa = new Caixa();
-                $caixa->setData(date("Y-m-d"));
-                if ($caixa->caixaAberto($pdo)) {
-                    header("Refresh:2; url=pag/admin");
-                } else {
-                    header("Refresh:2; url=aberturaCaixa");
-                }
+
+            $caixa = new Caixa();
+            $caixa->setData(date("Y-m-d"));
+            if ($caixa->caixaAberto($pdo)) {
+                header("Refresh:2; url=pag/$panel");
+            } else {
+                header("Refresh:2; url=aberturaCaixa");
             }
         }
     }
+}elseif ($qtdUser == 0){
+    $erro = "display:block";
+    $msg = "Você deve acessar o menu Primeiro Acesso";
+    $color = "w3-pale-red";
+    $colorText = "w3-text-red";
 }

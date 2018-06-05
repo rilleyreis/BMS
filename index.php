@@ -43,9 +43,9 @@
                             <div class="w3-col mr50" style="width: 230px;">
                                 <input type="submit" class="w3-btn w3-green w230 bradius" name="logar" value="Entrar"></input>
                             </div>
-                            <div class="w3-rest w3-text-white">
-                                <a href="" class="fs087e">Esqueceu a Senha?</a>
-                            </div>
+                        </div>
+                        <div class="tac">
+                            <a href="administrador.php" class="fs087e">Primeiro Acesso</a>
                         </div>
                     </form>
                 </fieldset>
