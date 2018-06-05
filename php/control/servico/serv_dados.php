@@ -9,7 +9,6 @@
 $nome = "";
 $descricao = "";
 $valor = "";
-$user = "";
 
 function pegaDados(){
     global $nome, $descricao, $valor, $user;
@@ -17,7 +16,6 @@ function pegaDados(){
     $descricao = trim(strip_tags($_POST['descricao']));
     $valor = str_replace("R$ ", "",$_POST['valor']);
     $valor = str_replace(",", ".",$valor);
-    $user = explode("|", $_POST['user']);
     $user = $user[0];
 }
 
@@ -33,7 +31,7 @@ if (isset($_POST['adicionar'])){
     $servico->setNome($nome);
     $servico->setDescricao($descricao);
     $servico->setValor($valor);
-    $servico->setUser($user);
+
     $servico->salvar($pdo);
     header("Location:../service");
 }
@@ -43,7 +41,6 @@ elseif(isset($_POST['salvar'])){
     $servico->setNome($nome);
     $servico->setDescricao($descricao);
     $servico->setValor($valor);
-    $servico->setUser($user);
     $servico->editar($pdo);
     header("Location:../service");
 }
@@ -57,6 +54,5 @@ elseif(isset($_GET['edt'])){
         $nome = $dado['nomeSERVICO'];
         $descricao = $dado['descricaoSERVICO'];
         $valor = $dado['valorSERVICO'];
-        $user = $dado['USERS_idUSER']."|".$dado['userSERVICO'];
     }
 }

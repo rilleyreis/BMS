@@ -12,7 +12,6 @@ class Servicos{
     private $descricao;
     private $valor;
     private $ativo;
-    private $user;
 
     public function getId(){
         return $this->id;
@@ -54,14 +53,6 @@ class Servicos{
         $this->ativo = $ativo;
     }
 
-    public function getUser(){
-        return $this->user;
-    }
-
-    public function setUser($user){
-        $this->user = $user;
-    }
-
     public function buscaQtd($pdo){
         $sql = "SELECT COUNT(*) AS 'QTD' FROM `SERVICO`";
         $query = $pdo->query($sql);
@@ -94,19 +85,19 @@ class Servicos{
     }
 
     public function salvar($pdo){
-        $sql = "INSERT INTO `SERVICO` (`nomeSERVICO`, `descricaoSERVICO`, `valorSERVICO`, `ativoSERVICO`, `USERS_idUSER`)";
+        $sql = "INSERT INTO `SERVICO` (`nomeSERVICO`, `descricaoSERVICO`, `valorSERVICO`, `ativoSERVICO`)";
         $sql .= "VALUES (:nome, :descricao, :valor, 1, :user)";
         try{
             $insert = $pdo->prepare($sql);
-            $insert->execute(array(":nome"=>$this->nome, ":descricao"=>$this->descricao, ":valor"=>$this->valor, ":user"=>$this->user));
+            $insert->execute(array(":nome"=>$this->nome, ":descricao"=>$this->descricao, ":valor"=>$this->valor));
         }catch (PDOException $e){
             echo $e->getMessage();
         }
     }
 
     public function editar($pdo){
-        $sql = "UPDATE `SERVICO` SET `nomeSERVICO` = :nome, `descricaoSERVICO` = :descricao, `valorSERVICO` = :valor, `USERS_idUSER` = :users WHERE `idSERVICO` = :id";
+        $sql = "UPDATE `SERVICO` SET `nomeSERVICO` = :nome, `descricaoSERVICO` = :descricao, `valorSERVICO` = :valor = :users WHERE `idSERVICO` = :id";
         $update = $pdo->prepare($sql);
-        $update->execute(array(":nome"=>$this->nome, ":descricao"=>$this->descricao, ":valor"=>$this->valor, ":users"=>$this->user,':id'=>$this->id));
+        $update->execute(array(":nome"=>$this->nome, ":descricao"=>$this->descricao, ":valor"=>$this->valor,':id'=>$this->id));
     }
 }

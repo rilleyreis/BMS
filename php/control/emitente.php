@@ -76,11 +76,5 @@ if(isset($_POST['adicionar'])){
     $empresa->setIdPE($idPE[0]);
     $empresa->salvar($pdo);
 
-    $caixa = new Caixa();
-    $caixa->setData(date("Y-m-d"));
-    if ($caixa->caixaAberto($pdo)) {
-        header("Refresh:2; url=pag/admin");
-    } else {
-        header("Refresh:2; url=aberturaCaixa");
-    }
+    header("Refresh:2; url=/bms");
 }

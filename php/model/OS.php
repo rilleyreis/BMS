@@ -17,6 +17,8 @@ class OS{
     private $defeitos;
     private $status;
     private $valor;
+    private $laudo;
+    private $solucao;
     private $tecnico;
     private $cliente;
 
@@ -92,6 +94,22 @@ class OS{
         $this->valor = $valor;
     }
 
+    public function getLaudo(){
+        return $this->laudo;
+    }
+
+    public function setLaudo($laudo){
+        $this->laudo = $laudo;
+    }
+
+    public function getSolucao(){
+        return $this->solucao;
+    }
+
+    public function setSolucao($solucao){
+        $this->solucao = $solucao;
+    }
+
     public function getStatus(){
         return $this->status;
     }
@@ -146,6 +164,26 @@ class OS{
             $sql = "SELECT LAST_INSERT_ID()";
             $query = $pdo->query($sql);
             return $query->fetch();
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function editar($pdo){
+        $sql = "UPDATE `ORDEMSERVICO` SET `protocoloORDEMSERVICO` = :prot, `vendedorORDEMSERVICO` = :valor, `telefoneORDEMSERVICO` = :tel, `responsavelORDEMSERVICO` = :resp, `objrecebidoORDEMSERVICO` = :obj, `itemdeixadoORDEMSERVICO` = :item, `defeitosORDEMSERVICO` = :def, `statusORDEMSERVICO` = :status, `valorORDEMSERVICO` = :valor, `laudoORDEMSERVICO` = :laudo, `solucaoORDEMSERVICO` = :solucao, `USERS_idUSER` = :tecnico, `idCLIENTE` = :cli WHERE `idORDEMSERVICO` = :id";
+        try{
+            $update = $pdo->prepare($sql);
+            $update->execute(array(":prot"=>$this->protocolo, ":vend"=>$this->vendedor, ":tel"=>$this->telefone, ":resp"=>$this->responsavel, ":obj"=>$this->objeto, ":item"=>$this->itens, ":def"=>$this->defeitos, ":status"=>$this->status, ":valor"=>$this->valor, ":laudo"=>$this->laudo, ":solucao"=>$this->solucao, ":tecnico"=>$this->tecnico, ":cli"=>$this->cliente, ":id"=>$this->id));
+        }catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function trocarStatus($pdo){
+        $sql = "UPDATE `ORDEMSERVICO` SET `statusORDEMSERVICO`=$this->status WHERE `idORDEMSERVICO` = $this->id";
+        try{
+            $update = $pdo->prepare($sql);
+            $update->execute();
         }catch (PDOException $e){
             echo $e->getMessage();
         }

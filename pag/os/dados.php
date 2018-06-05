@@ -92,11 +92,7 @@ date_default_timezone_set("America/Sao_Paulo");
 <!-- Top container -->
 <div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['nomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
-    <!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
-    <!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
-    <!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
-    <!--    </div>-->
+    <span class="w3-bar-item w3-right fwb w3-text-white">Business Manager System</span>
 </div>
 
 
@@ -168,12 +164,12 @@ date_default_timezone_set("America/Sao_Paulo");
                                         <tr>
                                             <td class="w3-border w3-center w3-third"><?php
                                                 switch ($item['statusDSO']){
-                                                    case 'aberto': echo "ABERTO"; break;
-                                                    case 'orcado': echo "ORÇADO"; break;
-                                                    case 'aprova': echo "APROVADO"; break;
-                                                    case 'cancel': echo "CANCELADO"; break;
-                                                    case 'realiza': echo "REALIZADO"; break;
-                                                    case 'retira': echo "RETIRADO"; break;
+                                                    case 2: echo "ABERTO"; break;
+                                                    case 3: echo "ORÇADO"; break;
+                                                    case 4: echo "APROVADO"; break;
+                                                    case 5: echo "CONCLUÍDO"; break;
+                                                    case 6: echo "FINALIZADO"; break;
+                                                    case 7: echo "CANCELADO"; break;
                                                 }
                                                 ?></td>
                                             <td class="w3-border w3-center w3-third"><?php echo $item['dataDSO'];?></td>
@@ -189,6 +185,7 @@ date_default_timezone_set("America/Sao_Paulo");
 
 
                     <div class="w3-row">
+                        <input type="hidden" value="<?php echo $id;?>" name="idOS">
                         <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px">
                             <label for="" class="fs087e w3-text-white" style="">Cliente *</label>
                         </div>
@@ -249,7 +246,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Laudo</label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="defeitos" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Laudo" value="<?php echo $laudo;?>">
+                            <input type="text" name="laudo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Laudo" value="<?php echo $laudo;?>">
                         </div>
                     </div>
                     <div class="w3-row"  <?php echo $edt;?>>
@@ -257,7 +254,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             <label for="" class="fs087e w3-text-white" style="">Soluções </label>
                         </div>
                         <div class="w3-rest">
-                            <input type="text" name="defeitos" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Soluções" value="<?php echo $solucao;?>">
+                            <input type="text" name="solucao" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" onkeyup="letter(this);" placeholder="Soluções" value="<?php echo $solucao;?>">
                         </div>
                     </div>
                     <div class="w3-row">
@@ -266,12 +263,12 @@ date_default_timezone_set("America/Sao_Paulo");
                         </div>
                         <div class="w3-rest">
                             <select name="status" id="" class="w3-input w3-border w3-border-gray w3-hover-border-blue mb10 fs087e" style="border-radius: 0 6px 6px 0;">
-                                <option value="aberto" <?php echo $status == "" || $status == "aberto" ? "selected" : "hidden";?>>ABERTO</option>
-                                <option value="orcado" <?php echo $status == "orcado" || $status == "aberto" ? "selected" : "hidden";?>>ORÇAMENTO</option>
-                                <option value="aprova" <?php echo $status == "aprova" || $status == "orcado" ? "selected" : "hidden";?>>APROVADO</option>
-                                <option value="cancel" <?php echo $status == "cancel" || $status == "orcado" ? "selected" : "hidden";?>>CANCELADA</option>
-                                <option value="realiza" <?php echo $status == "realiza" || $status == "aprova" ? "selected" : "hidden";?>>REALIZADO</option>
-                                <option value="retira" <?php echo $status == "realiza" ? "selected" : "hidden";?>>RETIRADO</option>
+                                <option value="7" <?php echo $status >= 2 ? "selected" : "hidden";?>>CANCELADA</option>
+                                <option value="2" <?php echo $status <= 2 ? "selected" : "hidden";?>>ABERTO</option>
+                                <option value="3" <?php echo $status >=2  && $status <=3? "selected" : "hidden";?>>ORÇAMENTO</option>
+                                <option value="4" <?php echo $status >=3 && $status <= 4 ? "selected" : "hidden";?>>APROVADO</option>
+                                <option value="5" <?php echo $status >= 4 && $status <= 5 ? "selected" : "hidden";?>>REALIZADO</option>
+                                <option value="6" <?php echo $status >= 5 ? "selected" : "hidden";?>>RETIRADO</option>
                             </select>
                         </div>
                     </div>
@@ -288,8 +285,8 @@ date_default_timezone_set("America/Sao_Paulo");
                             </div>
                         </header>
                         <div class="w3-border w3-border-gray p10" id="service">
-                            <form action="" id="addServicos" method="post">
                                 <input type="hidden" name="idOs" value="<?php echo $id;?>">
+                                <?php if($status <= 3){?>
                                 <div class="w3-row mt10 wfull">
                                     <div class="w3-quarter w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
                                         <label for="" class="fs087e w3-text-white">Serviço </label>
@@ -301,11 +298,14 @@ date_default_timezone_set("America/Sao_Paulo");
                                         <button id="adicionarS" name="adicionarS" class="w3-btn w3-green fs087e bradius wfull" type="submit" style="padding: 8px;"><i class="fas fa-plus"></i> Adicionar</button>
                                     </div>
                                 </div>
+                                <?php }?>
                                 <table class="w3-table w3-striped fs087e">
                                     <thead class="bgcTH fs095e">
                                     <th class="w3-border w3-border-gray w3-center" style="width: 40%">Serviço</th>
                                     <th class="w3-border w3-border-gray" style="width: 40%">Valor (R$)</th>
+                                    <?php if($status <= 3){?>
                                     <th class="w3-border w3-border-gray" style="width: 20%">Ações</th>
+                                    <?php }?>
                                     </thead>
                                     <tbody class="fs087e">
                                     <?php
@@ -316,6 +316,7 @@ date_default_timezone_set("America/Sao_Paulo");
                                             <tr>
                                                 <td class="w3-border"><?php echo $row['nome']; ?></td>
                                                 <td class="w3-border"><?php echo number_format($row['valor'], 2, ',', '.'); ?></td>
+                                                <?php if($status <= 3){?>
                                                 <td class="w3-border">
                                                     <div class="w3-row">
                                                         <div class="w3-third">
@@ -323,6 +324,7 @@ date_default_timezone_set("America/Sao_Paulo");
                                                         </div>
                                                     </div>
                                                 </td>
+                                                <?php }?>
                                             </tr>
                                             <?php
                                             $cont++;
@@ -337,11 +339,10 @@ date_default_timezone_set("America/Sao_Paulo");
                                             <label for="" class="fs087e w3-text-white" style="">Valor Total</label>
                                         </div>
                                         <div class="w3-third">
-                                            <input type="text" name="protocolo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10 fwb" style="border-radius: 0 6px 6px 0;" placeholder="Protocolo" value=" R$ <?php echo number_format($valorTotal, 2, ',', '.');?>" readonly="readonly">
+                                            <input type="text" name="" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10 fwb" style="border-radius: 0 6px 6px 0;" placeholder="Protocolo" value=" R$ <?php echo number_format($valorTotal, 2, ',', '.');?>" readonly="readonly">
                                         </div>
                                     </div>
                                 <?php }?>
-                            </form>
                         </div>
                     </div>
 
@@ -358,6 +359,7 @@ date_default_timezone_set("America/Sao_Paulo");
                             </div>
                         </header>
                         <div class="w3-border w3-border-gray p10 wfull" id="produto">
+                            <?php if($status <= 3){?>
                             <div class="w3-row mt10 wfull">
                                 <div class="w3-row w3-half">
                                     <div class="w3-third w3-border w3-border-gray w3-gray" style="border-radius: 6px 0 0 6px; padding: 6.5px;">
@@ -374,13 +376,16 @@ date_default_timezone_set("America/Sao_Paulo");
                                     <button name="adicionarP" class="w3-btn w3-green fs087e bradius wfull" style="padding: 8px;" type="submit"><i class="fa fa-plus"></i> Adicionar</button>
                                 </div>
                             </div>
+                            <?php }?>
                             <table class="w3-table w3-striped fs087e">
                                 <thead class="bgcTH fs095e">
                                 <th class="w3-border w3-border-gray w3-center" style="width: 35%">Produto</th>
                                 <th class="w3-border w3-border-gray w3-center" style="width: 15%">Quantidade</th>
                                 <th class="w3-border w3-border-gray" style="width: 20%">Valor Unit(R$)</th>
                                 <th class="w3-border w3-border-gray" style="width: 20%">Valor Total(R$)</th>
+                                <?php if($status <= 3){?>
                                 <th class="w3-border w3-border-gray" style="width: 10%">Ações</th>
+                                <?php }?>
                                 </thead>
                                 <tbody class="fs087e">
                                 <?php
@@ -403,6 +408,7 @@ date_default_timezone_set("America/Sao_Paulo");
                                             </td>
                                             <td class="w3-border"><?php echo number_format($row['valorunit'], 2, ',', '.'); ?></td>
                                             <td class="w3-border"><?php echo number_format($row['valortot'], 2, ',', '.'); ?></td>
+                                            <?php if($status <= 3){?>
                                             <td class="w3-border">
                                                 <div class="w3-row">
                                                     <div class="w3-third">
@@ -410,6 +416,7 @@ date_default_timezone_set("America/Sao_Paulo");
                                                     </div>
                                                 </div>
                                             </td>
+                                            <?php }?>
                                         </tr>
                                         <?php
                                         $cont++;
@@ -424,7 +431,7 @@ date_default_timezone_set("America/Sao_Paulo");
                                         <label for="" class="fs087e w3-text-white" style="">Valor Total</label>
                                     </div>
                                     <div class="w3-third">
-                                        <input type="text" name="protocolo" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10 fwb" style="border-radius: 0 6px 6px 0;" placeholder="Protocolo" value=" R$ <?php echo number_format($valorTotal, 2, ',', '.');?>" readonly="readonly">
+                                        <input type="text" name="" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius fs087e mb10 fwb" style="border-radius: 0 6px 6px 0;" placeholder="Protocolo" value=" R$ <?php echo number_format($valorTotal, 2, ',', '.');?>" readonly="readonly">
                                     </div>
                                 </div>
                             <?php }?>
@@ -433,7 +440,7 @@ date_default_timezone_set("America/Sao_Paulo");
                 </div>
                 <button name="adicionar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $add;?>><i class="fas fa-save mr03"></i> Adicionar</button>
                 <button name="editar" class="w3-btn w3-green w3-center fs087e bradius" type="submit" <?php echo $edt;?>><i class="fas fa-save mr03"></i> Salvar</button>
-                <a class="w3-btn w3-deep-orange w3-center fs087e bradius" href="../cliente"><i class="fas fa-times mr03"></i> Cancelar</a>
+                <button name="cancel" class="w3-btn w3-deep-orange w3-center fs087e bradius" type="submit"><i class="fas fa-times mr03"></i> Cancelar</button>
             </form>
         </div>
     </div>

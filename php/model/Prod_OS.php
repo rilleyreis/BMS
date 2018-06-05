@@ -65,4 +65,14 @@ class Prod_OS{
             echo $e->getMessage();
         }
     }
+
+    public function excluir($pdo){
+        $sql = "DELETE FROM `OS_PROD` WHERE `idOS_PROD` = $this->id";
+        $pdo->query($sql);
+    }
+
+    public function cancelar($pdo){
+        $sql = "DELETE FROM `OS_PROD` WHERE `ORDEMSERVICO_idORDEMSERVICO` = $this->idOS";
+        $pdo->query($sql);
+    }
 }

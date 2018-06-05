@@ -27,7 +27,7 @@ CREATE VIEW `SERV_DATA` AS
 -- ----------------------------------------------------
 CREATE VIEW `OS_DATA` AS
     SELECT  OS.`idORDEMSERVICO` AS 'id', OS.`protocoloORDEMSERVICO` AS 'protocolo', OS.`vendedorORDEMSERVICO` AS 'vendedor', OS.`telefoneORDEMSERVICO` AS 'telefone', OS.`responsavelORDEMSERVICO` AS 'responsavel', OS.`objrecebidoORDEMSERVICO` AS 'objeto', OS.`itemdeixadoORDEMSERVICO` AS 'itens', OS.`defeitosORDEMSERVICO` AS 'defeitos', OS.`statusORDEMSERVICO` AS 'status', OS.`valorORDEMSERVICO` AS 'valor',
-            PE.`nome` AS 'cliente', U.`nomeFull` AS 'tecnico'
+            CONCAT(PE.`id`,"|",PE.`nome`) AS 'cliente', CONCAT(U.`id`,"|",U.`nomeFull`) AS 'tecnico', OS.`laudoORDEMSERVICO` AS 'laudo', OS.`solucaoORDEMSERVICO` AS 'solucao'
     FROM `ORDEMSERVICO` OS  INNER JOIN `USERS_DATA` U ON OS.`USERS_idUSER` = U.`id`
                             INNER JOIN `PESSOA_DATA` PE ON OS.`idCLIENTE` = PE.`id`;
 

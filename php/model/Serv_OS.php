@@ -61,4 +61,9 @@ class Serv_OS{
         $sql = "DELETE FROM `OS_SERV` WHERE `idOS_SERV` = $this->id";
         $pdo->query($sql);
     }
+
+    public function cancelar($pdo){
+        $sql = "DELETE FROM `OS_SERV` WHERE `ORDEMSERVICO_idORDEMSERVICO` = $this->idOS";
+        $pdo->query($sql);
+    }
 }

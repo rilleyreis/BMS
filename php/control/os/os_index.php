@@ -17,6 +17,13 @@ if (isset($_POST['sel'])){
     header('Location:dados.php?edt='.$id);
 }
 
+if(isset($_POST['cancel'])){
+    $id = $_POST['cancel'];
+    $ordemS->setId($id);
+    $ordemS->setStatus(7);
+    $ordemS->trocarStatus($pdo);
+}
+
 if ($num_os == 0){
     $msgTable = "Nenhum registro encontrado";
 }else {

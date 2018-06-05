@@ -23,20 +23,6 @@ require '../../util/config.php';
 <script type="text/javascript" src="../../app/js/jquery.maskMoney.js"></script>
 <script type="text/javascript" src="../../app/js/masks.js"></script>
 <script type="text/javascript" src="../../app/js/format.js"></script>
-<script>
-    $(function () {
-        $.getJSON("../../php/control/users/users_data.php", function (dados) {
-            var users = [];
-            console.log(dados);
-            $(dados).each(function (key, value) {
-                users.push(value.id + "|" + value.fnome + " " + value.lnome);
-            });
-            $("#user").autocomplete({
-                source: users
-            });
-        });
-    });
-</script>
 
 <title>BMS - Business Manager System</title>
 
@@ -92,14 +78,6 @@ require '../../util/config.php';
                     </div>
                     <div class="w3-rest">
                         <input type="text" name="descricao" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Descrição" value="<?php echo $descricao?>" required>
-                    </div>
-                </div>
-                <div class="w3-row">
-                    <div class="w3-col w3-border w3-border-gray w3-gray" style="width: 145px; border-radius: 6px 0 0 6px; padding: 6.5px;">
-                        <label for="" class="fs087e w3-text-white" style="">Técnico *</label>
-                    </div>
-                    <div class="w3-rest">
-                        <input type="text" name="user" id="user" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="50" placeholder="Técnico" value="<?php echo $user?>" required>
                     </div>
                 </div>
                 <div class="w3-row">

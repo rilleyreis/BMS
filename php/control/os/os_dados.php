@@ -15,7 +15,7 @@ $responsavel = "";
 $objrecebido = "";
 $itemdeixado = "";
 $defeitos = "";
-$status = "";
+$status = 0;
 
 function pegaDados(){
     global $protocolo, $vendedor, $cliente, $telefone, $tecnico, $responsavel, $objrecebido, $itemdeixado, $defeitos, $status;
@@ -47,6 +47,7 @@ $vendedor = $_SESSION['nomeUser']." ".$_SESSION['snomeUser'];
 $add = "";
 $edt = "style='display:none'";
 $rdo = "";
+$rdo2 = "";
 $laudo = "";
 $solucao = "";
 
@@ -76,18 +77,80 @@ $serv = new Serv_OS();
 $prod = new Prod_OS();
 
 if(isset($_POST['adicionarS'])) {
-    $serv->setIdOS($_POST['idOs']);
+    $id = $_POST['idOs'];
+    $laudo = trim(strip_tags($_POST['laudo']));
+    $solucao = trim(strip_tags($_POST['solucao']));
+    $serv->setIdOS($id);
     $idServ = explode("|", $_POST['servicoOS']);
     $serv->setIdServ($idServ[0]);
     $serv->salvar($pdo);
 }
 
+if (isset($_POST['exclS'])){
+    $laudo = trim(strip_tags($_POST['laudo']));
+    $solucao = trim(strip_tags($_POST['solucao']));
+    $serv->setId($_POST['exclS']);
+    $serv->excluir($pdo);
+}
+
 if (isset($_POST['adicionarP'])){
-    $prod->setIdOS($_POST['idOs']);
+    $id = $_POST['idOs'];
+    $laudo = trim(strip_tags($_POST['laudo']));
+    $solucao = trim(strip_tags($_POST['solucao']));
+    $prod->setIdOS($id);
     $idProd = explode("|", $_POST['produtoOS']);
     $prod->setIdProd($idProd[0]);
     $prod->setQtd($_POST['qtdProd']);
     $prod->salvar($pdo);
+}
+
+if (isset($_POST['editar'])){
+    pegaDados();
+    $id = $_POST['idOs'];
+    $laudo = trim(strip_tags($_POST['laudo']));
+    $solucao = trim(strip_tags($_POST['solucao']));
+    $os->setId($id);
+    $os->setProtocolo($protocolo);
+    $os->setVendedor($vendedor);
+    $os->setCliente($cliente);
+    $os->setTelefone($telefone);
+    $os->setTecnico($tecnico);
+    $os->setResponsavel($responsavel);
+    $os->setObjeto($objrecebido);
+    $os->setItens($itemdeixado);
+    $os->setDefeitos($defeitos);
+    $os->setStatus($status);
+    $os->setLaudo($laudo);
+    $os->setSolucao($solucao);
+
+    $serv->setIdOS($id);
+    $num_serv = $serv->buscaQtd($pdo);
+    $valorTotal = 0;
+    if($num_serv > 0){
+        $servs_exibir = $serv->buscaServs($pdo);
+        foreach ($servs_exibir as $item) {
+            $valorTotal += $item['valor'];
+        }
+    }
+
+    $prod->setIdOS($id);
+    $num_prod = $prod->buscaQtd($pdo);
+    if ($num_prod > 0){
+        $prods_exibir = $prod->buscaProds($pdo);
+        foreach ($prods_exibir as $item) {
+            $valorTotal += $item['valor'];
+        }
+    }
+    $os->setValor($valorTotal);
+
+    $os->editar($pdo);
+    $dso = new DSO();
+    $dso->setData(date('Y-m-d'));
+    $dso->setHora(date("H:i:s"));
+    $dso->setStatus($status);
+    $dso->setIdOs($id);
+    $dso->salvar($pdo);
+    header("Location:../os");
 }
 
 if(isset($_GET['edt'])){
@@ -109,25 +172,50 @@ if(isset($_GET['edt'])){
         $itemdeixado = $dado['itens'];
         $defeitos = $dado['defeitos'];
         $status = $dado['status'];
+        $laudo1 = $dado['laudo'];
+        $solucao1 = $dado['solucao'];
+    }
+    if ($laudo1 != "" AND $solucao1 != ""){
+        $rdo2 = "readonly='readonly'";
+    }
+    if($laudo1 != ""){
+        $laudo = $laudo1;
+    }if($solucao1 != ""){
+        $solucao = $solucao1;
     }
     $dso = new DSO();
     $dso->setIdOs($id);
     $dsoExibir = $dso->buscaDados($pdo);
+
+    $serv->setIdOS($id);
+    $num_serv = $serv->buscaQtd($pdo);
+    if($num_serv > 0){
+        $servs_exibir = $serv->buscaServs($pdo);
+    }
+
+    $prod->setIdOS($id);
+    $num_prod = $prod->buscaQtd($pdo);
+    if ($num_prod > 0){
+        $prods_exibir = $prod->buscaProds($pdo);
+    }
+}
+
+if(isset($_POST['cancel'])){
+    if($status < 4){
+        $prod->setId($id);
+        $serv->setId($id);
+        $prod->cancelar($pdo);
+        $serv->cancelar($pdo);
+    }
+    header("Location:../os");
 }
 
 if(isset($_POST['exclS'])){
     $serv->setId($_POST['exclS']);
     $serv->excluir($pdo);
 }
-
-$serv->setIdOS($id);
-$num_serv = $serv->buscaQtd($pdo);
-if($num_serv > 0){
-    $servs_exibir = $serv->buscaServs($pdo);
+if(isset($_POST['exclP'])){
+    $prod->setId($_POST['exclP']);
+    $prod->excluir($pdo);
 }
 
-$prod->setIdOS($id);
-$num_prod = $prod->buscaQtd($pdo);
-if ($num_prod > 0){
-    $prods_exibir = $prod->buscaProds($pdo);
-}
