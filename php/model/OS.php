@@ -170,7 +170,7 @@ class OS{
     }
 
     public function editar($pdo){
-        $sql = "UPDATE `ORDEMSERVICO` SET `protocoloORDEMSERVICO` = :prot, `vendedorORDEMSERVICO` = :valor, `telefoneORDEMSERVICO` = :tel, `responsavelORDEMSERVICO` = :resp, `objrecebidoORDEMSERVICO` = :obj, `itemdeixadoORDEMSERVICO` = :item, `defeitosORDEMSERVICO` = :def, `statusORDEMSERVICO` = :status, `valorORDEMSERVICO` = :valor, `laudoORDEMSERVICO` = :laudo, `solucaoORDEMSERVICO` = :solucao, `USERS_idUSER` = :tecnico, `idCLIENTE` = :cli WHERE `idORDEMSERVICO` = :id";
+        $sql = "UPDATE `ORDEMSERVICO` SET `protocoloORDEMSERVICO` = :prot, `vendedorORDEMSERVICO` = :vend, `telefoneORDEMSERVICO` = :tel, `responsavelORDEMSERVICO` = :resp, `objrecebidoORDEMSERVICO` = :obj, `itemdeixadoORDEMSERVICO` = :item, `defeitosORDEMSERVICO` = :def, `statusORDEMSERVICO` = :status, `valorORDEMSERVICO` = :valor, `laudoORDEMSERVICO` = :laudo, `solucaoORDEMSERVICO` = :solucao, `USERS_idUSER` = :tecnico, `idCLIENTE` = :cli WHERE `idORDEMSERVICO` = :id";
         try{
             $update = $pdo->prepare($sql);
             $update->execute(array(":prot"=>$this->protocolo, ":vend"=>$this->vendedor, ":tel"=>$this->telefone, ":resp"=>$this->responsavel, ":obj"=>$this->objeto, ":item"=>$this->itens, ":def"=>$this->defeitos, ":status"=>$this->status, ":valor"=>$this->valor, ":laudo"=>$this->laudo, ":solucao"=>$this->solucao, ":tecnico"=>$this->tecnico, ":cli"=>$this->cliente, ":id"=>$this->id));

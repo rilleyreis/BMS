@@ -89,30 +89,20 @@ $qtd_emp = $empresa->buscaQtd($pdo);
 if($qtd_emp > 0){
     $dados = $empresa->buscaDados($pdo);
     foreach ($dados as $dado) {
-        $id = $dado['idEMPRESA'];
-        $logo .= $dado['logoEMPRESA'];
-        $idPE = $dado['PESSOA_idPESSOA'];
-    }
-    $pjuridica->setId($idPE[0]);
-    $dados = $pjuridica->buscaDados($pdo);
-    foreach ($dados as $dado) {
-        $cnpj = $dado['cpfcnpjPESSOA'];
-        $rsocial = $dado['snomePESSOA'];
-        $fant = $dado['nomePESSOA'];
-        $ie = $dado['rgiePESSOA'];
-        $tel = $dado['telPESSOA'];
-        $email = $dado['emailPESSOA'];
-        $idEnd = $dado['ENDERECO_idENDERECO'];
-    }
-    $endereco->setId($idEnd[0]);
-    $dados = $endereco->buscar($pdo);
-    foreach ($dados as $dado) {
-        $rua = $dado['ruaENDERECO'];
-        $num = $dado['numENDERECO'];
-        $bairro = $dado['bairroENDERECO'];
-        $cidade = $dado['cidadeENDERECO'];
-        $uf = $dado['ufENDERECO'];
-        $cep = $dado['cepENDERECO'];
+        $id = $dado['id'];
+        $logo .= $dado['logo'];
+        $cnpj = $dado['cpf_cnpj'];
+        $rsocial = $dado['snome'];
+        $fant = $dado['nome'];
+        $ie = $dado['rgie'];
+        $tel = $dado['tel'];
+        $email = $dado['email'];
+        $rua = $dado['rua'];
+        $num = $dado['num'];
+        $bairro = $dado['bairro'];
+        $cidade = $dado['cidade'];
+        $uf = $dado['uf'];
+        $cep = $dado['cep'];
     }
 }
 

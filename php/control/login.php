@@ -52,8 +52,8 @@ if(isset($_POST['logar']) AND $qtdUser > 0){
             $pessoa->setId($idPE);
             $dadosPE = $pessoa->buscaDados($pdo);
             foreach ($dadosPE as $item) {
-                $fnome = $item['nomePESSOA'];
-                $lnome = $item['snomePESSOA'];
+                $fnome = $item['nome'];
+                $lnome = $item['snome'];
             }
             $_SESSION['idUser'] = $idUser;
             $_SESSION['nomeUser'] = $fnome;

@@ -37,6 +37,7 @@ require '../../php/model/OS.php';
 require '../../php/model/DSO.php';
 require '../../php/model/Serv_OS.php';
 require '../../php/model/Prod_OS.php';
+require '../../php/model/Produto.php';
 
 $os = new OS();
 $num = $os->buscaQtd($pdo);
@@ -70,7 +71,8 @@ if (isset($_POST['adicionar'])){
     $dso->setStatus($status);
     $dso->setIdOs($idOS[0]);
     $dso->salvar($pdo);
-    header("Location:../os");
+    $idOS = base64_encode($idOS);
+    header('Location:../os');
 }
 
 $serv = new Serv_OS();
@@ -91,6 +93,13 @@ if (isset($_POST['exclS'])){
     $solucao = trim(strip_tags($_POST['solucao']));
     $serv->setId($_POST['exclS']);
     $serv->excluir($pdo);
+}
+
+if(isset($_POST['exclP'])){
+    $laudo = trim(strip_tags($_POST['laudo']));
+    $solucao = trim(strip_tags($_POST['solucao']));
+    $prod->setId($_POST['exclP']);
+    $prod->excluir($pdo);
 }
 
 if (isset($_POST['adicionarP'])){
@@ -138,10 +147,11 @@ if (isset($_POST['editar'])){
     if ($num_prod > 0){
         $prods_exibir = $prod->buscaProds($pdo);
         foreach ($prods_exibir as $item) {
-            $valorTotal += $item['valor'];
+            $valorTotal += $item['valortot'];
         }
     }
     $os->setValor($valorTotal);
+
 
     $os->editar($pdo);
     $dso = new DSO();
@@ -150,6 +160,19 @@ if (isset($_POST['editar'])){
     $dso->setStatus($status);
     $dso->setIdOs($id);
     $dso->salvar($pdo);
+    if($status == 5){
+        $prod->setIdOS($id);
+        $num_prod = $prod->buscaQtd($pdo);
+        if ($num_prod > 0){
+            $produto = new Produto();
+            $prods_exibir = $prod->buscaProds($pdo);
+            foreach ($prods_exibir as $item) {
+                $produto->setId($item['idP']);
+                $produto->setEstoque($item['qtd']);
+                $produto->removeEstoque($pdo);
+            }
+        }
+    }
     header("Location:../os");
 }
 
@@ -208,14 +231,5 @@ if(isset($_POST['cancel'])){
         $serv->cancelar($pdo);
     }
     header("Location:../os");
-}
-
-if(isset($_POST['exclS'])){
-    $serv->setId($_POST['exclS']);
-    $serv->excluir($pdo);
-}
-if(isset($_POST['exclP'])){
-    $prod->setId($_POST['exclP']);
-    $prod->excluir($pdo);
 }
 

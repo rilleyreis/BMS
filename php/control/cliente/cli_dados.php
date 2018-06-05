@@ -97,22 +97,17 @@ elseif(isset($_GET['edt'])){
     $cliente->setId($id);
     $dados = $cliente->buscaDados($pdo);
     foreach ($dados as $dado) {
-        $cpfcnpj = $dado['cpfcnpjPESSOA'];
-        $nome = $dado['nomePESSOA'];
-        $snome = $dado['snomePESSOA'];
-        $rgie = $dado['rgiePESSOA'];
-        $tel = $dado['telPESSOA'];
-        $email = $dado['emailPESSOA'];
-        $idEnd = $dado['ENDERECO_idENDERECO'];
-    }
-    $endereco->setId($idEnd);
-    $dados = $endereco->buscar($pdo);
-    foreach ($dados as $dado) {
-        $rua = $dado['ruaENDERECO'];
-        $num = $dado['numENDERECO'];
-        $bairro = $dado['bairroENDERECO'];
-        $cidade = $dado['cidadeENDERECO'];
-        $uf = $dado['ufENDERECO'];
-        $cep = $dado['cepENDERECO'];
+        $cpfcnpj = $dado['cpf_cnpj'];
+        $nome = $dado['nome'];
+        $snome = $dado['snome'];
+        $rgie = $dado['rgie'];
+        $tel = $dado['tel'];
+        $email = $dado['email'];
+        $rua = $dado['rua'];
+        $num = $dado['num'];
+        $bairro = $dado['bairro'];
+        $cidade = $dado['cidade'];
+        $uf = $dado['uf'];
+        $cep = $dado['cep'];
     }
 }

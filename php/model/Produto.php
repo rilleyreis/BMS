@@ -132,6 +132,12 @@ class Produto{
         $update->execute(array(':qtd'=>$this->estoque,':id'=>$this->id));
     }
 
+    public function removeEstoque($pdo){
+        $sql = "UPDATE `PRODUTO` SET `estoquePRODUTO` = `estoquePRODUTO` - :qtd WHERE `idPRODUTO` = :id";
+        $update = $pdo->prepare($sql);
+        $update->execute(array(':qtd'=>$this->estoque,':id'=>$this->id));
+    }
+
     public function ativar_desativar($pdo, $ativo){
         $sql = "UPDATE `PRODUTO` SET `ativoPRODUTO` = $ativo WHERE `idPRODUTO` = :id";
         $update = $pdo->prepare($sql);

@@ -106,9 +106,9 @@ require '../../util/config.php';
                                 <td class="w3-border">
                                     <div class="w3-row">
                                         <div class="w3-quarter">
-                                            <button class="w3-btn w3-blue" name="sel" value="<?php echo $row['id'];?>" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <a class="w3-btn w3-blue" href="view.php?id=<?php echo base64_encode($row['id']);?>" title="Visualizar"><i class="fas fa-eye"></i></a>
                                         </div>
-                                        <?php if($row['status'] != 7){ ?>
+                                        <?php if($row['status'] < 6){ ?>
                                         <div class="w3-quarter">
                                             <button class="w3-btn w3-green" name="sel" value="<?php echo $row['id'];?>" title="Editar"><i class="fas fa-edit"></i></button>
                                         </div>
@@ -117,7 +117,7 @@ require '../../util/config.php';
                                         </div>
                                         <?php } ?>
                                         <div class="w3-quarter">
-                                            <button class="w3-btn w3-blue-gray" name="print" value="<?php echo $row['id'];?>" title="Imprimir"><i class="fas fa-print"></i></button>
+                                            <a class="w3-btn w3-blue-gray" name="print" href="view.php?id=<?php echo base64_encode($row['id']);?>&print" title="Imprimir"><i class="fas fa-print"></i></a>
                                         </div>
                                     </div>
                                 </td>

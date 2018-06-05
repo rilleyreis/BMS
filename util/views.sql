@@ -15,6 +15,16 @@ CREATE VIEW `PESSOA_DATA` AS
             E.`ruaENDERECO` AS 'rua', E.`numENDERECO` AS 'num', E.`bairroENDERECO` AS 'bairro', E.`cidadeENDERECO` AS 'cidade', E.`ufENDERECO` AS 'uf', E.`cepENDERECO` AS 'cep'
     FROM `PESSOA` PE INNER JOIN `ENDERECO` E ON PE.`ENDERECO_idENDERECO` = E.`idENDERECO`;
 
+-- -----------------------------------------------------
+-- View `EMPRESA_DATA`
+-- -----------------------------------------------------
+CREATE VIEW `EMPRESA_DATA` AS
+    SELECT  EM.`idEMPRESA` AS 'id', PE.`cpfcnpjPESSOA` AS 'cpf_cnpj', PE.`nomePESSOA` AS 'nome', PE.`snomePESSOA` AS 'snome', PE.`rgiePESSOA` AS 'rgie', PE.`telPESSOA` AS 'tel', PE.`emailPESSOA` AS 'email', PE.`ativoPESSOA` AS 'ativo', PE.`tipoPESSOA` AS 'tipo',
+            E.`ruaENDERECO` AS 'rua', E.`numENDERECO` AS 'num', E.`bairroENDERECO` AS 'bairro', E.`cidadeENDERECO` AS 'cidade', E.`ufENDERECO` AS 'uf', E.`cepENDERECO` AS 'cep',
+            EM.`logoEMPRESA` AS 'logo'
+    FROM `PESSOA` PE INNER JOIN `ENDERECO` E ON PE.`ENDERECO_idENDERECO` = E.`idENDERECO`
+          INNER JOIN EMPRESA EM ON EM.`PESSOA_idPESSOA` = PE.`idPESSOA`;
+
 -- ----------------------------------------------------
 -- View `SERV_DATA`
 -- ----------------------------------------------------
@@ -43,7 +53,7 @@ CREATE VIEW `OS_SERV_DATA` AS
 -- View `OS_SERV_DATA`
 -- ----------------------------------------------------
 CREATE VIEW `OS_PROD_DATA` AS
-    SELECT OSP.`idOS_PROD` AS 'id', P.`nomePRODUTO` AS 'nome', P.`vendaPRODUTO` AS 'valorunit', OSP.`qtdOS_PROD` AS 'qtd', (P.`vendaPRODUTO` * OSP.`qtdOS_PROD`) AS 'valortot', OSP.`ORDEMSERVICO_idORDEMSERVICO` AS 'idOS'
+    SELECT OSP.`idOS_PROD` AS 'id', OSP.`PRODUTO_idPRODUTO` AS 'idP',P.`nomePRODUTO` AS 'nome', P.`vendaPRODUTO` AS 'valorunit', OSP.`qtdOS_PROD` AS 'qtd', (P.`vendaPRODUTO` * OSP.`qtdOS_PROD`) AS 'valortot', OSP.`ORDEMSERVICO_idORDEMSERVICO` AS 'idOS'
     FROM `OS_PROD` OSP INNER JOIN `PRODUTO` P ON OSP.`PRODUTO_idPRODUTO` = P.`idPRODUTO`
     ORDER BY OSP.`idOS_PROD`;
 

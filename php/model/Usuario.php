@@ -72,7 +72,7 @@ class Usuario{
     }
 
     public function buscaDados($pdo){
-        $sql = "SELECT * FROM `USERS` WHERE `idUSER` = '$this->id'";
+        $sql = "SELECT * FROM `USERS_DATA` WHERE `id` = '$this->id'";
         $query = $pdo->query($sql);
         if($query->rowCount() > 0)
             return $query;

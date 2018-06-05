@@ -76,6 +76,7 @@ a:visited, a:active{color: gray;}
 .bftsc1{border: thin solid #C1C1C1;}
 .btse2{border: thin solid #E2E2E2;}
 .bbtsc1{border-bottom: thin solid #C1C1C1;}
+.bttsc1{border-top: thin solid #000;}
 .bl4sc1{border-left: 4px solid #C1C1C1;}
 .bdcTry{border-color: darkslategray;}
 .w3-border-try{border-color: darkslategray!important;}

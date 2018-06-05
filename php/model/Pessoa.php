@@ -99,7 +99,7 @@ class Pessoa{
     }
 
     public function buscaDados($pdo){
-        $sql = "SELECT * FROM `PESSOA` WHERE `idPESSOA` = '$this->id'";
+        $sql = "SELECT * FROM `PESSOA_DATA` WHERE `id` = '$this->id'";
         $query = $pdo->query($sql);
         return $query;
     }

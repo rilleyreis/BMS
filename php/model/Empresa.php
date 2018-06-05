@@ -44,7 +44,7 @@ class Empresa{
     }
 
     public function buscaDados($pdo){
-        $sql = "SELECT * FROM `EMPRESA`";
+        $sql = "SELECT * FROM `EMPRESA_DATA`";
         $query = $pdo->query($sql);
         return $query;
     }

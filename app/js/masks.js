@@ -5,6 +5,7 @@ $(document).ready(function(){
     $('.data').mask('99/99/9999');
     $('.cnpj').mask('99.999.999/9999-99');
     $('.ie').mask('999.999.999.999');
-    $('.money').maskMoney({showSymbol:true, symbol:"R$ ", decimal:",", reverse: true});
+    $('.money').maskMoney({showSymbol:true, symbol:"R$ ", thousands:'.', decimal:",", reverse: true});
+    $('.dinheiro').mask('00.000.000,00',{reverse: true});
     $('.cep').mask('99.999-999');
 });

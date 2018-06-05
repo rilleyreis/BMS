@@ -1,0 +1,14 @@
+@media print{
+    .print{ display: block; }
+    .no-print{display: none;}
+    .titulo{font-size: 14pt;}
+    .texto{font-size: 10pt;}
+    .print-third{width: 30%;}
+    .print-twothird{width: 60%;}
+    .print-gray{color:#000!important;background-color:#9e9e9e!important}
+    .print-half{width: 45%;}
+}
+
+@page{
+    margin: 0,5cm;
+}
