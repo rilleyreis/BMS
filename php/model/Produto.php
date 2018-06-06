@@ -119,7 +119,7 @@ class Produto{
     }
 
     public function editar($pdo){
-        $sql = "UPDATE `PRODUTO` SET `nomePRODUTO` = :nome, `descricaoPRODUTO` = :descricao, `compraPRODUTO` = :compra, `vendaPRODUTO` = :venda, `estoquePRODUTO` = :estoque, `minimoPRODUTO` = :minimo, `FORNECEDOR_idFORNECEDOR` = :fornecedor WHERE `idPRODUTO` = :id";
+        $sql = "UPDATE `PRODUTO` SET `nomePRODUTO` = :nome, `descricaoPRODUTO` = :descricao, `compraPRODUTO` = :compra, `vendaPRODUTO` = :venda, `estoquePRODUTO` = :estoque, `minimoPRODUTO` = :minimo, `idFORNECEDOR` = :fornecedor WHERE `idPRODUTO` = :id";
         $update = $pdo->prepare($sql);
         $update->execute(array(":nome"=>$this->nome, ":descricao"=>$this->descricao, ":compra"=>$this->compra, ":venda"=>$this->venda, ":estoque"=>$this->estoque, ":minimo"=>$this->minimo, ":fornecedor"=>$this->fornecedor, ":id"=>$this->id));
         echo "<script>alert('Produto editado com sucesso')</script>";

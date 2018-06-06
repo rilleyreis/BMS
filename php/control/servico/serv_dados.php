@@ -16,7 +16,6 @@ function pegaDados(){
     $descricao = trim(strip_tags($_POST['descricao']));
     $valor = str_replace("R$ ", "",$_POST['valor']);
     $valor = str_replace(",", ".",$valor);
-    $user = $user[0];
 }
 
 

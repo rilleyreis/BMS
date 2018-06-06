@@ -71,7 +71,7 @@ if (isset($_POST['adicionar'])){
     $dso->setStatus($status);
     $dso->setIdOs($idOS[0]);
     $dso->salvar($pdo);
-    $idOS = base64_encode($idOS);
+//    $idOS = base64_encode($idOS);
     header('Location:../os');
 }
 

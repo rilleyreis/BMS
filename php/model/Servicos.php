@@ -86,7 +86,7 @@ class Servicos{
 
     public function salvar($pdo){
         $sql = "INSERT INTO `SERVICO` (`nomeSERVICO`, `descricaoSERVICO`, `valorSERVICO`, `ativoSERVICO`)";
-        $sql .= "VALUES (:nome, :descricao, :valor, 1, :user)";
+        $sql .= "VALUES (:nome, :descricao, :valor, 1)";
         try{
             $insert = $pdo->prepare($sql);
             $insert->execute(array(":nome"=>$this->nome, ":descricao"=>$this->descricao, ":valor"=>$this->valor));
@@ -96,7 +96,7 @@ class Servicos{
     }
 
     public function editar($pdo){
-        $sql = "UPDATE `SERVICO` SET `nomeSERVICO` = :nome, `descricaoSERVICO` = :descricao, `valorSERVICO` = :valor = :users WHERE `idSERVICO` = :id";
+        $sql = "UPDATE `SERVICO` SET `nomeSERVICO` = :nome, `descricaoSERVICO` = :descricao, `valorSERVICO` = :valor WHERE `idSERVICO` = :id";
         $update = $pdo->prepare($sql);
         $update->execute(array(":nome"=>$this->nome, ":descricao"=>$this->descricao, ":valor"=>$this->valor,':id'=>$this->id));
     }

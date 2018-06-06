@@ -26,13 +26,9 @@ require '../../util/config.php';
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Clique para fechar Menu" id="myOverlay"></div>
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
+<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 3px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['nomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
-    <!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
-    <!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
-    <!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
-    <!--    </div>-->
+    <span class="w3-bar-item w3-right w3-text-white fwb">Business Manager System</span>
 </div>
 
 
@@ -79,7 +75,6 @@ require '../../util/config.php';
                     <th class="w3-border w3-border-gray w3-center" style="width: 5%">#</th>
                     <th class="w3-border w3-border-gray" style="width: 20%">Nome</th>
                     <th class="w3-border w3-border-gray" style="width: 25%">Descrição</th>
-                    <th class="w3-border w3-border-gray" style="width: 15%">Técnico</th>
                     <th class="w3-border w3-border-gray" style="width: 10%">Preço</th>
                     <th class="w3-border w3-border-gray" style="width: 10%">Status</th>
                     <th class="w3-border w3-border-gray" style="width: 15%">Ações</th>
@@ -93,7 +88,6 @@ require '../../util/config.php';
                                 <td class="w3-border w3-center"><?php echo $row['idSERVICO']; ?></td>
                                 <td class="w3-border"><?php echo $row['nomeSERVICO']; ?></td>
                                 <td class="w3-border"><?php echo $row['descricaoSERVICO']; ?></td>
-                                <td class="w3-border"><?php echo $row['userSERVICO']; ?></td>
                                 <td class="w3-border"><?php echo "R$ " . $row['valorSERVICO']; ?></td>
                                 <td class="w3-border"><?php echo $row['ativoSERVICO'] == 1 ? "Ativado" : "Desativado"; ?></td>
                                 <td class="w3-border">

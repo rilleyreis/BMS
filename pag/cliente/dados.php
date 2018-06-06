@@ -9,13 +9,9 @@ require '../../util/config.php';
 <?php include '../../php/control/cliente/cli_dados.php'?>
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
+<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 3px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-    <a onclick="openMenu(3)" class="cp fs10e"><span class="w3-bar-item w3-text-white w3-right">Bem-Vindo, <strong><?php echo $_SESSION['nomeUser'];?></strong> <i class="fa fa-caret-down"></i></span></a>
-    <!--    <div id="menu3" class="w3-hide bgcMenu fs087e w3-right">-->
-    <!--        <a href="#" class="w3-bar-item w3-button fs11e" title="Meus Dados"><i class="fa fa-user"></i></a>-->
-    <!--        <a href="#" class="w3-bar-item w3-button" title="Logout"><i class="fa fa-sign-out"></i></a>-->
-    <!--    </div>-->
+    <span class="w3-bar-item w3-right fwb w3-text-white">Business Manager System</span>
 </div>
 
 <!-- Overlay effect when opening sidebar on small screens -->

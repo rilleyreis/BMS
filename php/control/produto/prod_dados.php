@@ -75,11 +75,11 @@ if(isset($_GET['edt'])){
     if($fornecedor != "") {
         $fornece = new Pessoa();
         $fornece->setId($fornecedor);
-        $dados = $fornece->buscarDados($pdo);
+        $dados = $fornece->buscaDados($pdo);
         foreach ($dados as $dado) {
             $fornecedor = $dado['id'] . "|";
-            $fornecedor .= $dado['cnpj'] . "|";
-            $fornecedor .= $dado['nomefant'];
+            $fornecedor .= $dado['cpf_cnpj'] . "|";
+            $fornecedor .= $dado['nome'];
         }
     }
     $edt = "";

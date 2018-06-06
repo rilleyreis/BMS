@@ -90,7 +90,7 @@ date_default_timezone_set("America/Sao_Paulo");
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Clique para fechar Menu" id="myOverlay"></div>
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 1.5px 0px">
+<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 3px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
     <span class="w3-bar-item w3-right fwb w3-text-white">Business Manager System</span>
 </div>

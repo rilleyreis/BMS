@@ -109,5 +109,6 @@ elseif(isset($_GET['edt'])){
         $cidade = $dado['cidade'];
         $uf = $dado['uf'];
         $cep = $dado['cep'];
+        $idEnd = $dado['idEnd'];
     }
 }

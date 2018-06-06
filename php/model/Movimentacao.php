@@ -118,4 +118,19 @@ class Movimentacao{
             echo $e->getMessage();
         }
     }
+
+    public function valorDiario($pdo){
+        $sql = "SELECT SUM(`valorMOVIMENTACAO`) AS 'valor' FROM `MOVIMENTACAO` WHERE `CAIXA_idCAIXA` = $this->caixa";
+        return $pdo->query($sql);
+    }
+
+    public function valorForma($pdo){
+        $sql = "SELECT SUM(`valorMOVIMENTACAO`) AS 'valor' FROM `MOVIMENTACAO` WHERE `CAIXA_idCAIXA` = $this->caixa AND `frmpagMOVIMENTACAO` = '$this->frmpag'";
+        return $pdo->query($sql);
+    }
+
+    public function buscaVenda($pdo){
+        $sql = "SELECT * FROM `MOVIMENTACAO` WHERE `VENDA_idVENDA` = $this->venda";
+        return $pdo->query($sql);
+    }
 }

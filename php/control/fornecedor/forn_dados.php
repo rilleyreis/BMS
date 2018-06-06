@@ -94,24 +94,21 @@ if(isset($_GET['edt'])){
     $fornece->setId($id);
     $dados = $fornece->buscaDados($pdo);
     foreach ($dados as $dado) {
-        $id = $dado['idPESSOA'];
-        $cnpj_forn = $dado['cpfcnpjPESSOA'];
-        $raz_forn = $dado['snomePESSOA'];
-        $fant_forn = $dado['nomePESSOA'];
-        $ie_forn = $dado['rgiePESSOA'];
-        $tel_forn = $dado['telPESSOA'];
-        $email_forn = $dado['emailPESSOA'];
-        $idEnd = $dado['ENDERECO_idENDERECO'];
-    }
-    $endereco->setId($idEnd[0]);
-    $dados = $endereco->buscar($pdo);
-    foreach ($dados as $dado) {
-        $rua_forn = $dado['ruaENDERECO'];
-        $num_forn = $dado['numENDERECO'];
-        $bairro_forn = $dado['bairroENDERECO'];
-        $cid_forn = $dado['cidadeENDERECO'];
-        $est_forn = $dado['ufENDERECO'];
-        $cep_forn = $dado['cepENDERECO'];
+        $id = $dado['id'];
+        $cnpj_forn = $dado['cpf_cnpj'];
+        $raz_forn = $dado['snome'];
+        $fant_forn = $dado['nome'];
+        $ie_forn = $dado['rgie'];
+        $tel_forn = $dado['tel'];
+        $email_forn = $dado['email'];
+        $idEnd = $dado['idEnd'];
+        $rua_forn = $dado['rua'];
+        $num_forn = $dado['num'];
+        $bairro_forn = $dado['bairro'];
+        $cid_forn = $dado['cidade'];
+        $est_forn = $dado['uf'];
+        $cep_forn = $dado['cep'];
+
     }
     $add = "style='display:none'";
     $edt = "";

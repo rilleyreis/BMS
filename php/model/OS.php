@@ -155,12 +155,23 @@ class OS{
         return $query;
     }
 
+    public function buscaQtdStatus($pdo){
+        $sql = "SELECT COUNT(*) AS 'qtd' FROM `ORDEMSERVICO` WHERE `statusORDEMSERVICO` = $this->status";
+        return $pdo->query($sql);
+    }
+
+    public function buscaSttDt($pdo, $dtIni, $dtFim, $filtro){
+        $sql = "SELECT COUNT(*) AS 'qtd' FROM `ORDEMSERVICO` WHERE $filtro `dataORDEMSERVICO` BETWEEN '$dtIni' AND '$dtFim'";
+        $query = $pdo->query($sql);
+        return $query;
+    }
+
     public function salvar($pdo){
-        $sql = "INSERT INTO `ORDEMSERVICO` (`protocoloORDEMSERVICO`, `vendedorORDEMSERVICO`, `telefoneORDEMSERVICO`, `responsavelORDEMSERVICO`, `objrecebidoORDEMSERVICO`, `itemdeixadoORDEMSERVICO`, `defeitosORDEMSERVICO`, `statusORDEMSERVICO`, `valorORDEMSERVICO`, `USERS_idUSER`, `idCLIENTE`)";
-        $sql .= "VALUES (:prot, :vend, :tel, :resp, :obj, :item, :def, :status, :valor, :tecnico, :cli)";
+        $sql = "INSERT INTO `ORDEMSERVICO` (`protocoloORDEMSERVICO`, `vendedorORDEMSERVICO`, `telefoneORDEMSERVICO`, `responsavelORDEMSERVICO`, `objrecebidoORDEMSERVICO`, `itemdeixadoORDEMSERVICO`, `defeitosORDEMSERVICO`, `statusORDEMSERVICO`, `valorORDEMSERVICO`, `dataORDEMSERVICO`, `USERS_idUSER`, `idCLIENTE`)";
+        $sql .= " VALUES (:prot, :vend, :tel, :resp, :obj, :item, :def, :status, :valor, :data, :tecnico, :cli)";
         try{
             $insert = $pdo->prepare($sql);
-            $insert->execute(array(":prot"=>$this->protocolo, ":vend"=>$this->vendedor, ":tel"=>$this->telefone, ":resp"=>$this->responsavel, ":obj"=>$this->objeto, ":item"=>$this->itens, ":def"=>$this->defeitos, ":status"=>$this->status, ":valor"=>$this->valor, ":tecnico"=>$this->tecnico, ":cli"=>$this->cliente));
+            $insert->execute(array(":prot"=>$this->protocolo, ":vend"=>$this->vendedor, ":tel"=>$this->telefone, ":resp"=>$this->responsavel, ":obj"=>$this->objeto, ":item"=>$this->itens, ":def"=>$this->defeitos, ":status"=>$this->status, ":valor"=>$this->valor, ":data"=>date('Y-m-d'), ":tecnico"=>$this->tecnico, ":cli"=>$this->cliente));
             $sql = "SELECT LAST_INSERT_ID()";
             $query = $pdo->query($sql);
             return $query->fetch();
