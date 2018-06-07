@@ -22,7 +22,7 @@
     <script type="text/javascript" src="app/js/jquery.maskMoney.js"></script>
     <script type="text/javascript" src="app/js/masks.js"></script>
     <script type="text/javascript" src="app/js/format.js"></script>
-<!--    <script type="text/javascript" src="app/js/cep.js"></script>-->
+    <script type="text/javascript" src="app/js/cep.js"></script>
     <script type="text/javascript" src="app/js/validaCNPJ.js"></script>
 
     <script>
@@ -96,7 +96,7 @@
                                 <label for="" class="fs087e w3-text-white" style="">CEP *</label>
                             </div>
                             <div class="w3-rest">
-                                <input type="text" name="cep_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e cep" style="border-radius: 0 6px 6px 0;" placeholder="CEP" value="" required="required">
+                                <input type="text" name="cep_emp" id="cep" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" style="border-radius: 0 6px 6px 0;" placeholder="CEP" value="" required="required">
                             </div>
                         </div>
                         <div class="w3-row">
@@ -104,7 +104,7 @@
                                 <label for="" class="fs087e w3-text-white" style="">Rua *</label>
                             </div>
                             <div class="w3-rest">
-                                <input type="text" name="rua_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="70" placeholder="Rua" value="" required="required">
+                                <input type="text" name="rua_emp" id="rua" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="70" placeholder="Rua" value="" required="required">
                             </div>
                         </div>
                         <div class="w3-row">
@@ -120,7 +120,7 @@
                                 <label for="" class="fs087e w3-text-white" style="">Bairro *</label>
                             </div>
                             <div class="w3-rest">
-                                <input type="text" name="bairro_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="25" placeholder="Bairro" value="" required="required">
+                                <input type="text" name="bairro_emp" id="bairro" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="25" placeholder="Bairro" value="" required="required">
                             </div>
                         </div>
                         <div class="w3-row">
@@ -128,7 +128,7 @@
                                 <label for="" class="fs087e w3-text-white" style="">Cidade *</label>
                             </div>
                             <div class="w3-rest">
-                                <input type="text" name="cid_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="25" placeholder="Cidade" value="" required="required">
+                                <input type="text" name="cid_emp" id="cidade" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="25" placeholder="Cidade" value="" required="required">
                             </div>
                         </div>
                         <div class="w3-row">
@@ -136,7 +136,7 @@
                                 <label for="" class="fs087e w3-text-white" style="">Estado *</label>
                             </div>
                             <div class="w3-rest">
-                                <input type="text" name="uf_emp" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="2" placeholder="Estado" value="" required="required">
+                                <input type="text" name="uf_emp" id="uf" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeyup="letter(this);" style="border-radius: 0 6px 6px 0;" maxlength="2" placeholder="Estado" value="" required="required">
                             </div>
                         </div>
                         <div class="w3-row">

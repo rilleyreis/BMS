@@ -88,7 +88,6 @@ if (isset($_POST['adicionar'])){
     $usuario->salvar($pdo);
 }
 elseif (isset($_POST['editar'])){
-    echo "<script>alert('OI');</script>";
     pegaDados();
     $idPF = $_POST['idPF'];
     $id = $_POST['idUser'];
@@ -128,33 +127,23 @@ elseif(isset($_GET['edt'])){
     $usuario->setId($id);
     $dados = $usuario->buscaDados($pdo);
     foreach ($dados as $row){
-        $user = $row['usuarioUSER'];
-        $funcao = $row['funcaoUSER'];
-        $panel = $row['panelUSER'];
-        $idPF = $row['PESSOA_idPESSOA'];
-    }
-    $pfisica = new Pessoa();
-    $pfisica->setId($idPF);
-    $dadosPF = $pfisica->buscaDados($pdo);
-    foreach ($dadosPF as $item) {
-        $nome = $item['nomePESSOA'];
-        $snome = $item['snomePESSOA'];
-        $cpf = $item['cpfcnpjPESSOA'];
-        $rg = $item['rgiePESSOA'];
-        $tel = $item['telPESSOA'];
-        $email = $item['emailPESSOA'];
-        $ativo = $item['ativoPESSOA'];
-        $idEnd = $item['ENDERECO_idENDERECO'];
-    }
-    $endereco = new Endereco();
-    $endereco->setId($idEnd);
-    $dadosEnd = $endereco->buscar($pdo);
-    foreach ($dadosEnd as $item) {
-        $cep = $item['cepENDERECO'];
-        $rua = $item['ruaENDERECO'];
-        $bairro = $item['bairroENDERECO'];
-        $num = $item['numENDERECO'];
-        $cidade = $item['cidadeENDERECO'];
-        $uf = $item['ufENDERECO'];
+        $user = $row['usuario'];
+        $funcao = $row['funcao'];
+        $panel = $row['panel'];
+        $nome = $row['fnome'];
+        $snome = $row['lnome'];
+        $cpf = $row['cpf'];
+        $rg = $row['rg'];
+        $tel = $row['tel'];
+        $email = $row['email'];
+        $ativo = $row['ativo'];
+        $idPF = $row['idP'];
+        $cep = $row['cep'];
+        $rua = $row['rua'];
+        $bairro = $row['bairro'];
+        $num = $row['num'];
+        $cidade = $row['cidade'];
+        $uf = $row['uf'];
+        $idEnd = $row['idEnd'];
     }
 }

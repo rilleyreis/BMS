@@ -20,8 +20,7 @@ if(isset($_POST['prodAdd'])){
     $produto->setEstoque($_POST['qtdAdd']);
     $produto->addEstoque($pdo);
 }
-if(isset($_POST['prodExcl'])){
-    echo "<script>alert('AQUI')</script>";
+if(isset($_POST['prodExcl'])){  
     $produto->setId($_POST['prodExcl']);
     $produto->ativar_desativar($pdo, 0);
 }

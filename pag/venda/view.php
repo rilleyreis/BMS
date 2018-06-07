@@ -31,7 +31,7 @@ require '../../util/config.php';
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Clique para fechar Menu" id="myOverlay"></div>
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-large bgcMenu no-print" style="z-index:4; padding: 1.5px 0px">
+<div class="w3-bar w3-top w3-large bgcMenu no-print" style="z-index:4; padding: 3px 0px">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
     <span class="w3-bar-item w3-right fwb w3-text-white">Business Manager System</span>
 </div>
@@ -93,16 +93,14 @@ require '../../util/config.php';
             <thead class="w3-gray">
                 <th class="w3-border-black">PRODUTO</th>
                 <th class="w3-border-black">QTDE</th>
-                <th class="w3-border-black">X</th>
                 <th class="w3-border-black">VLR UNIT</th>
                 <th class="w3-border-black">TOTAL</th>
             </thead>
             <tbody>
             <?php foreach ($itensVendidos as $item) {?>
                 <tr class="w3-border-black">
-                    <td class="texto"><?php echo "R$ ".$item['produto'];?></td>
-                    <td class="texto"><?php echo "R$ ".$item['qtd'];?></td>
-                    <td class="texto">X</td>
+                    <td class="texto"><?php echo $item['produto'];?></td>
+                    <td class="texto"><?php echo $item['qtd'];?></td>
                     <td class="texto"><?php echo "R$ ".$item['unit'];?></td>
                     <td class="texto"><?php echo "R$ ".$item['total'];?></td>
                 </tr>
@@ -111,7 +109,6 @@ require '../../util/config.php';
                 <td class="texto"></td>
                 <td class="texto"></td>
                 <td class="texto">TOTAL</td>
-                <td class="texto"></td>
                 <td class="texto"><?php echo "R$ ".$vendaTotal;?></td>
             </tr>
             </tbody>

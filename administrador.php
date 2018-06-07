@@ -22,7 +22,7 @@
     <script type="text/javascript" src="app/js/jquery.maskMoney.js"></script>
     <script type="text/javascript" src="app/js/masks.js"></script>
     <script type="text/javascript" src="app/js/format.js"></script>
-<!--    <script type="text/javascript" src="app/js/cep.js"></script>-->
+    <script type="text/javascript" src="app/js/cep.js"></script>
     <script type="text/javascript" src="app/js/validaCPF.js"></script>
 
     <script>

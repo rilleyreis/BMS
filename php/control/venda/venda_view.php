@@ -18,6 +18,15 @@ $venda = new Venda();
 $comanda = new Comanda();
 $mov = new Movimentacao();
 
+$cpfCnpjCli = "";
+$nomeCli = "";
+$telCli = "";
+$emailCli = "";
+$endereco = "";
+$cidade = "";
+$uf = "";
+$cep = "";
+
 $dadosEmp = $empresa->buscaDados($pdo);
 
 $idVenda = base64_decode($_GET['id']);
@@ -28,19 +37,20 @@ $idCliente = "";
 foreach ($dadosMov as $item) {
     $idCliente = $item['idCLIENTE'];
 }
+if($idCliente != "") {
+    $pessoa->setId($idCliente);
+    $dadosCli = $pessoa->buscaDados($pdo);
 
-$pessoa->setId($idCliente);
-$dadosCli = $pessoa->buscaDados($pdo);
-
-foreach ($dadosCli as $dado) {
-    $cpfCnpjCli = $dado['cpf_cnpj'];
-    $nomeCli = strlen($cpfCnpjCli) == 14 ? $dado['nome']." ".$dado['snome'] : $dado['nome'];
-    $telCli = $dado['tel'];
-    $emailCli = $dado['email'];
-    $endereco = $dado['rua'].", ".$dado['num']." - ".$dado['bairro'];
-    $cidade = $dado['cidade'];
-    $uf = $dado['uf'];
-    $cep = $dado['cep'];
+    foreach ($dadosCli as $dado) {
+        $cpfCnpjCli = $dado['cpf_cnpj'];
+        $nomeCli = strlen($cpfCnpjCli) == 14 ? $dado['nome'] . " " . $dado['snome'] : $dado['nome'];
+        $telCli = $dado['tel'];
+        $emailCli = $dado['email'];
+        $endereco = $dado['rua'] . ", " . $dado['num'] . " - " . $dado['bairro'];
+        $cidade = $dado['cidade'];
+        $uf = $dado['uf'];
+        $cep = $dado['cep'];
+    }
 }
 
 $comanda->setVenda($idVenda);

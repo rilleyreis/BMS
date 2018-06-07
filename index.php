@@ -44,9 +44,11 @@
                                 <input type="submit" class="w3-btn w3-green w230 bradius" name="logar" value="Entrar"></input>
                             </div>
                         </div>
-                        <div class="tac">
-                            <a href="administrador.php" class="fs087e">Primeiro Acesso</a>
-                        </div>
+                        <?php if($qtdUser == 0){?>
+                            <div class="tac">
+                                <a href="administrador.php" class="fs087e w3-text-gray">Primeiro Acesso</a>
+                            </div>
+                        <?php }?>
                     </form>
                 </fieldset>
             </div>

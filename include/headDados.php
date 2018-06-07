@@ -17,7 +17,7 @@
 <script type="text/javascript" src="../../app/js/format.js"></script>
 <script type="text/javascript" src="../../app/js/validaCPF.js"></script>
 <script type="text/javascript" src="../../app/js/validaCNPJ.js"></script>
-<!--<script defer src="../../app/js/cep.js"></script>-->
+<script defer src="../../app/js/cep.js"></script>
 
 <script>
     function cpf(object) {

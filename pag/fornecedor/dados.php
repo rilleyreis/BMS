@@ -113,7 +113,7 @@ require '../../util/config.php';
                         <label for="" class="fs087e w3-text-white" style="">Número *</label>
                     </div>
                     <div class="w3-rest">
-                        <input type="text" name="num_forn" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeypress="return onlynumber(event)" style="border-radius: 0 6px 6px 0;" placeholder="Número" value="<?php echo $num_forn?>" required="required">
+                        <input type="text" name="num_forn" id="num" class="w3-input w3-border w3-border-gray w3-hover-border-blue bradius mb10 fs087e" onkeypress="return onlynumber(event)" style="border-radius: 0 6px 6px 0;" placeholder="Número" value="<?php echo $num_forn?>" required="required">
                     </div>
                 </div>
                 <div class="w3-row">

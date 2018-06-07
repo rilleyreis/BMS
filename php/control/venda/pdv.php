@@ -81,7 +81,12 @@ if(isset($_POST['fim'])){
     if($_POST['parc'] != "")
         $parc = $_POST['parc'];
     $tipo = "VD";
-    $cliente = explode("|",$_POST['cliente']);
+    if($_POST['cliente'] != "") {
+        $cliente = explode("|", $_POST['cliente']);
+        $cliente = $cliente[0];
+    }else{
+        $cliente = null;
+    }
     $user = $_SESSION['idUser'];
     $cx = new Caixa();
     $cx->setData(date('Y-m-d'));
@@ -94,13 +99,13 @@ if(isset($_POST['fim'])){
     $mov->setFrmpag($forma);
     $mov->setParcela($parc);
     $mov->setTipo($tipo);
-    $mov->setCliente($cliente[0]);
+    $mov->setCliente($cliente);
     $mov->setUser($user);
     $mov->setVenda($idV);
     $mov->setCaixa($cx);
     $mov->movimentar($pdo);
     $idV = base64_encode($idV);
-    header("Location:view.php?id".$idV."&print");
+    header("Location:view.php?id=".$idV);
 }
 
 if ($first){

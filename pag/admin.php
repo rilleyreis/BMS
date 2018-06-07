@@ -41,27 +41,27 @@
     </header>
 
     <div class="w3-row-padding w3-margin-bottom">
-        <button class="w3-quarter w3-btn w3-red">
+        <a class="w3-quarter w3-btn w3-red" href="cliente">
             <div class="w3-container w3-red w3-padding-16 tac">
                 <div class=""><i class="fas fa-users w3-xxxlarge"></i></div>
                 <div class="w3-clear"></div>
                 <h4>Clientes</h4>
             </div>
-        </button>
-        <button class="w3-quarter w3-btn w3-blue">
+        </a>
+        <a class="w3-quarter w3-btn w3-blue" href="os">
             <div class="w3-container w3-blue w3-padding-16 tac">
                 <div class=""><i class="fas fa-file-alt w3-xxxlarge"></i></div>
                 <div class="w3-clear"></div>
                 <h4>OS</h4>
             </div>
-        </button>
-        <button class="w3-quarter w3-btn w3-teal">
+        </a>
+        <a class="w3-quarter w3-btn w3-teal" href="venda">
             <div class="w3-container w3-teal w3-padding-16 tac">
                 <div class=""><i class="fas fa-shopping-basket w3-xxxlarge"></i></div>
                 <div class="w3-clear"></div>
                 <h4>Vendas</h4>
             </div>
-        </button>
+        </a>
         <button class="w3-quarter w3-btn w3-orange">
             <div class="w3-container w3-orange w3-text-white w3-padding-16 tac">
                 <div class=""><i class="fas fa-clipboard w3-xxxlarge"></i></div>
@@ -153,6 +153,7 @@
         <div class="w3-grey">
             <div class="w3-container w3-center w3-padding w3-red" style="width:<?php echo $perCan?>%">+<?php echo $perCan?>%</div>
         </div>
+        <button class="w3-btn w3-blue-gray w3-round w3-text-white mt10"><i class="fas fa-plus"></i> Mais</button>
     </div>
     <hr>
     <div class="w3-row-padding w3-margin-bottom">
