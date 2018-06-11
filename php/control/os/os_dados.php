@@ -38,6 +38,7 @@ require '../../php/model/DSO.php';
 require '../../php/model/Serv_OS.php';
 require '../../php/model/Prod_OS.php';
 require '../../php/model/Produto.php';
+require '../../php/model/Log.php';
 
 $os = new OS();
 $num = $os->buscaQtd($pdo);
@@ -72,6 +73,10 @@ if (isset($_POST['adicionar'])){
     $dso->setIdOs($idOS[0]);
     $dso->salvar($pdo);
 //    $idOS = base64_encode($idOS);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"REALIZAOU A ABERTURA DE UM NOVA OS NO SISTEMA");
+
     header('Location:../os');
 }
 
@@ -86,6 +91,8 @@ if(isset($_POST['adicionarS'])) {
     $idServ = explode("|", $_POST['servicoOS']);
     $serv->setIdServ($idServ[0]);
     $serv->salvar($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"ADICIONOU UM SERVIÇOA A UMA OS");
 }
 
 if (isset($_POST['exclS'])){
@@ -93,6 +100,8 @@ if (isset($_POST['exclS'])){
     $solucao = trim(strip_tags($_POST['solucao']));
     $serv->setId($_POST['exclS']);
     $serv->excluir($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"REMOVEU UM SERVIÇO DE UMA OS");
 }
 
 if(isset($_POST['exclP'])){
@@ -100,6 +109,8 @@ if(isset($_POST['exclP'])){
     $solucao = trim(strip_tags($_POST['solucao']));
     $prod->setId($_POST['exclP']);
     $prod->excluir($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"REMOVEU UM PRODUTO DE UMA OS");
 }
 
 if (isset($_POST['adicionarP'])){
@@ -111,6 +122,8 @@ if (isset($_POST['adicionarP'])){
     $prod->setIdProd($idProd[0]);
     $prod->setQtd($_POST['qtdProd']);
     $prod->salvar($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"ADICIONOU UM PRODUTO A UMA OS");
 }
 
 if (isset($_POST['editar'])){
@@ -173,6 +186,8 @@ if (isset($_POST['editar'])){
             }
         }
     }
+    $log = new Log();
+    $log->criarLOG($pdo,"EDITOU UMA OS");
     header("Location:../os");
 }
 

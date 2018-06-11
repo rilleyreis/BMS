@@ -10,6 +10,7 @@ session_start();
 
 include "util/config.php";
 require "php/model/Caixa.php";
+require "php/model/Log.php";
 
 $nome = $_SESSION['nomeUser'];
 $nome .= " ".$_SESSION['snomeUser'];
@@ -20,6 +21,7 @@ $colorText = "";
 
 
 if(isset($_POST['abrir'])){
+    sleep(5);
     $troco = trim(strip_tags($_POST['troco']));
     $data = trim(strip_tags($_POST['data']));
     $hora = trim(strip_tags($_POST['hora']));
@@ -34,12 +36,11 @@ if(isset($_POST['abrir'])){
     $caixa->setData($data);
     $caixa->setHora($hora);
 
+    $log = new Log();
+    $log->criarLOG($pdo,"REALIZAOU A ABERTURA DO CAIXA");
+
     if($caixa->abrirCaixa($pdo)){
-        $erro = "display:block";
-        $msg = "Caixa Aberto. Redirecionando";
-        $color = "w3-pale-blue";
-        $colorText = "w3-text-blue";
-        header("Refresh:2; url=pag/admin");
+        header("Location: pag/admin");
     }else{
         echo "NÃO FOI";
     }

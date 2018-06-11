@@ -11,6 +11,7 @@ require '../../php/model/Comanda.php';
 require '../../php/model/Produto.php';
 require '../../php/model/Venda.php';
 require '../../php/model/Caixa.php';
+require '../../php/model/Log.php';
 
 $comanda = new Comanda();
 $first = true;
@@ -105,6 +106,9 @@ if(isset($_POST['fim'])){
     $mov->setCaixa($cx);
     $mov->movimentar($pdo);
     $idV = base64_encode($idV);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"REALIZOU UMA VENDA");
     header("Location:view.php?id=".$idV);
 }
 

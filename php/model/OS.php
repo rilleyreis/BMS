@@ -134,15 +134,16 @@ class OS{
         $this->cliente = $cliente;
     }
 
-    public function buscaQtd($pdo){
-        $sql = "SELECT * FROM `ORDEMSERVICO`";
+    public function buscaQtd($tecnico, $pdo){
+        $sql = "SELECT * FROM `ORDEMSERVICO` $tecnico";
         $query = $pdo->query($sql);
         return $query->rowCount();
     }
 
-    public function buscaLtda($pdo, $inicio, $fim){
-        $sql = "SELECT * FROM `OS_DATA` ORDER BY `id` ASC LIMIT $inicio, $fim";
+    public function buscaLtda($pdo, $inicio, $fim, $tecnico){
+        $sql = "SELECT * FROM `OS_DATA` $tecnico ORDER BY `id` ASC LIMIT $inicio, $fim";
         $query = $pdo->query($sql);
+        echo $sql;
         if($query->rowCount() > 0)
             return $query;
         else

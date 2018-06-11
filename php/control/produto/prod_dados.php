@@ -30,6 +30,7 @@ function pegaDados(){
 
 require '../../php/model/Produto.php';
 require '../../php/model/Pessoa.php';
+require '../../php/model/Log.php';
 $produto = new Produto();
 $id = "";
 $edt = "style='display:none'";
@@ -46,6 +47,8 @@ if(isset($_POST['adicionar'])){
     $produto->setEstoque($estoque);
     $produto->setMinimo($minimo);
     $produto->salvar($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"ADICIONOU UM PRODUTO AO SISTEMA");
 }
 if(isset($_POST['editar'])){
     pegaDados();
@@ -58,6 +61,8 @@ if(isset($_POST['editar'])){
     $produto->setEstoque($estoque);
     $produto->setMinimo($minimo);
     $produto->editar($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"EDITOU UM PRODUTO DO SISTEMA");
 }
 if(isset($_GET['edt'])){
     $id = base64_decode($_GET['edt']);

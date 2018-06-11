@@ -7,6 +7,7 @@
  */
 
 require '../../php/model/Usuario.php';
+require '../../php/model/Log.php';
 
 $msgTable = "";
 $usuario = new Usuario();
@@ -18,6 +19,8 @@ if(isset($_POST['sel'])){
 if(isset($_POST['usrExcl'])){
     $usuario->setId($_POST['usrExcl']);
     $usuario->excluir($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"EXCLUIU UM USUÁRIO DO SISTEMA");
 }
 $num_usuario = $usuario->buscaQtd($pdo, "");
 if ($num_usuario == 0){

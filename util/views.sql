@@ -61,6 +61,14 @@ CREATE VIEW `OS_PROD_DATA` AS
 
 
 -- ----------------------------------------------------
+-- View `LOG_DATA`
+-- ----------------------------------------------------
+CREATE VIEW `LOG_DATA` AS
+    SELECT L.`idLOG` AS 'id', U.`nomeFull` AS 'usuario', L.`acaoLOG` AS 'acao', L.`dataLOG` AS 'data', L.`horaLOG` AS 'hora'
+    FROM `LOG` L  INNER JOIN `USERS_DATA` U ON L.`USERS_idUSER` = U.`id`;
+
+
+-- ----------------------------------------------------
 -- View `COMANADA_DATA`
 -- ----------------------------------------------------
 CREATE VIEW `COMANDA_DATA` AS

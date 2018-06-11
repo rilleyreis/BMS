@@ -20,6 +20,7 @@ function pegaDados(){
 
 
 require '../../php/model/Servicos.php';
+require '../../php/model/Log.php';
 $servico = new Servicos();
 $id = "";
 $edt = "style='display:none'";
@@ -32,6 +33,8 @@ if (isset($_POST['adicionar'])){
     $servico->setValor($valor);
 
     $servico->salvar($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"ADICIONOU UM SERVIÇO AO SISTEMA");
     header("Location:../service");
 }
 elseif(isset($_POST['salvar'])){
@@ -42,6 +45,8 @@ elseif(isset($_POST['salvar'])){
     $servico->setValor($valor);
     $servico->editar($pdo);
     header("Location:../service");
+    $log = new Log();
+    $log->criarLOG($pdo,"EDITOU UM PRODUTO DO SISTEMA");
 }
 elseif(isset($_GET['edt'])){
     $id = base64_decode($_GET['edt']);

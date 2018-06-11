@@ -7,6 +7,7 @@
  */
 
 require '../../php/model/Produto.php';
+require '../../php/model/Log.php';
 
 $msgTable = "";
 $produto = new PRODUTO();
@@ -19,14 +20,20 @@ if(isset($_POST['prodAdd'])){
     $produto->setId($_POST['prodAdd']);
     $produto->setEstoque($_POST['qtdAdd']);
     $produto->addEstoque($pdo);
+    $log = new Log();
+    $log->criarLOG($pdo,"ADICIOU ITENS A UM PRODUTO DO SISTEMA");
 }
 if(isset($_POST['prodExcl'])){  
     $produto->setId($_POST['prodExcl']);
     $produto->ativar_desativar($pdo, 0);
+    $log = new Log();
+    $log->criarLOG($pdo,"DESATIVOU UM PRODUTO DO SISTEMA");
 }
 if(isset($_POST['prodAtiv'])){
     $produto->setId($_POST['prodAtiv']);
     $produto->ativar_desativar($pdo, 1);
+    $log = new Log();
+    $log->criarLOG($pdo,"REATIVOU UM PRODUTO DO SISTEMA");
 }
 $qtd_prod = $produto->buscaQtd($pdo);
 if ($qtd_prod == 0){

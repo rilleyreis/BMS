@@ -8,6 +8,7 @@
 
 require '../../php/model/Endereco.php';
 require '../../php/model/Pessoa.php';
+require '../../php/model/Log.php';
 
 $fornece = new Pessoa();
 $endereco = new Endereco();
@@ -21,10 +22,16 @@ if(isset($_POST['sel'])){
 if(isset($_POST['cnpjExcl'])){
     $fornece->setId($_POST['cnpjExcl']);
     $fornece->ativar_desativar($pdo, 0);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"DESATIVOU UM FORNECEDOR DO SISTEMA");
 }
 if(isset($_POST['ative'])){
     $fornece->setId($_POST['ative']);
     $fornece->ativar_desativar($pdo, 1);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"REATIVOU UM FORNECEDOR NO SISTEMA");
 }
 $num_forn = $fornece->buscaQtd($pdo, 'F');
 if ($num_forn == 0){

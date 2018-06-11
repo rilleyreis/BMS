@@ -7,6 +7,7 @@
  */
 
 require '../../php/model/Servicos.php';
+require '../../php/model/Log.php';
 
 $msgTable = "";
 $servico = new Servicos();
@@ -18,10 +19,14 @@ if(isset($_POST['sel'])){
 else if(isset($_POST['servExcl'])){
     $servico->setId($_POST['servExcl']);
     $servico->ativar_desativar($pdo, 0);
+    $log = new Log();
+    $log->criarLOG($pdo,"DESATIVOU UM PRODUTO DO SISTEMA");
 }
 else if(isset($_POST['servAtiv'])){
     $servico->setId($_POST['servAtiv']);
     $servico->ativar_desativar($pdo, 1);
+    $log = new Log();
+    $log->criarLOG($pdo,"REATIVOU UM PRODUTO DO SISTEMA");
 }
 $num_servs = $servico->buscaQtd($pdo);
 if ($num_servs == 0){

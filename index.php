@@ -11,6 +11,15 @@
     <link rel="stylesheet" href="app/css/font-awesome.css">
     <link rel="stylesheet" href="app/css/w3.css">
 
+    <script type="text/javascript" src="app/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#form').submit(function () {
+                $('#logar').attr("value", "Acessando...");
+            });
+        });
+    </script>
+
     <title>BMS</title>
 </head>
 <body>
@@ -26,7 +35,7 @@
                     <legend class="w100 h80 m0a tac p5" style="border: lightgray solid 1px; border-radius: 60px">
                         <img src="img/logo.png" alt="" class="hfull">
                     </legend>
-                    <form action="" method="post">
+                    <form action="" method="post" id="form">
                         <div class="w3-row w3-section">
                             <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;"><i class=" w3-xlarge fa fa-user-o"></i></div>
                             <div class="w3-rest">
@@ -41,7 +50,7 @@
                         </div>
                         <div class="w3-row w3-section">
                             <div class="w3-col mr50" style="width: 230px;">
-                                <input type="submit" class="w3-btn w3-green w230 bradius" name="logar" value="Entrar"></input>
+                                <input type="submit" class="w3-btn w3-green w230 bradius" name="logar" id="logar" value="Entrar"></input>
                             </div>
                         </div>
                         <?php if($qtdUser == 0){?>

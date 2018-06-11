@@ -15,6 +15,7 @@ require "../../php/model/Serv_OS.php";
 require "../../php/model/Prod_OS.php";
 require "../../php/model/Movimentacao.php";
 require "../../php/model/Caixa.php";
+require "../../php/model/Log.php";
 
 $empresa = new Empresa();
 $ordem = new OS();
@@ -82,6 +83,8 @@ if(isset($_POST['fim'])){
     $ordem->setStatus(6);
     $ordem->trocarStatus($pdo);
     $id = base64_encode($idOS);
+    $log = new Log();
+    $log->criarLOG($pdo,"FINALIZOU UMA OS");
     header("Location:view.php?id=".$id."&print");
 }
 

@@ -19,6 +19,14 @@
     <script type="text/javascript" src="app/js/jquery.maskMoney.js"></script>
     <script type="text/javascript" src="app/js/masks.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#form').submit(function () {
+                $('#abrir').attr("value", "Abrindo...");
+            });
+        });
+    </script>
+
     <title>BMS</title>
 </head>
 <body>
@@ -37,7 +45,7 @@
                 <div class="p8 w3-pale-blue mb15" id="msg">
                     <p class="fs076e w3-text-blue">O caixa ainda não foi aberto, você deve abri-lo</p>
                 </div>
-                <form action="" method="post">
+                <form action="" method="post" id="form">
                     <div class="w3-row w3-section">
                         <div class="w3-col w3-text-white tac w3-border w3-border-gray" style="width: 50px; border-radius: 6px 0 0 6px; padding: 6px;"><i class=" w3-xlarge fa fa-user-o"></i></div>
                         <div class="w3-rest">
@@ -64,7 +72,7 @@
                     </div>
                     <div class="w3-row w3-section">
                         <div class="w3-col mr50" style="width: 100%">
-                            <input type="submit" class="w3-btn w3-green wfull bradius" name="abrir" value="Abrir"></input>
+                            <input type="submit" class="w3-btn w3-green wfull bradius" name="abrir" id="abrir" value="Abrir"></input>
                         </div>
                     </div>
                 </form>

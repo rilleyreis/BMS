@@ -99,13 +99,14 @@ require '../../util/config.php';
                                             </div>
                                             <div class="w3-third">
                                                 <?php
+                                                if($_SESSION['panelUser'] == 'admin'){
                                                 if($row['ativo'] == 0){
                                                     ?>
                                                     <button class="w3-btn w3-teal mr03" name="ative" value="<?php echo $row['id'];?>" title="Ativar"><i class="fas fa-play-circle"></i></button>
                                                 <?php } else{?>
                                                     <label for="cpfExcl<?php echo $cont;?>"><a class="w3-btn w3-red" name="excl" onclick="document.getElementById('modal').style.display='block'" title="Excluir"><i class="fa fa-trash"></i></a></label>
                                                     <input type="radio" name="cpfExcl" id="cpfExcl<?php echo $cont;?>" value="<?php echo $row['id']?>" hidden>
-                                                <?php }?>
+                                                <?php } }?>
                                             </div>
                                         </div>
                                     </td>

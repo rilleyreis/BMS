@@ -14,6 +14,7 @@ require "php/model/Usuario.php";
 require "php/model/Pessoa.php";
 require "php/model/Caixa.php";
 require "php/model/Empresa.php";
+require "php/model/Log.php";
 
 $erro = "display: none;";
 $msg = "";
@@ -26,6 +27,7 @@ $qtdUser = $usuario->buscaQtd($pdo, "");
 if(isset($_POST['logar']) AND $qtdUser > 0){
     $user = trim(strip_tags($_POST['usuario']));
     $pass = md5(trim(strip_tags($_POST['senha'])));
+    sleep(3);
     if($user == "" || $pass == ""){
         $erro = "display: block;";
         $msg = "Os campos Usuário/Senha devem ser preenchidos";
@@ -61,18 +63,15 @@ if(isset($_POST['logar']) AND $qtdUser > 0){
             $_SESSION['panelUser'] = $panel;
             $_SESSION['funcaoUser'] = $funcao;
 
-            $erro = "display:block";
-            $msg = "Redirecionando";
-            $color = "w3-pale-blue";
-            $colorText = "w3-text-blue";
-
+            $log = new Log();
+            $log->criarLOG($pdo,"REALIZAOU LOGIN NO SISTEMA");
 
             $caixa = new Caixa();
             $caixa->setData(date("Y-m-d"));
             if ($caixa->caixaAberto($pdo)) {
-                header("Refresh:2; url=pag/$panel");
+                header("Location:pag/$panel");
             } else {
-                header("Refresh:2; url=aberturaCaixa");
+                header("Location:aberturaCaixa");
             }
         }
     }

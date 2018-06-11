@@ -39,6 +39,7 @@ function pegaDados(){
 require '../../php/model/Empresa.php';
 require '../../php/model/Endereco.php';
 require '../../php/model/Pessoa.php';
+require '../../php/model/Log.php';
 
 $endereco = new Endereco();
 $pjuridica = new Pessoa();
@@ -67,6 +68,9 @@ if(isset($_POST['editar'])){
     $pjuridica->setTelefone($tel);
     $pjuridica->setEmail($email);
     $pjuridica->editar($pdo);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"EDITOU OS DADOS DO EMITENTE DO SISTEMA");
 }
 if(isset($_POST['editarLogo'])){
     $id = $_POST['id'];
@@ -83,6 +87,9 @@ if(isset($_POST['editarLogo'])){
     $empresa->setId($id);
     $empresa->setLogo($novoNome);
     $empresa->editarLogo($pdo);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"ALTEROU O LOGOTIPO DO EMITENTE DO SISTEMA");
 }
 
 $qtd_emp = $empresa->buscaQtd($pdo);

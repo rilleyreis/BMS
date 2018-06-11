@@ -8,6 +8,7 @@
 require '../../php/model/Usuario.php';
 require '../../php/model/Pessoa.php';
 require '../../php/model/Endereco.php';
+require '../../php/model/Log.php';
 
 $usuario = new Usuario();
 $id = "";
@@ -85,6 +86,8 @@ if (isset($_POST['adicionar'])){
     $usuario->setUsuario($user);
     $usuario->setSenha($senha);
     $usuario->setIdPF($idPF[0]);
+    $log = new Log();
+    $log->criarLOG($pdo,"CADASTROU UM USUÁRIO AO SISTEMA");
     $usuario->salvar($pdo);
 }
 elseif (isset($_POST['editar'])){
@@ -118,6 +121,8 @@ elseif (isset($_POST['editar'])){
     $usuario->setPanel($panel);
     $usuario->setUsuario($user);
     $usuario->setSenha($senha);
+    $log = new Log();
+    $log->criarLOG($pdo,"EDITOU UM USUÁRIO DO SISTEMA");
     $usuario->editar($pdo);
 }
 elseif(isset($_GET['edt'])){

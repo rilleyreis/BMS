@@ -61,7 +61,12 @@
             <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(7)"><i class="fas fa-donate fa-fw mr03"></i> Financeiro <i class="fa fa-caret-down"></i></button>
             <div id="menu7" class="w3-hide bgcMenu fs087e wfull">
                 <a href="<?php echo $nivel?>venda" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-shopping-basket fa-fw mr03"></i> Venda</a>
-                <a href="" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-chart-line fa-fw mr03"></i> Caixa</a>
+                <a href="<?php echo $nivel?>venda/caixa" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-chart-line fa-fw mr03"></i> Caixa</a>
+            </div>
+            <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(9)"><i class="fas fa-file-medical-alt fa-fw mr03"></i> Relatórios <i class="fa fa-caret-down"></i></button>
+            <div id="menu9" class="w3-hide bgcMenu fs087e wfull">
+                <a href="<?php echo $nivel?>relatorios/logs" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-tasks fa-fw mr03"></i> Logs</a>
+                <a href="<?php echo $nivel?>venda/caixa" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-chart-line fa-fw mr03"></i> Financeiro</a>
             </div>
             <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(8)"><i class="fas fa-cogs fa-fw mr03"></i> Configuração <i class="fa fa-caret-down"></i></button>
             <div id="menu8" class="w3-hide bgcMenu fs087e wfull">

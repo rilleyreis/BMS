@@ -7,6 +7,7 @@
  */
 
 require '../../php/model/Pessoa.php';
+require '../../php/model/Log.php';
 
 $msgTable = "";
 $cliente = new Pessoa();
@@ -19,10 +20,16 @@ if(isset($_POST['sel'])){
 if(isset($_POST['cpfExcl'])){
     $cliente->setId($_POST['cpfExcl']);
     $cliente->ativar_desativar($pdo, 0);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"DESATIVOU UM CLIENTE DO SISTEMA");
 }
 if(isset($_POST['ative'])){
     $cliente->setId($_POST['ative']);
     $cliente->ativar_desativar($pdo, 1);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"REATIVOU UM CLIENTE NO SISTEMA");
 }
 if ($num_cliente == 0){
     $msgTable = "Nenhum registro encontrado";

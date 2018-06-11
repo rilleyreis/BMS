@@ -38,6 +38,7 @@ function pegaDados(){
 
 require '../../php/model/Pessoa.php';
 require '../../php/model/Endereco.php';
+require '../../php/model/Log.php';
 
 $fornece = new Pessoa();
 $endereco = new Endereco();
@@ -65,6 +66,10 @@ if(isset($_POST['adicionar'])){
     $fornece->setIdEnd($idEnd[0]);
     $fornece->setTipo("F");
     $idPJ = $fornece->salvar($pdo);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"CADASTROU UM FORNECEDOR NO SISTEMA");
+
     header("Location:../fornecedor");
 
 }elseif (isset($_POST['editar'])){
@@ -85,7 +90,10 @@ if(isset($_POST['adicionar'])){
     $fornece->setTelefone($tel_forn);
     $fornece->setEmail($email_forn);
     $fornece->editar($pdo);
-    echo "<script>alert('Fornecedor editado com sucesso');</script>";
+
+    $log = new Log();
+    $log->criarLOG($pdo,"EDITOU O CADASTRO DE UM FORNECEDOR DO SISTEMA");
+
     header("Location:../fornecedor");
 }
 

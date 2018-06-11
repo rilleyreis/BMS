@@ -38,6 +38,7 @@ function pegaDados(){
 
 require '../../php/model/Pessoa.php';
 require '../../php/model/Endereco.php';
+require '../../php/model/Log.php';
 
 $cliente = new Pessoa();
 $endereco = new Endereco();
@@ -68,6 +69,10 @@ if (isset($_POST['adicionar'])){
     $cliente->setTipo("C");
     $cliente->setIdEnd($idEnd[0]);
     $idPF = $cliente->salvar($pdo);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"CADASTROU UM CLIENTE NO SISTEMA");
+
     header("Location:../cliente");
 }
 elseif (isset($_POST['editar'])){
@@ -88,6 +93,10 @@ elseif (isset($_POST['editar'])){
     $endereco->setUf($uf);
     $endereco->setCep($cep);
     $endereco->editar($pdo);
+
+    $log = new Log();
+    $log->criarLOG($pdo,"EDITOU O CADASTRO DE UM CLIENT DO SISTEMA");
+
     header('Location:../cliente');
 }
 elseif(isset($_GET['edt'])){
