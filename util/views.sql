@@ -77,7 +77,12 @@ CREATE VIEW `COMANDA_DATA` AS
                     INNER JOIN `PRODUTO` P ON P.`idPRODUTO` = C.`PRODUTO_idPRODUTO`;
 
 
+-- ----------------------------------------------------
+-- View `MOVIMENTACAO_DATA`
+-- ----------------------------------------------------
+CREATE VIEW `MOVIMENTACAO_DATA` AS
+		SELECT M.`idMOVIMENTACAO` AS 'id', M.`tipoMOVIMENTACAO` AS 'tipo',  M.`valorMOVIMENTACAO` AS 'valor', M.`frmpagMOVIMENTACAO` AS 'forma', M.`parcelasMOVIMENTACAO` AS 'parcela', M.`descricaoMOVIMENTACAO` AS 'descricao', CX.`dataCAIXA` AS 'data', CX.`idCAIXA`, U.`nomeFull` AS 'user', CONCAT(C.`nome`," ", C.`snome`) AS 'cliente'
+    FROM `CAIXA` CX INNER JOIN `MOVIMENTACAO` M ON CX.`idCAIXA` = M.`CAIXA_idCAIXA`
+                    INNER JOIN `USERS_DATA` U on U.`id` = M.`USERS_idUSER`
+                    LEFT JOIN `PESSOA_DATA` C ON C.`id` = M.`idCLIENTE`;
 
--- TESTE DE STATUS
---SELECT `statusORDEMSERVICO`, COUNT(`statusORDEMSERVICO`) AS 'QTD' FROM `ORDEMSERVICO`
---GROUP BY `statusORDEMSERVICO`

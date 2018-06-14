@@ -6,12 +6,15 @@
  * Time: 04:44
  */
 
+$nivel = "";
+
 if(file_exists('../../php/model/OS.php')) {
     require '../../php/model/OS.php';
     require '../../php/model/Log.php';
 }else {
     require '../php/model/OS.php';
     require '../php/model/Log.php';
+    $nivel = "os/";
 }
 
 $msg = "";
@@ -21,7 +24,7 @@ $num_os = $ordemS->buscaQtd($tecnico,$pdo);
 
 if (isset($_POST['sel'])){
     $id = base64_encode($_POST['sel']);
-    header('Location:dados.php?edt='.$id);
+    header('Location:'.$nivel.'dados.php?edt='.$id);
 }
 
 if(isset($_POST['cancel'])){

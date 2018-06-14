@@ -89,7 +89,7 @@
                     <div class="h100 tac">
                         <table class="w3-table w3-striped w3-bordered w3-white">
                             <tr>
-                                <td>Dinehiro</td>
+                                <td>Dinheiro</td>
                                 <td>R$ <?php echo number_format($valorDin, 2, ',', '.');?></td>
                             </tr>
                             <tr>

@@ -23,7 +23,7 @@ foreach ($dadosCaixa as $item) {
 }
 $mov = new Movimentacao();
 $mov->setCaixa($idCx);
-$valorDia = $mov->valorDiario($pdo);
+$valorDia = $mov->valorDiario($pdo, "AND `tipoMOVIMENTACAO` < 3");
 foreach ($valorDia as $item) {
     $valorDia = $item['valor'] != "" ? $item['valor'] : 00.00;
 }

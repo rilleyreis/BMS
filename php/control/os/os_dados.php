@@ -41,7 +41,7 @@ require '../../php/model/Produto.php';
 require '../../php/model/Log.php';
 
 $os = new OS();
-$num = $os->buscaQtd($pdo);
+$num = $os->buscaQtd("",$pdo);
 $id = "";
 $num = substr(str_shuffle($num), 0, 3);
 $protocolo = date("Y").date("His").str_pad($num, 3, "0", STR_PAD_LEFT);

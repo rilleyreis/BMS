@@ -23,6 +23,7 @@ $pessoa = new Pessoa();
 $usuario = new Usuario();
 $servicos = new Serv_OS();
 $produtos = new Prod_OS();
+$mov = new Movimentacao();
 $dadosEmp = $empresa->buscaDados($pdo);
 
 $idOS = base64_decode($_GET['id']);
@@ -60,8 +61,8 @@ if(isset($_POST['fim'])){
     $forma = $_POST['frmpag'];
     $parc = 1;
     if($_POST['parc'] != "")
-        $parc = $_POST['parac'];
-    $tipo = "OS";
+        $parc = $_POST['parc'];
+    $tipo = 1;
     $user = $_SESSION['idUser'];
     $cx = new Caixa();
     $cx->setData(date('Y-m-d'));
@@ -78,6 +79,7 @@ if(isset($_POST['fim'])){
     $mov->setUser($user);
     $mov->setOs($_POST['idOS']);
     $mov->setCaixa($cx);
+//    var_dump($mov);
     $mov->movimentar($pdo);
     $ordem->setId($idOS);
     $ordem->setStatus(6);
@@ -85,7 +87,7 @@ if(isset($_POST['fim'])){
     $id = base64_encode($idOS);
     $log = new Log();
     $log->criarLOG($pdo,"FINALIZOU UMA OS");
-    header("Location:view.php?id=".$id."&print");
+    //header("Location:view.php?id=".$id."&print");
 }
 
 $dadosOS = $ordem->buscaDados($pdo);

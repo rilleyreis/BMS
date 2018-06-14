@@ -33,7 +33,9 @@ require '../../util/config.php';
 
 
 <!-- Sidebar/menu -->
-<?php include '../../include/'.$_SESSION['panelUser'].'/menu.php'?>
+<div style="margin-top: 26px">
+    <?php include '../../include/'.$_SESSION['panelUser'].'/menu.php'?>
+</div>
 
 <div class="w3-main p15" style="margin-left: 300px; margin-top: 43px;">
     <div class="w3-row-padding w3-margin-bottom">

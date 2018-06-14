@@ -122,7 +122,8 @@ require '../../util/config.php';
             }
             ?>
         </div>
-        <button id="print" class="w3-btn w3-blue-gray w3-round mt10 no-print"><i class="fas fa-print"></i> Imprimir</button>
+        <button id="print" class="w3-btn w3-blue-gray w3-round mt10 no-print ml10"><i class="fas fa-print"></i> Imprimir</button>
+        <a class="w3-btn w3-red w3-round mt10 no-print" href="../relatorios"><i class="fas fa-arrow-left"></i> Voltar</a>
     </div>
 
     <div class="dnn p5 print">

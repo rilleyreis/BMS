@@ -17,14 +17,15 @@
             <div class="s8 w3-bar m0a wfull mt10">
                 <span>Bem vindo, <strong><?php echo $_SESSION['nomeUser']." ".$_SESSION['snomeUser'];?></strong></span><br>
                 <div class="m0a tac">
-                    <a href="#" class="w3-button"><i class="fa fa-user"></i></a>
-                    <a href="#" class="w3-button"><i class="fa fa-sign-out-alt"></i></a>
+                    <a href="<?php echo $nivel?>users/dados.php?edt=<?php echo base64_encode($_SESSION['idUser'])?>" class="w3-button" title="MEUS DADOS"><i class="fas fa-id-card"></i></a>
+                    <a href="<?php echo $nivel?>users/pass" class="w3-button" title="ALTERAR SENHA"><i class="fas fa-key"></i></a>
+                    <a href="<?php echo $nivel?>../php/control/logout" class="w3-button" title="SAIR"><i class="fa fa-sign-out-alt"></i></a>
                 </div>
             </div>
         </div>
         <hr>
         <div class="w3-container">
-            <a href="<?php echo $nivel?>admin"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="<?php echo $nivel?>tecno"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         </div>
         <div class="w3-bar-block">
             <button class="w3-button w3-block w3-left-align w3-text-white wfull" onclick="openMenu(4)"><i class="fas fa-wrench fa-fw mr03"></i> Serviços <i class="fa fa-caret-down"></i></button>

@@ -26,14 +26,16 @@ require '../util/config.php';
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Clique para fechar Menu" id="myOverlay"></div>
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 3px 0px">
+<div class="w3-bar w3-top w3-large bgcMenu" style="z-index:4; padding: 3px 0px;">
     <button class="w3-bar-item w3-button w3-hide-large w3-text-white w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
     <span class="w3-bar-item w3-right fwb w3-text-white">Business Manager System</span>
 </div>
 
 
 <!-- Sidebar/menu -->
-<?php include '../include/'.$_SESSION['panelUser'].'/menu.php'?>
+<div style="margin-top: 26px">
+    <?php include '../include/'.$_SESSION['panelUser'].'/menu.php'?>
+</div>
 
 <div class="w3-main p15" style="margin-left: 300px; margin-top: 43px;">
     <div class="w3-card mt20">
@@ -83,7 +85,7 @@ require '../util/config.php';
                                 <td class="w3-border">
                                     <div class="w3-row">
                                         <div class="w3-quarter">
-                                            <a class="w3-btn w3-blue" href="view.php?id=<?php echo base64_encode($row['id']);?>" title="Visualizar"><i class="fas fa-eye"></i></a>
+                                            <a class="w3-btn w3-blue" href="os/view.php?id=<?php echo base64_encode($row['id']);?>" title="Visualizar"><i class="fas fa-eye"></i></a>
                                         </div>
                                         <?php if($row['status'] < 6){ ?>
                                             <div class="w3-quarter">
@@ -91,7 +93,7 @@ require '../util/config.php';
                                             </div>
                                         <?php } ?>
                                         <div class="w3-quarter">
-                                            <a class="w3-btn w3-blue-gray" name="print" href="view.php?id=<?php echo base64_encode($row['id']);?>&print" title="Imprimir"><i class="fas fa-print"></i></a>
+                                            <a class="w3-btn w3-blue-gray" name="print" href="os/view.php?id=<?php echo base64_encode($row['id']);?>&print" title="Imprimir"><i class="fas fa-print"></i></a>
                                         </div>
                                     </div>
                                 </td>

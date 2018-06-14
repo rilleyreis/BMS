@@ -119,8 +119,8 @@ class Movimentacao{
         }
     }
 
-    public function valorDiario($pdo){
-        $sql = "SELECT SUM(`valorMOVIMENTACAO`) AS 'valor' FROM `MOVIMENTACAO` WHERE `CAIXA_idCAIXA` = $this->caixa";
+    public function valorDiario($pdo, $filtro){
+        $sql = "SELECT SUM(`valorMOVIMENTACAO`) AS 'valor' FROM `MOVIMENTACAO` WHERE `CAIXA_idCAIXA` = $this->caixa $filtro";
         return $pdo->query($sql);
     }
 
@@ -132,5 +132,16 @@ class Movimentacao{
     public function buscaVenda($pdo){
         $sql = "SELECT * FROM `MOVIMENTACAO` WHERE `VENDA_idVENDA` = $this->venda";
         return $pdo->query($sql);
+    }
+
+    public function buscaLtda($pdo,$limit){
+        $sql = "SELECT * FROM `MOVIMENTACAO_DATA` WHERE `idCAIXA` = $this->caixa $limit";
+        return $pdo->query($sql);
+    }
+
+    public function buscaQtd($pdo){
+        $sql = "SELECT * FROM `MOVIMENTACAO_DATA` WHERE `idCAIXA` = $this->caixa";
+        $query = $pdo->query($sql);
+        return $query->rowCount();
     }
 }

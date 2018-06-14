@@ -17,8 +17,9 @@
             <div class="s8 w3-bar m0a wfull mt10">
                 <span>Bem vindo, <strong><?php echo $_SESSION['nomeUser']." ".$_SESSION['snomeUser'];?></strong></span><br>
                 <div class="m0a tac">
-                    <a href="#" class="w3-button"><i class="fa fa-user"></i></a>
-                    <a href="#" class="w3-button"><i class="fa fa-sign-out-alt"></i></a>
+                    <a href="<?php echo $nivel?>users/dados.php?edt=<?php echo base64_encode($_SESSION['idUser'])?>" class="w3-button" title="MEUS DADOS"><i class="fas fa-id-card"></i></a>
+                    <a href="<?php echo $nivel?>users/pass" class="w3-button" title="ALTERAR SENHA"><i class="fas fa-key"></i></a>
+                    <a href="<?php echo $nivel?>../php/control/logout" class="w3-button" title="SAIR"><i class="fa fa-sign-out-alt"></i></a>
                 </div>
             </div>
         </div>
@@ -66,7 +67,7 @@
             <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(9)"><i class="fas fa-file-medical-alt fa-fw mr03"></i> Relatórios <i class="fa fa-caret-down"></i></button>
             <div id="menu9" class="w3-hide bgcMenu fs087e wfull">
                 <a href="<?php echo $nivel?>relatorios/logs" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-tasks fa-fw mr03"></i> Logs</a>
-                <a href="<?php echo $nivel?>venda/caixa" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-chart-line fa-fw mr03"></i> Financeiro</a>
+                <a href="<?php echo $nivel?>relatorios" class="w3-bar-item w3-hover-gray w3-text-white wfull ml10"><i class="fas fa-chart-line fa-fw mr03"></i> Financeiro</a>
             </div>
             <button class="w3-button w3-block w3-left-align w3-text-white fs095e wfull" onclick="openMenu(8)"><i class="fas fa-cogs fa-fw mr03"></i> Configuração <i class="fa fa-caret-down"></i></button>
             <div id="menu8" class="w3-hide bgcMenu fs087e wfull">

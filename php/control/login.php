@@ -64,7 +64,7 @@ if(isset($_POST['logar']) AND $qtdUser > 0){
             $_SESSION['funcaoUser'] = $funcao;
 
             $log = new Log();
-            $log->criarLOG($pdo,"REALIZAOU LOGIN NO SISTEMA");
+            $log->criarLOG($pdo,"REALIZOU LOGIN NO SISTEMA");
 
             $caixa = new Caixa();
             $caixa->setData(date("Y-m-d"));
@@ -75,7 +75,10 @@ if(isset($_POST['logar']) AND $qtdUser > 0){
             }
         }
     }
-}elseif ($qtdUser == 0){
+}
+
+
+elseif ($qtdUser == 0){
     $erro = "display:block";
     $msg = "Você deve acessar o menu Primeiro Acesso";
     $color = "w3-pale-red";

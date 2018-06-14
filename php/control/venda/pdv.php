@@ -52,6 +52,7 @@ if(isset($_POST['adicionar'])){
 
 if(isset($_POST['fim'])){
     $valor = str_replace("R$ ", "", $_POST['total']);
+    $valor = str_replace(".", "", $valor);
     $valor = str_replace(",", ".", $valor);
     $qtd = $comanda->somaTotal($pdo, 'qtd');
     foreach ($qtd as $item) {
@@ -81,7 +82,7 @@ if(isset($_POST['fim'])){
     $parc = 1;
     if($_POST['parc'] != "")
         $parc = $_POST['parc'];
-    $tipo = "VD";
+    $tipo = 2;
     if($_POST['cliente'] != "") {
         $cliente = explode("|", $_POST['cliente']);
         $cliente = $cliente[0];
@@ -104,6 +105,7 @@ if(isset($_POST['fim'])){
     $mov->setUser($user);
     $mov->setVenda($idV);
     $mov->setCaixa($cx);
+//    var_dump($mov);
     $mov->movimentar($pdo);
     $idV = base64_encode($idV);
 
